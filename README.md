@@ -2,18 +2,18 @@
 
 
 
-# TP2 Algoritmos 3: {nombre}
+# TP2 Algoritmos 3: Algoblocks
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo {N5}
 
-* **Integrante 1** - [integrante1](https://github.com/integrante1)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Integrante 1** - [Angy Saavedra](https://github.com/angysaavedrafiuba)
+* **Integrante 2** - [Ignacio Filipovskis](https://github.com/Nacho-Fili)
+* **Integrante 3** - [Hernan Nieva](https://github.com/hernanrnieva)
+* **Integrante 4** - [Daniel Aceval](https://github.com/Daceval)
 
-Corrector: **{Corrector}**
+Corrector: **{Santiago Valdez y Tomás Bustamante}**
 
 ### Pre-requisitos
 
