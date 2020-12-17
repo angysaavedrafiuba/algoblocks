@@ -16,7 +16,7 @@ public class PersonajeTest {
     @Test
     public void test02elLapizDelPersonajeSeBajaAlUsarUnBloqueBajarLapiz() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        bajarLapiz bloque = new bajarLapiz();
+        BajarLapiz bloque = new BajarLapiz();
 
         bloque.ejecutar(personaje);
 
@@ -26,7 +26,7 @@ public class PersonajeTest {
     @Test
     public void test03elLapizDelPersonajeSeLevantaAlUsarUnBloqueSubirLapiz() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        bajarLapiz bloqueBajar = new bajarLapiz();
+        BajarLapiz bloqueBajar = new BajarLapiz();
         SubirLapiz bloqueSubir = new SubirLapiz();
 
         bloqueBajar.ejecutar(personaje);
@@ -42,13 +42,13 @@ public class PersonajeTest {
 
         bloqueSubir.ejecutar(personaje);
 
-        assertTrue(personaje.lapizEstaArriba());git
+        assertTrue(personaje.lapizEstaArriba());
     }
 
     @Test
     public void test05bajarElLapizDelPersonajeNoTieneEfectoSiYaEstaBajo() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        bajarLapiz bloque = new bajarLapiz();
+        BajarLapiz bloque = new BajarLapiz();
 
         bloque.ejecutar(personaje);
         assertFalse(personaje.lapizEstaArriba());

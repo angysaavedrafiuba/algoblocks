@@ -16,7 +16,7 @@ public class AlgoBlocksTest {
     public void test02seCreaUnPersonajeYseEnviaElBloqueLapizAbajoYElLapizAhoraNoEstaArriba() {
         Algoblocks algoblocks = new Algoblocks();
 
-        algoblocks.agregarBloqueBajarLapiz();
+        algoblocks.agregarBloque(new BajarLapiz());
         algoblocks.ejecutar();
 
         assertFalse(algoblocks.lapizEstaArriba());
@@ -27,8 +27,8 @@ public class AlgoBlocksTest {
 
         Algoblocks algoblocks = new Algoblocks();
 
-        algoblocks.agregarBloqueBajarLapiz();
-        algoblocks.agregarBloqueSubirLapiz();
+        algoblocks.agregarBloque(new BajarLapiz());
+        algoblocks.agregarBloque(new SubirLapiz());
         algoblocks.ejecutar();
 
         assertTrue(algoblocks.lapizEstaArriba());
@@ -39,16 +39,10 @@ public class AlgoBlocksTest {
     public void test04SeAplicaBloqueHaciaArribaYEsteNoModificaElEstadoDelLapiz(){
         Algoblocks algoblocks = new Algoblocks();
 
-        algoblocks.agregarBloqueSubirLapiz();
+        algoblocks.agregarBloque(new SubirLapiz());
         algoblocks.ejecutar();
 
         assertTrue(algoblocks.lapizEstaArriba());
     }
-
-    /*
-    @Test
-    public void test05SeMuevePersonajeHaciaLaDerecha(){
-
-    }*/
 }
 

@@ -7,7 +7,7 @@ public class Personaje {
     /* constructor */
     public Personaje(Posicion2D posicionInicial) {
         this.posicion = posicionInicial;
-        this.lapiz = new lapizConPuntaHaciaArriba();
+        this.lapiz = new LapizConPuntaHaciaArriba();
     }
 
     public boolean lapizEstaArriba() {

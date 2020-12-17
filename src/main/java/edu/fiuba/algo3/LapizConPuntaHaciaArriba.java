@@ -1,10 +1,11 @@
 package edu.fiuba.algo3;
 
-public class lapizConPuntaHaciaAbajo implements Lapiz {
+public class LapizConPuntaHaciaArriba implements Lapiz {
 
     @Override
     public boolean LapizArriba(){
-        return false;
+        return true;
     }
 }
+
 
