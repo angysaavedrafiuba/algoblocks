@@ -1,24 +1,13 @@
 package edu.fiuba.algo3;
 
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class Algoblocks {
     private final Tablero tablero = new Tablero();
-    private final List<Bloque> bloques = new ArrayList<>();
+    private final ArrayList<Bloque> bloques = new ArrayList<>();
 
-
-    /*public void agregarBloqueMoverALaDerecha() {
-        Bloque bloque = new moverALaDerecha();
-        bloques.add(bloque);
-    }*/
-
-    public void agregarBloqueSubirLapiz(){
-        Bloque bloque = new subirLapiz();
-        bloques.add(bloque);
-    }
-    public void agregarBloqueBajarLapiz(){
-        Bloque bloque = new bajarLapiz();
+    public void agregarBloque(Bloque bloque){
         bloques.add(bloque);
     }
 
