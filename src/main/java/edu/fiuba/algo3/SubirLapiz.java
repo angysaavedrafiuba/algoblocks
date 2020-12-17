@@ -1,7 +1,7 @@
 package edu.fiuba.algo3;
 
-public class subirLapiz implements Bloque{
-    @Override
+public class SubirLapiz implements Bloque{
+
     public void ejecutar(Personaje personaje){
         personaje.setLapiz(new lapizConPuntaHaciaArriba());
     }
