@@ -15,7 +15,4 @@ public class Tablero {
         }
     }
 
-    /*public void moverPersonaje(Bloque bloque) {
-        posicion.calcularNuevaPosicion(bloque);
-    }*/
 }
