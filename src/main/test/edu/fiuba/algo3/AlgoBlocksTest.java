@@ -1,10 +1,10 @@
-package ar.edu.uba.fi;
+package edu.fiuba.algo3;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class prueba {
+public class AlgoBlocksTest {
     @Test
     public void test01PersonajeSeCrearConLapizArriba() {
 

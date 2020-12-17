@@ -1,4 +1,4 @@
-package ar.edu.uba.fi;
+package edu.fiuba.algo3;
 
 public class lapizConPuntaHaciaArriba implements Lapiz {
 

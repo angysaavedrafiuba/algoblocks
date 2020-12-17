@@ -1,9 +1,8 @@
-package ar.edu.uba.fi;
+package edu.fiuba.algo3;
 
 public class subirLapiz implements Bloque{
     @Override
-    public void ejecutar(Tablero tablero){
-        Personaje personaje = tablero.obtenerPersonaje();
+    public void ejecutar(Personaje personaje){
         personaje.setLapiz(new lapizConPuntaHaciaArriba());
     }
 }

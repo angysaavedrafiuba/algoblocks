@@ -1,4 +1,4 @@
-package ar.edu.uba.fi;
+package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,7 @@ public class Algoblocks {
     }
 
     public void ejecutar(){
-        for(Bloque bloque: bloques){
-            bloque.ejecutar(this.tablero);
-        }
+        tablero.ejecutarAlgoritmo(bloques);
     }
 
     public boolean lapizEstaArriba() {

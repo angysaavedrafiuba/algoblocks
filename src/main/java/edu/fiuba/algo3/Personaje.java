@@ -1,10 +1,12 @@
-package ar.edu.uba.fi;
+package edu.fiuba.algo3;
 
 public class Personaje {
     private Lapiz lapiz;
+    private Posicion2D posicion;
 
     /* constructor */
-    public Personaje() {
+    public Personaje(Posicion2D posicionInicial) {
+        this.posicion = posicionInicial;
         this.lapiz = new lapizConPuntaHaciaArriba();
     }
 
@@ -14,6 +16,14 @@ public class Personaje {
 
     public void setLapiz(Lapiz lapiz) {
         this.lapiz = lapiz;
+    }
+
+    public boolean estaEn(Posicion2D posicion) {
+        return posicion.estaEn(posicion);
+    }
+
+    public void mover(Posicion2D posicion) {
+        this.posicion.mover(posicion);
     }
 
     /*public void aplicar(Bloque bloque) {
