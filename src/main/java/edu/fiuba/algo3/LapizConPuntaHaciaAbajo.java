@@ -6,5 +6,10 @@ public class LapizConPuntaHaciaAbajo implements Lapiz {
     public boolean LapizArriba(){
         return false;
     }
+
+    @Override
+    public void dibujar(Dibujo dibujo, Posicion2D posicionADibujar) {
+        dibujo.dibujar(posicionADibujar);
+    }
 }
 

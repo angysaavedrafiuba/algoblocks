@@ -26,13 +26,6 @@ public class Personaje {
         this.posicion.mover(posicion);
     }
 
-    /*public void aplicar(Bloque bloque) {
-        bloque.ejecutar(this);
-    }
-
-    public Coordenada obtenerCoordenada() {
-
-    }*/
 }
 
 

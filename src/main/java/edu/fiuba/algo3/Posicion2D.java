@@ -1,7 +1,12 @@
 package edu.fiuba.algo3;
 
-public class Posicion2D {
+public class Posicion2D implements Posicion{
     private int x, y;
+
+    public static final Posicion2D DERECHA   =  new Posicion2D(1, 0);
+    public static final Posicion2D IZQUIERDA =  new Posicion2D(-1, 0);
+    public static final Posicion2D ARRIBA    =  new Posicion2D(0, 1);
+    public static final Posicion2D ABAJO     =  new Posicion2D(0, -1);
 
     public int getX() {
         return x;
@@ -17,6 +22,10 @@ public class Posicion2D {
     }
 
     public boolean estaEn(Posicion2D posicion) {
+        return(posicion.getX() == x && posicion.getY() == y);
+    }
+
+    public boolean esLaMismaQue(Posicion2D posicion){
         return(posicion.getX() == x && posicion.getY() == y);
     }
 

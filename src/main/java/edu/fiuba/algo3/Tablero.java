@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Tablero {
     private final Personaje personaje = new Personaje(new Posicion2D(0,0));
-
+    private final Dibujo dibujo = new Dibujo();
     public boolean lapizArriba() {
         return personaje.lapizEstaArriba();
     }

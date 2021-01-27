@@ -6,6 +6,12 @@ public class LapizConPuntaHaciaArriba implements Lapiz {
     public boolean LapizArriba(){
         return true;
     }
+
+    @Override
+    public void dibujar(Dibujo dibujo, Posicion2D posicionADibujar) {
+
+    }
+
 }
 
 

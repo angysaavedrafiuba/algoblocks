@@ -68,7 +68,7 @@ public class PersonajeTest {
     @Test
     public void test07elPersonajeSeMueveALaDerechaAlUsarElBloqueMoverDerecha() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        moverALaDerecha bloque = new moverALaDerecha();
+        MoverALaDerecha bloque = new MoverALaDerecha();
         Posicion2D posicionEsperada = new Posicion2D(1, 0);
 
         bloque.ejecutar(personaje);
@@ -79,7 +79,7 @@ public class PersonajeTest {
     @Test
     public void test08elPersonajeSeMueveALaIzquierdaAlUsarElBloqueMoverIzquierda() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        moverALaIzquierda bloque = new moverALaIzquierda();
+        MoverALaIzquierda bloque = new MoverALaIzquierda();
         Posicion2D posicionEsperada = new Posicion2D(-1, 0);
 
         bloque.ejecutar(personaje);
@@ -90,7 +90,7 @@ public class PersonajeTest {
     @Test
     public void test09elPersonajeSeMueveHaciaArribaAlUsarElBloqueMoverArriba() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        moverHaciaArriba bloque = new moverHaciaArriba();
+        MoverHaciaArriba bloque = new MoverHaciaArriba();
         Posicion2D posicionEsperada = new Posicion2D(0, 1);
 
         bloque.ejecutar(personaje);
@@ -101,7 +101,7 @@ public class PersonajeTest {
     @Test
     public void test10elPersonajeSeMueveHaciaAbajoAlUsarElBloqueMoverAbajo() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        moverHaciaAbajo bloque = new moverHaciaAbajo();
+        MoverHaciaAbajo bloque = new MoverHaciaAbajo();
         Posicion2D posicionEsperada = new Posicion2D(0, -1);
 
         bloque.ejecutar(personaje);
