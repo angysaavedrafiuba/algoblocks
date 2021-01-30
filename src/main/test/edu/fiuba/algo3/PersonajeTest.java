@@ -1,7 +1,6 @@
 package edu.fiuba.algo3;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonajeTest {
@@ -18,7 +17,7 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         BajarLapiz bloque = new BajarLapiz();
 
-        bloque.ejecutar(personaje);
+        bloque.ejecutar(personaje, new Tablero());
 
         assertFalse(personaje.lapizEstaArriba());
     }
@@ -29,8 +28,8 @@ public class PersonajeTest {
         BajarLapiz bloqueBajar = new BajarLapiz();
         SubirLapiz bloqueSubir = new SubirLapiz();
 
-        bloqueBajar.ejecutar(personaje);
-        bloqueSubir.ejecutar(personaje);
+        bloqueBajar.ejecutar(personaje, new Tablero());
+        bloqueSubir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.lapizEstaArriba());
     }
@@ -40,7 +39,7 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         SubirLapiz bloqueSubir = new SubirLapiz();
 
-        bloqueSubir.ejecutar(personaje);
+        bloqueSubir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.lapizEstaArriba());
     }
@@ -50,9 +49,9 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         BajarLapiz bloque = new BajarLapiz();
 
-        bloque.ejecutar(personaje);
+        bloque.ejecutar(personaje, new Tablero());
         assertFalse(personaje.lapizEstaArriba());
-        bloque.ejecutar(personaje);
+        bloque.ejecutar(personaje, new Tablero());
 
         assertFalse(personaje.lapizEstaArriba());
     }
@@ -71,7 +70,7 @@ public class PersonajeTest {
         MoverALaDerecha bloque = new MoverALaDerecha();
         Posicion2D posicionEsperada = new Posicion2D(1, 0);
 
-        bloque.ejecutar(personaje);
+        bloque.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -82,7 +81,7 @@ public class PersonajeTest {
         MoverALaIzquierda bloque = new MoverALaIzquierda();
         Posicion2D posicionEsperada = new Posicion2D(-1, 0);
 
-        bloque.ejecutar(personaje);
+        bloque.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -93,7 +92,7 @@ public class PersonajeTest {
         MoverHaciaArriba bloque = new MoverHaciaArriba();
         Posicion2D posicionEsperada = new Posicion2D(0, 1);
 
-        bloque.ejecutar(personaje);
+        bloque.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -104,7 +103,7 @@ public class PersonajeTest {
         MoverHaciaAbajo bloque = new MoverHaciaAbajo();
         Posicion2D posicionEsperada = new Posicion2D(0, -1);
 
-        bloque.ejecutar(personaje);
+        bloque.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }

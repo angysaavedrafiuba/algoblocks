@@ -33,4 +33,26 @@ public class Posicion2D implements Posicion{
         this.x += posicion.getX();
         this.y += posicion.getY();
     }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Posicion2D that = (Posicion2D) object;
+        return x == that.x && y == that.y;
+    }
+
+    public int hashCode() {
+        return java.util.Objects.hash(super.hashCode(), x, y);
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Posicion2D{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
+
 }

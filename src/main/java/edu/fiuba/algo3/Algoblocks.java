@@ -15,7 +15,9 @@ public class Algoblocks {
         tablero.ejecutarAlgoritmo(bloques);
     }
 
-    public boolean lapizEstaArriba() {
-        return tablero.lapizArriba();
+
+    //Test only
+    public ArrayList<Posicion> obtenerDibujo() {
+        return this.tablero.obtenerDibujo();
     }
 }

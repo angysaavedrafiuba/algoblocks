@@ -22,8 +22,9 @@ public class Personaje {
         return posicion.estaEn(posicion);
     }
 
-    public void mover(Posicion2D posicion) {
+    public void mover(Posicion2D posicion, Tablero tablero) {
         this.posicion.mover(posicion);
+        tablero.dibujarEnConLapiz(this.posicion, this.lapiz);
     }
 
 }

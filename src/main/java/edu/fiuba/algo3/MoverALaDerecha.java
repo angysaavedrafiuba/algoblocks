@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 public class MoverALaDerecha implements Bloque {
     @Override
-    public void ejecutar(Personaje personaje) {
-        personaje.mover(Posicion2D.DERECHA);
+    public void ejecutar(Personaje personaje, Tablero tablero) {
+        personaje.mover(Posicion2D.DERECHA, tablero);
     }
 }
