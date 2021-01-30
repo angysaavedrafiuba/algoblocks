@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 public class Dibujo {
 
-    private final ArrayList<Posicion> posicionesDibujadas = new ArrayList<Posicion>();
+    private final ArrayList<Posicion2D> posicionesDibujadas = new ArrayList<Posicion2D>();
 
     public boolean enBlanco() {
         return(posicionesDibujadas.isEmpty());
     }
 
     public void dibujar(Posicion2D posicionADibujar) {
-        posicionesDibujadas.add(posicionADibujar);
-        System.out.println(posicionADibujar);
+        posicionesDibujadas.add(posicionADibujar.clonarPosicion());
     }
 
 
@@ -26,8 +25,7 @@ public class Dibujo {
         lapiz.dibujar(this, posicionADibujar);
     }
 
-    public ArrayList<Posicion> posicionesDibujadas() {
-        ArrayList <Posicion> posicionesADevolver = new ArrayList<Posicion>();
+    public ArrayList<Posicion2D> posicionesDibujadas() {
         return posicionesDibujadas;
     }
 }

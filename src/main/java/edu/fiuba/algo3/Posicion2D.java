@@ -3,10 +3,16 @@ package edu.fiuba.algo3;
 public class Posicion2D implements Posicion{
     private int x, y;
 
-    public static final Posicion2D DERECHA   =  new Posicion2D(1, 0);
-    public static final Posicion2D IZQUIERDA =  new Posicion2D(-1, 0);
-    public static final Posicion2D ARRIBA    =  new Posicion2D(0, 1);
-    public static final Posicion2D ABAJO     =  new Posicion2D(0, -1);
+    public static final int X_DERECHA   =   1;
+    public static final int Y_DERECHA   =   0;
+
+    public static final int X_IZQUIERDA =  -1;
+    public static final int Y_IZQUIERDA   =   0;
+    public static final int X_ABAJO     =   0;
+    public static final int Y_ABAJO     =  -1;
+
+    public static final int X_ARRIBA    =   0;
+    public static final int Y_ARRIBA    =   1;
 
     public int getX() {
         return x;
@@ -32,6 +38,10 @@ public class Posicion2D implements Posicion{
     public void mover(Posicion2D posicion) {
         this.x += posicion.getX();
         this.y += posicion.getY();
+    }
+
+    public Posicion2D clonarPosicion(){
+        return (new Posicion2D(this.x, this.y));
     }
 
     public boolean equals(Object object) {

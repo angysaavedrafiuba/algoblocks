@@ -16,7 +16,7 @@ public class Posicion2DTest {
     @Test
     public void test02MoverLaPosicion1y0ALaDerechaDaComoResultadoLaPosicion2y0(){
         Posicion2D posicion = new Posicion2D(1,0);
-        posicion.mover(Posicion2D.DERECHA);
+        posicion.mover(new Posicion2D(Posicion2D.X_DERECHA, Posicion2D.Y_DERECHA));
 
         assertTrue(posicion.esLaMismaQue(new Posicion2D(2,0)));
     }
@@ -24,7 +24,7 @@ public class Posicion2DTest {
     @Test
     public void test03MoverLaPosicion1y0ALaIzquierdaDaComoResultadoLaPosicion0y0(){
         Posicion2D posicion = new Posicion2D(1,0);
-        posicion.mover(Posicion2D.IZQUIERDA);
+        posicion.mover(new Posicion2D(Posicion2D.X_IZQUIERDA, Posicion2D.Y_IZQUIERDA));
 
         assertTrue(posicion.esLaMismaQue(new Posicion2D(0,0)));
     }
@@ -32,7 +32,7 @@ public class Posicion2DTest {
     @Test
     public void test04MoverLaPosicion0y1HaciaArribaDaComoResultadoLaPosicion0y2(){
         Posicion2D posicion = new Posicion2D(0,1);
-        posicion.mover(Posicion2D.ARRIBA);
+        posicion.mover(new Posicion2D(Posicion2D.X_ARRIBA, Posicion2D.Y_ARRIBA));
 
         assertTrue(posicion.esLaMismaQue(new Posicion2D(0,2)));
     }
@@ -40,7 +40,7 @@ public class Posicion2DTest {
     @Test
     public void test05MoverLaPosicion0y1HaciaAbajoDaComoResultadoLaPosicion0y0(){
         Posicion2D posicion = new Posicion2D(0,1);
-        posicion.mover(Posicion2D.ABAJO);
+        posicion.mover(new Posicion2D(Posicion2D.X_ABAJO, Posicion2D.Y_ABAJO));
 
         assertTrue(posicion.esLaMismaQue(new Posicion2D(0,0)));
     }

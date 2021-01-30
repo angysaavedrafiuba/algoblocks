@@ -17,7 +17,7 @@ public class Algoblocks {
 
 
     //Test only
-    public ArrayList<Posicion> obtenerDibujo() {
+    public ArrayList<Posicion2D> obtenerDibujo() {
         return this.tablero.obtenerDibujo();
     }
 }

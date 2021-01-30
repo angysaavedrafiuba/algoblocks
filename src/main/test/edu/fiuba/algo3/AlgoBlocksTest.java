@@ -8,12 +8,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class AlgoBlocksTest {
-    /*
+
+    private Boolean compararArrays(ArrayList<Posicion2D>array1, ArrayList<Posicion2D>array2){
+        int i = 0;
+        if(array1.size() != array2.size()) return false;
+
+        for (Posicion posicion: array1) {
+            Posicion2D posicion2 = array2.get(i);
+            if(!posicion.esLaMismaQue(posicion2)) return false;
+            i++;
+        }
+
+        return true;
+    }
+
     @Test
     public void testDeIntegracion(){
         Algoblocks algoblocks = new Algoblocks();           // (0,0)
-        ArrayList<Posicion> dibujoEsperado = new ArrayList<Posicion>(4);
-        ArrayList<Posicion> dibujoLogrado = new ArrayList<Posicion>(4);
+        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<Posicion2D>(4);
+        ArrayList<Posicion2D> dibujoLogrado = new ArrayList<Posicion2D>(4);
 
         algoblocks.agregarBloque(new MoverALaDerecha());    // (1,0)
         algoblocks.agregarBloque(new MoverALaDerecha());    // (2,0)
@@ -43,50 +56,12 @@ public class AlgoBlocksTest {
         algoblocks.agregarBloque(new MoverALaIzquierda());  // (3,0)
         algoblocks.agregarBloque(new MoverALaIzquierda());  // (2,0)
 
+        algoblocks.ejecutar();
+
         dibujoLogrado = algoblocks.obtenerDibujo();
 
-        assertEquals(dibujoEsperado, dibujoLogrado);
-    }
-
-    @Test
-    public void test01PersonajeSeCrearConLapizArriba() {
-
-        Algoblocks algoblocks = new Algoblocks();
-        assertTrue(algoblocks.lapizEstaArriba());
-    }
-
-    @Test
-    public void test02seCreaUnPersonajeYseEnviaElBloqueLapizAbajoYElLapizAhoraNoEstaArriba() {
-        Algoblocks algoblocks = new Algoblocks();
-
-        algoblocks.agregarBloque(new BajarLapiz());
-        algoblocks.ejecutar();
-
-        assertFalse(algoblocks.lapizEstaArriba());
-    }
-
-    @Test
-    public void test03SeBajaYseVuelveASubirElLapizYEsteQuedaHaciaArriba(){
-
-        Algoblocks algoblocks = new Algoblocks();
-
-        algoblocks.agregarBloque(new BajarLapiz());
-        algoblocks.agregarBloque(new SubirLapiz());
-        algoblocks.ejecutar();
-
-        assertTrue(algoblocks.lapizEstaArriba());
+        assertTrue(compararArrays(dibujoEsperado, dibujoLogrado));
 
     }
-
-    @Test
-    public void test04SeAplicaBloqueHaciaArribaYEsteNoModificaElEstadoDelLapiz(){
-        Algoblocks algoblocks = new Algoblocks();
-
-        algoblocks.agregarBloque(new SubirLapiz());
-        algoblocks.ejecutar();
-
-        assertTrue(algoblocks.lapizEstaArriba());
-    }
-    */
 }
 

@@ -19,7 +19,7 @@ public class Tablero {
     }
 
     //Test only
-    public ArrayList<Posicion> obtenerDibujo() {
+    public ArrayList<Posicion2D> obtenerDibujo() {
         return dibujo.posicionesDibujadas();
     }
 }
