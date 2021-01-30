@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 public class Personaje {
     private Lapiz lapiz;
-    private Posicion2D posicion;
+    public Posicion2D posicion;
 
     /* constructor */
     public Personaje(Posicion2D posicionInicial) {
@@ -26,7 +26,6 @@ public class Personaje {
         this.posicion.mover(posicion);
         tablero.dibujarEnConLapiz(this.posicion, this.lapiz);
     }
-
 }
 
 

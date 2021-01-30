@@ -28,7 +28,7 @@ public class Posicion2D implements Posicion{
     }
 
     public boolean estaEn(Posicion2D posicion) {
-        return(posicion.getX() == x && posicion.getY() == y);
+        return(posicion.getX() == this.x && posicion.getY() == this.y);
     }
 
     public boolean esLaMismaQue(Posicion2D posicion){
@@ -63,6 +63,4 @@ public class Posicion2D implements Posicion{
                 ", y=" + y +
                 '}';
     }
-
-
 }
