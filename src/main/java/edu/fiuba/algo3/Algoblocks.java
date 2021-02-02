@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Algoblocks {
     private final Tablero tablero = new Tablero();
-    private final ArrayList<Bloque> bloques = new ArrayList<>();
+    private final ColaDeInstrucciones bloques = new ColaDeInstrucciones(new RecorridoNormal());
 
     public void agregarBloque(Bloque bloque){
-        bloques.add(bloque);
+        bloques.agregarBloque(bloque);
     }
 
     public void ejecutar(){

@@ -111,10 +111,10 @@ public class PersonajeTest {
     @Test
     public void test11elPersonajeSeMueveDosVecesALaDerechaAlUsarUnBloqueDeRepeticion() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetir = new RepetirDosVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(2, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
+        bloqueRepetir.siguiente(new MoverALaDerecha());
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -123,10 +123,10 @@ public class PersonajeTest {
     @Test
     public void test12elPersonajeSeMueveDosVecesALaIzquierdaAlUsarUnBloqueDeRepeticion() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetir = new RepetirDosVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(-2, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaIzquierda());
+        bloqueRepetir.siguiente(new MoverALaIzquierda());
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -135,11 +135,11 @@ public class PersonajeTest {
     @Test
     public void test13elPersonajeQuedaEnElMismoLugarAlMoverseDosVecesALaDerechaYDosALaIzquierda() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetir = new RepetirDosVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(0, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
+        bloqueRepetir.siguiente(new MoverALaIzquierda());
+        bloqueRepetir.siguiente(new MoverALaDerecha());
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -148,11 +148,11 @@ public class PersonajeTest {
     @Test
     public void test14elPersonajeSeMueveDosALaIzquierdaYArribaAlUsarBloqueDeRepeticion() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetir = new RepetirDosVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(-2, 2);
 
-        bloqueRepetir.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetir.agregarBloque(new MoverHaciaArriba());
+        bloqueRepetir.siguiente(new MoverALaIzquierda());
+        bloqueRepetir.siguiente(new MoverHaciaArriba());
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -161,11 +161,11 @@ public class PersonajeTest {
     @Test
     public void test15elPersonajeSeMueveALADerechaYBajaElLapizUsandoBloqueDeRepeticion() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetir = new RepetirDosVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(2, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        bloqueRepetir.agregarBloque(new BajarLapiz());
+        bloqueRepetir.siguiente(new MoverALaDerecha());
+        bloqueRepetir.siguiente(new BajarLapiz());
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -175,12 +175,12 @@ public class PersonajeTest {
     @Test
     public void test16sePuedeAgregarUnBloqueDeRepeticionEnOtroDelMismoTipo() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetir = new RepetirDosVeces();
-        RepetirDosVeces otroBloqueRepetir = new RepetirDosVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
+        BloqueDeRepeticion otroBloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(4, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        otroBloqueRepetir.agregarBloque(bloqueRepetir);
+        bloqueRepetir.siguiente(new MoverALaDerecha());
+        otroBloqueRepetir.siguiente(bloqueRepetir);
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -189,10 +189,10 @@ public class PersonajeTest {
     @Test
     public void test17elPersonajeSeMueveTresVecesALaDerechaAlUsarUnBloqueDeRepeticion() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirTresVeces bloqueRepetir = new RepetirTresVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(3, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
+        bloqueRepetir.siguiente(new MoverALaDerecha());
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -201,11 +201,11 @@ public class PersonajeTest {
     @Test
     public void test18elPersonajeQuedaEnElMismoLugarAlMoverseTresVecesALaDerechaYTresALaIzquierda() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirTresVeces bloqueRepetir = new RepetirTresVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(0, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
+        bloqueRepetir.siguiente(new MoverALaIzquierda());
+        bloqueRepetir.siguiente(new MoverALaDerecha());
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -214,11 +214,11 @@ public class PersonajeTest {
     @Test
     public void test19elPersonajeSeMueveALADerechaYBajaElLapizUsandoBloqueDeRepeticion() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirTresVeces bloqueRepetir = new RepetirTresVeces();
+        BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(3, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        bloqueRepetir.agregarBloque(new BajarLapiz());
+        bloqueRepetir.siguiente(new MoverALaDerecha());
+        bloqueRepetir.siguiente(new BajarLapiz());
         bloqueRepetir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -228,12 +228,12 @@ public class PersonajeTest {
     @Test
     public void test20sePuedeAgregarUnBloqueDeRepeticionDobleEnUnoTriple() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetirDoble = new RepetirDosVeces();
-        RepetirTresVeces bloqueRepetirTriple = new RepetirTresVeces();
+        BloqueDeRepeticion bloqueRepetirDoble = new BloqueDeRepeticion(2);
+        BloqueDeRepeticion bloqueRepetirTriple = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(6, 0);
 
-        bloqueRepetirDoble.agregarBloque(new MoverALaDerecha());
-        bloqueRepetirTriple.agregarBloque(bloqueRepetirDoble);
+        bloqueRepetirDoble.siguiente(new MoverALaDerecha());
+        bloqueRepetirTriple.siguiente(bloqueRepetirDoble);
         bloqueRepetirTriple.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -242,12 +242,12 @@ public class PersonajeTest {
     @Test
     public void test21sePuedeAgregarUnBloqueDeRepeticionTripleEnUnoDoble() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirTresVeces bloqueRepetirTriple = new RepetirTresVeces();
-        RepetirDosVeces bloqueRepetirDoble = new RepetirDosVeces();
+        BloqueDeRepeticion bloqueRepetirTriple = new BloqueDeRepeticion(3);
+        BloqueDeRepeticion bloqueRepetirDoble = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(6, 0);
 
-        bloqueRepetirTriple.agregarBloque(new MoverALaDerecha());
-        bloqueRepetirDoble.agregarBloque(bloqueRepetirTriple);
+        bloqueRepetirTriple.siguiente(new MoverALaDerecha());
+        bloqueRepetirDoble.siguiente(bloqueRepetirTriple);
         bloqueRepetirDoble.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -256,14 +256,14 @@ public class PersonajeTest {
     @Test
     public void test22sePuedeAgregarUnBloqueDeRepeticionDobleEnUnoTripleConOtrosBloques() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetirDoble = new RepetirDosVeces();
-        RepetirTresVeces bloqueRepetirTriple = new RepetirTresVeces();
+        BloqueDeRepeticion bloqueRepetirDoble = new BloqueDeRepeticion(2);
+        BloqueDeRepeticion bloqueRepetirTriple = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(0, 0);
 
-        bloqueRepetirDoble.agregarBloque(new MoverALaDerecha());
-        bloqueRepetirTriple.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetirTriple.agregarBloque(bloqueRepetirDoble);
-        bloqueRepetirTriple.agregarBloque(new MoverALaIzquierda());
+        bloqueRepetirDoble.siguiente(new MoverALaDerecha());
+        bloqueRepetirTriple.siguiente(new MoverALaIzquierda());
+        bloqueRepetirTriple.siguiente(bloqueRepetirDoble);
+        bloqueRepetirTriple.siguiente(new MoverALaIzquierda());
         bloqueRepetirTriple.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -272,14 +272,14 @@ public class PersonajeTest {
     @Test
     public void test23sePuedeAgregarUnBloqueDeRepeticionTripleEnUnoDobleConOtrosBloques() {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
-        RepetirDosVeces bloqueRepetirDoble = new RepetirDosVeces();
-        RepetirTresVeces bloqueRepetirTriple = new RepetirTresVeces();
+        BloqueDeRepeticion bloqueRepetirDoble = new BloqueDeRepeticion(2);
+        BloqueDeRepeticion bloqueRepetirTriple = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(0, 0);
 
-        bloqueRepetirTriple.agregarBloque(new MoverALaDerecha());
-        bloqueRepetirDoble.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetirDoble.agregarBloque(bloqueRepetirTriple);
-        bloqueRepetirDoble.agregarBloque(new MoverALaIzquierda());
+        bloqueRepetirTriple.siguiente(new MoverALaDerecha());
+        bloqueRepetirDoble.siguiente(new MoverALaIzquierda());
+        bloqueRepetirDoble.siguiente(bloqueRepetirTriple);
+        bloqueRepetirDoble.siguiente(new MoverALaIzquierda());
         bloqueRepetirDoble.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -290,8 +290,8 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
 
-        bloqueInvertir.agregarBloque(new SubirLapiz());
-        bloqueInvertir.agregarBloque(new BajarLapiz());
+        bloqueInvertir.siguiente(new SubirLapiz());
+        bloqueInvertir.siguiente(new BajarLapiz());
         bloqueInvertir.ejecutar(personaje, new Tablero());
 
         assertTrue(personaje.lapizEstaArriba());
@@ -304,8 +304,8 @@ public class PersonajeTest {
         SubirLapiz bloqueSubir = new SubirLapiz();
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
 
-        bloqueInvertir.agregarBloque(new BajarLapiz());
-        bloqueInvertir.agregarBloque(new SubirLapiz());
+        bloqueInvertir.siguiente(new BajarLapiz());
+        bloqueInvertir.siguiente(new SubirLapiz());
         bloqueInvertir.ejecutar(personaje, new Tablero());
 
         assertFalse(personaje.lapizEstaArriba());
