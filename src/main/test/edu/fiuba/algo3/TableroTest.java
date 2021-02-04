@@ -7,18 +7,6 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TableroTest {
-    private Boolean compararArrays(ArrayList<Posicion2D>array1, ArrayList<Posicion2D>array2){
-        int i = 0;
-        if(array1.size() != array2.size()) return false;
-
-        for (Posicion posicion: array1) {
-            Posicion2D posicion2 = array2.get(i);
-            if(!posicion.esLaMismaQue(posicion2)) return false;
-            i++;
-        }
-
-        return true;
-    }
 
     @Test
     public void test01AlInicializarElTableroElDibujoEstaVacio(){
@@ -66,6 +54,6 @@ public class TableroTest {
 
         ArrayList<Posicion2D> dibujoLogrado = tablero.obtenerDibujo();
 
-        assertTrue(compararArrays(dibujoEsperado, dibujoLogrado));
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
     }
 }

@@ -8,9 +8,7 @@ public class LapizConPuntaHaciaArriba implements Lapiz {
     }
 
     @Override
-    public void dibujar(Dibujo dibujo, Posicion2D posicionADibujar) {
-
-    }
+    public void dibujar(Dibujo dibujo, Posicion2D posicionADibujar) {}
 
 }
 

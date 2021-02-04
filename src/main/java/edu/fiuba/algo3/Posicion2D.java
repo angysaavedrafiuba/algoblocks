@@ -45,11 +45,12 @@ public class Posicion2D implements Posicion{
     }
 
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Posicion2D that = (Posicion2D) object;
-        return x == that.x && y == that.y;
+        if(object.getClass() != this.getClass())
+            return false;
+
+        Posicion2D posicionAComparar = (Posicion2D) object;
+
+        return (estaEn(posicionAComparar));
     }
 
     public int hashCode() {

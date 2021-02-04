@@ -1,8 +1,6 @@
 package edu.fiuba.algo3;
 
 
-import javafx.scene.control.Tab;
-
 public class ColaDeInstrucciones {
     private final Recorrido strategy;
 
