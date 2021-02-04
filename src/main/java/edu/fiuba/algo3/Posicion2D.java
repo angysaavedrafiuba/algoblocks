@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-public class Posicion2D implements Posicion{
+public class Posicion2D{
     private int x, y;
 
     public static final int X_DERECHA   =   1;
