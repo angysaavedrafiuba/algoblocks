@@ -5,11 +5,6 @@ public class RecorridoNormal implements Recorrido{
     private Bloque ultimoBloque = new BloqueNulo();
 
     @Override
-    public void ultimoBloque(Bloque bloque) {
-        ultimoBloque = bloque;
-    }
-
-    @Override
     public void agregar(Bloque bloque){
         try {
             ultimoBloque.siguiente(bloque);
@@ -19,7 +14,6 @@ public class RecorridoNormal implements Recorrido{
             primerBloque=bloque;
             ultimoBloque=bloque;
         }
-
     }
 
     @Override

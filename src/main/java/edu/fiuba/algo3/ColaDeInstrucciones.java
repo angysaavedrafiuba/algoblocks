@@ -20,5 +20,4 @@ public class ColaDeInstrucciones {
     public void agregarBloque(Bloque bloque){
         strategy.primerBloque().enlazar(bloque, strategy);
     }
-
 }

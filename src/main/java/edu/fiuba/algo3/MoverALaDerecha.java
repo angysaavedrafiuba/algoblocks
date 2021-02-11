@@ -1,7 +1,6 @@
 package edu.fiuba.algo3;
 
 public class MoverALaDerecha implements Bloque {
-
     private Bloque siguienteBloque = new BloqueNulo();
 
     @Override

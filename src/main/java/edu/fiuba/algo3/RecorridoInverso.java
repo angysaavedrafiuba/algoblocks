@@ -6,11 +6,6 @@ public class RecorridoInverso implements Recorrido {
     private Bloque primerBloque = new BloqueNulo();
 
     @Override
-    public void ultimoBloque(Bloque bloque) {
-        this.ultimoBloque = ultimoBloque;
-    }
-
-    @Override
     public void agregar(Bloque bloque) {
         try {
             bloque.siguiente(primerBloque);
