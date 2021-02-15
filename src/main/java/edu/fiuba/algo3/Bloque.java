@@ -10,7 +10,6 @@ public interface Bloque {
         catch (RuntimeException e){
             throw e;
         }
-
     }
 
     void siguiente(Bloque bloque);

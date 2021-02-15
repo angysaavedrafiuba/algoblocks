@@ -45,17 +45,15 @@ public class Posicion2D{
         return (new Posicion2D(this.x, this.y));
     }
 
+    @Override
     public boolean equals(Object object) {
         Posicion2D posicionAComparar = (Posicion2D) object;
 
         return (igualA(posicionAComparar));
     }
 
-    public int hashCode() {
-        return java.util.Objects.hash(super.hashCode(), x, y);
-    }
-
-    @java.lang.Override
+    /* Test only */
+    @Override
     public java.lang.String toString() {
         return "Posicion2D{" +
                 "x=" + x +
