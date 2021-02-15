@@ -15,7 +15,7 @@ public class Personaje {
     }
 
     public boolean estaEn(Posicion2D posicion) {
-        return posicion.estaEn(posicion);
+        return posicion.igualA(posicion);
     }
 
     public void mover(Posicion2D posicion, Dibujo dibujo) {

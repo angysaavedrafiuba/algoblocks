@@ -26,7 +26,7 @@ public class Dibujo {
 
     public boolean estaDibujada(Posicion2D posicionAVerificar) {
         return posicionesDibujadas.stream().anyMatch(posicion -> {
-            return posicion.esLaMismaQue(posicionAVerificar);
+            return posicion.igualA(posicionAVerificar);
         });
     }
 }

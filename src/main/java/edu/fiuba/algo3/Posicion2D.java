@@ -31,7 +31,7 @@ public class Posicion2D{
         return(posicion.getX() == this.x && posicion.getY() == this.y);
     }
 
-    public boolean esLaMismaQue(Posicion2D posicion){
+    public boolean igualA(Posicion2D posicion){
         return(posicion.getX() == x && posicion.getY() == y);
     }
 
@@ -46,12 +46,9 @@ public class Posicion2D{
     }
 
     public boolean equals(Object object) {
-        if(object.getClass() != this.getClass())
-            return false;
-
         Posicion2D posicionAComparar = (Posicion2D) object;
 
-        return (estaEn(posicionAComparar));
+        return (igualA(posicionAComparar));
     }
 
     public int hashCode() {

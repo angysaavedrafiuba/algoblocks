@@ -15,7 +15,7 @@ public class LapizHaciaAbajoTest {
 
         lapiz.dibujar(dibujo, new Posicion2D(0,0));
 
-        assertTrue(dibujo.posicionesDibujadas().get(0).esLaMismaQue(new Posicion2D(0, 0)));
+        assertTrue(dibujo.posicionesDibujadas().get(0).igualA(new Posicion2D(0, 0)));
     }
 
     @Test
