@@ -35,6 +35,7 @@ public class Posicion2D{
         return(posicion.getX() == x && posicion.getY() == y);
     }
 
+    /* Revisar */
     public void mover(Posicion2D posicion) {
         this.x += posicion.getX();
         this.y += posicion.getY();

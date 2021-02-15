@@ -4,10 +4,10 @@ public class BajarLapiz implements Bloque {
     private Bloque siguienteBloque = new BloqueNulo();
 
     @Override
-    public void ejecutar(Personaje personaje, Tablero tablero){
+    public void ejecutar(Personaje personaje, Dibujo dibujo){
         personaje.setLapiz(new LapizConPuntaHaciaAbajo());
-        personaje.mover(new Posicion2D(0,0), tablero);
-        siguienteBloque.ejecutar(personaje, tablero);
+        personaje.mover(new Posicion2D(0,0), dibujo);
+        siguienteBloque.ejecutar(personaje, dibujo);
     }
 
     public void siguiente(Bloque bloque){

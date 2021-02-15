@@ -8,15 +8,14 @@ public class Tablero {
     private final Dibujo dibujo = new Dibujo();
 
     public void ejecutarAlgoritmo(ColaDeInstrucciones colaDeInstrucciones) {
-        colaDeInstrucciones.ejecutar(this.personaje, this);
+        colaDeInstrucciones.ejecutar(this.personaje, dibujo);
     }
 
-    // REVISAR!! Es la parte que más ruido hace del modelo
     public void dibujarEnConLapiz(Posicion2D posicion, Lapiz lapiz) {
         this.dibujo.dibujarConLapiz(posicion, lapiz);
     }
 
-    //Test only
+    // Test only
     public ArrayList<Posicion2D> obtenerDibujo() {
         return dibujo.posicionesDibujadas();
     }

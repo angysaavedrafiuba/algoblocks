@@ -5,7 +5,7 @@ public class BloqueNulo implements Bloque {
     private Bloque siguiente;
 
     @Override
-    public void ejecutar(Personaje personaje, Tablero tablero) {
+    public void ejecutar(Personaje personaje, Dibujo dibujo) {
 
     }
 

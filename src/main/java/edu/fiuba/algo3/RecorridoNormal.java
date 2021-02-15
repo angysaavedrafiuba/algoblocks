@@ -1,7 +1,7 @@
 package edu.fiuba.algo3;
 
 public class RecorridoNormal implements Recorrido{
-    private Bloque primerBloque = new BloqueNulo() ;
+    private Bloque primerBloque = new BloqueNulo();
     private Bloque ultimoBloque = new BloqueNulo();
 
     @Override

@@ -10,10 +10,6 @@ public class Personaje {
         this.lapiz = new LapizConPuntaHaciaArriba();
     }
 
-    public boolean lapizEstaArriba() {
-        return lapiz.LapizArriba();
-    }
-
     public void setLapiz(Lapiz lapiz) {
         this.lapiz = lapiz;
     }
@@ -22,9 +18,15 @@ public class Personaje {
         return posicion.estaEn(posicion);
     }
 
-    public void mover(Posicion2D posicion, Tablero tablero) {
+    public void mover(Posicion2D posicion, Dibujo dibujo) {
         this.posicion.mover(posicion);
-        tablero.dibujarEnConLapiz(this.posicion, this.lapiz);
+        dibujo.dibujarConLapiz(this.posicion, this.lapiz);
+    }
+
+    /* Test only */
+
+    public boolean lapizEstaArriba() {
+        return lapiz.LapizArriba();
     }
 }
 

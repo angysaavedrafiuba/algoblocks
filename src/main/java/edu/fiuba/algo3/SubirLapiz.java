@@ -4,9 +4,9 @@ public class SubirLapiz implements Bloque{
 
     private Bloque siguienteBloque = new BloqueNulo();
 
-    public void ejecutar(Personaje personaje, Tablero tablero){
+    public void ejecutar(Personaje personaje, Dibujo dibujo){
         personaje.setLapiz(new LapizConPuntaHaciaArriba());
-        siguienteBloque.ejecutar(personaje, tablero);
+        siguienteBloque.ejecutar(personaje, dibujo);
     }
 
     public void siguiente(Bloque bloque){

@@ -1,7 +1,7 @@
 package edu.fiuba.algo3;
 
 public interface Bloque {
-    void ejecutar(Personaje personaje, Tablero tablero);
+    void ejecutar(Personaje personaje, Dibujo dibujo);
 
     default void enlazar(Bloque bloque, Recorrido strategy){
         try {

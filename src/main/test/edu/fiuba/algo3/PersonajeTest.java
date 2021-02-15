@@ -17,7 +17,7 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         BajarLapiz bloque = new BajarLapiz();
 
-        bloque.ejecutar(personaje, new Tablero());
+        bloque.ejecutar(personaje, new Dibujo());
 
         assertFalse(personaje.lapizEstaArriba());
     }
@@ -28,8 +28,8 @@ public class PersonajeTest {
         BajarLapiz bloqueBajar = new BajarLapiz();
         SubirLapiz bloqueSubir = new SubirLapiz();
 
-        bloqueBajar.ejecutar(personaje, new Tablero());
-        bloqueSubir.ejecutar(personaje, new Tablero());
+        bloqueBajar.ejecutar(personaje, new Dibujo());
+        bloqueSubir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.lapizEstaArriba());
     }
@@ -39,7 +39,7 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         SubirLapiz bloqueSubir = new SubirLapiz();
 
-        bloqueSubir.ejecutar(personaje, new Tablero());
+        bloqueSubir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.lapizEstaArriba());
     }
@@ -49,9 +49,9 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         BajarLapiz bloque = new BajarLapiz();
 
-        bloque.ejecutar(personaje, new Tablero());
+        bloque.ejecutar(personaje, new Dibujo());
         assertFalse(personaje.lapizEstaArriba());
-        bloque.ejecutar(personaje, new Tablero());
+        bloque.ejecutar(personaje, new Dibujo());
 
         assertFalse(personaje.lapizEstaArriba());
     }
@@ -70,7 +70,7 @@ public class PersonajeTest {
         MoverALaDerecha bloque = new MoverALaDerecha();
         Posicion2D posicionEsperada = new Posicion2D(1, 0);
 
-        bloque.ejecutar(personaje, new Tablero());
+        bloque.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -81,7 +81,7 @@ public class PersonajeTest {
         MoverALaIzquierda bloque = new MoverALaIzquierda();
         Posicion2D posicionEsperada = new Posicion2D(-1, 0);
 
-        bloque.ejecutar(personaje, new Tablero());
+        bloque.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -92,7 +92,7 @@ public class PersonajeTest {
         MoverHaciaArriba bloque = new MoverHaciaArriba();
         Posicion2D posicionEsperada = new Posicion2D(0, 1);
 
-        bloque.ejecutar(personaje, new Tablero());
+        bloque.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -103,7 +103,7 @@ public class PersonajeTest {
         MoverHaciaAbajo bloque = new MoverHaciaAbajo();
         Posicion2D posicionEsperada = new Posicion2D(0, -1);
 
-        bloque.ejecutar(personaje, new Tablero());
+        bloque.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -115,7 +115,7 @@ public class PersonajeTest {
         Posicion2D posicionEsperada = new Posicion2D(2, 0);
 
         bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -127,7 +127,7 @@ public class PersonajeTest {
         Posicion2D posicionEsperada = new Posicion2D(-2, 0);
 
         bloqueRepetir.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -140,7 +140,7 @@ public class PersonajeTest {
 
         bloqueRepetir.agregarBloque(new MoverALaIzquierda());
         bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -153,7 +153,7 @@ public class PersonajeTest {
 
         bloqueRepetir.agregarBloque(new MoverALaIzquierda());
         bloqueRepetir.agregarBloque(new MoverHaciaArriba());
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -166,7 +166,7 @@ public class PersonajeTest {
 
         bloqueRepetir.agregarBloque(new MoverALaDerecha());
         bloqueRepetir.agregarBloque(new BajarLapiz());
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
         assertFalse(personaje.lapizEstaArriba());
@@ -181,7 +181,7 @@ public class PersonajeTest {
 
         bloqueRepetir.agregarBloque(new MoverALaDerecha());
         otroBloqueRepetir.agregarBloque(bloqueRepetir);
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -193,7 +193,7 @@ public class PersonajeTest {
         Posicion2D posicionEsperada = new Posicion2D(3, 0);
 
         bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -206,7 +206,7 @@ public class PersonajeTest {
 
         bloqueRepetir.agregarBloque(new MoverALaIzquierda());
         bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -219,7 +219,7 @@ public class PersonajeTest {
 
         bloqueRepetir.agregarBloque(new MoverALaDerecha());
         bloqueRepetir.agregarBloque(new BajarLapiz());
-        bloqueRepetir.ejecutar(personaje, new Tablero());
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
         assertFalse(personaje.lapizEstaArriba());
@@ -234,7 +234,7 @@ public class PersonajeTest {
 
         bloqueRepetirDoble.agregarBloque(new MoverALaDerecha());
         bloqueRepetirTriple.agregarBloque(bloqueRepetirDoble);
-        bloqueRepetirTriple.ejecutar(personaje, new Tablero());
+        bloqueRepetirTriple.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -248,7 +248,7 @@ public class PersonajeTest {
 
         bloqueRepetirTriple.agregarBloque(new MoverALaDerecha());
         bloqueRepetirDoble.agregarBloque(bloqueRepetirTriple);
-        bloqueRepetirDoble.ejecutar(personaje, new Tablero());
+        bloqueRepetirDoble.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -264,7 +264,7 @@ public class PersonajeTest {
         bloqueRepetirTriple.agregarBloque(new MoverALaIzquierda());
         bloqueRepetirTriple.agregarBloque(bloqueRepetirDoble);
         bloqueRepetirTriple.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetirTriple.ejecutar(personaje, new Tablero());
+        bloqueRepetirTriple.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -280,7 +280,7 @@ public class PersonajeTest {
         bloqueRepetirDoble.agregarBloque(new MoverALaIzquierda());
         bloqueRepetirDoble.agregarBloque(bloqueRepetirTriple);
         bloqueRepetirDoble.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetirDoble.ejecutar(personaje, new Tablero());
+        bloqueRepetirDoble.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
     }
@@ -292,7 +292,7 @@ public class PersonajeTest {
 
         bloqueInvertir.agregarBloque(new SubirLapiz());
         bloqueInvertir.agregarBloque(new BajarLapiz());
-        bloqueInvertir.ejecutar(personaje, new Tablero());
+        bloqueInvertir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.lapizEstaArriba());
     }
@@ -304,7 +304,7 @@ public class PersonajeTest {
 
         bloqueInvertir.agregarBloque(new BajarLapiz());
         bloqueInvertir.agregarBloque(new SubirLapiz());
-        bloqueInvertir.ejecutar(personaje, new Tablero());
+        bloqueInvertir.ejecutar(personaje, new Dibujo());
 
         assertFalse(personaje.lapizEstaArriba());
     }

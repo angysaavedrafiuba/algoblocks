@@ -2,22 +2,22 @@ package edu.fiuba.algo3;
 
 
 public class ColaDeInstrucciones {
-    private final Recorrido strategy;
+    private final Recorrido recorrido;
 
-    ColaDeInstrucciones(Bloque primerBloque, Recorrido strategy){
-        this.strategy = strategy;
-        strategy.agregar(primerBloque);
+    ColaDeInstrucciones(Bloque primerBloque, Recorrido recorrido){
+        this.recorrido = recorrido;
+        recorrido.agregar(primerBloque);
     }
 
-    ColaDeInstrucciones(Recorrido strategy){
-        this.strategy = strategy;
+    ColaDeInstrucciones(Recorrido recorrido){
+        this.recorrido = recorrido;
     }
 
-    public void ejecutar(Personaje personaje, Tablero tablero){
-        strategy.primerBloque().ejecutar(personaje, tablero);
+    public void ejecutar(Personaje personaje, Dibujo dibujo){
+        recorrido.primerBloque().ejecutar(personaje, dibujo);
     }
 
     public void agregarBloque(Bloque bloque){
-        strategy.primerBloque().enlazar(bloque, strategy);
+        recorrido.primerBloque().enlazar(bloque, recorrido);
     }
 }

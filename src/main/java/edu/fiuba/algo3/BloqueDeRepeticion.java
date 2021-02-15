@@ -12,11 +12,11 @@ public class BloqueDeRepeticion implements Bloque{
     }
 
     @Override
-    public void ejecutar(Personaje personaje, Tablero tablero) {
+    public void ejecutar(Personaje personaje, Dibujo dibujo) {
         for(int i=0; i<repeticiones; i++) {
-            secuencia.ejecutar(personaje, tablero);
+            secuencia.ejecutar(personaje, dibujo);
         }
-        siguienteBloque.ejecutar(personaje, tablero);
+        siguienteBloque.ejecutar(personaje, dibujo);
     }
 
     @Override
