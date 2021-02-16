@@ -10,7 +10,7 @@ public class Posicion2DTest {
     public void test01CompararDosPosiciones1y0DevuelveTrue(){
         Posicion2D posicion = new Posicion2D(1,0);
 
-        assertTrue(posicion.igualA(new Posicion2D(1,0)));
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(1,0)));
     }
 
     @Test
@@ -18,7 +18,7 @@ public class Posicion2DTest {
         Posicion2D posicion = new Posicion2D(1,0);
         posicion.mover(new Posicion2D(Posicion2D.X_DERECHA, Posicion2D.Y_DERECHA));
 
-        assertTrue(posicion.igualA(new Posicion2D(2,0)));
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(2,0)));
     }
 
     @Test
@@ -26,7 +26,7 @@ public class Posicion2DTest {
         Posicion2D posicion = new Posicion2D(1,0);
         posicion.mover(new Posicion2D(Posicion2D.X_IZQUIERDA, Posicion2D.Y_IZQUIERDA));
 
-        assertTrue(posicion.igualA(new Posicion2D(0,0)));
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(0,0)));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class Posicion2DTest {
         Posicion2D posicion = new Posicion2D(0,1);
         posicion.mover(new Posicion2D(Posicion2D.X_ARRIBA, Posicion2D.Y_ARRIBA));
 
-        assertTrue(posicion.igualA(new Posicion2D(0,2)));
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(0,2)));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class Posicion2DTest {
         Posicion2D posicion = new Posicion2D(0,1);
         posicion.mover(new Posicion2D(Posicion2D.X_ABAJO, Posicion2D.Y_ABAJO));
 
-        assertTrue(posicion.igualA(new Posicion2D(0,0)));
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(0,0)));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class Posicion2DTest {
         Posicion2D posicion = new Posicion2D(2,3);
         posicion.mover(new Posicion2D(1,5));
 
-        assertTrue(posicion.igualA(new Posicion2D(3,8)));
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(3,8)));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class Posicion2DTest {
         Posicion2D posicion = new Posicion2D(2,3);
         posicion.mover(new Posicion2D(0,0));
 
-        assertTrue(posicion.igualA(new Posicion2D(2,3)));
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(2,3)));
     }
 
     @Test
@@ -66,6 +66,6 @@ public class Posicion2DTest {
         Posicion2D posicion = new Posicion2D(2,3);
         posicion.mover(new Posicion2D(-1,-1));
 
-        assertTrue(posicion.igualA(new Posicion2D(1,2)));
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(1,2)));
     }
 }

@@ -1,25 +1,25 @@
 package edu.fiuba.algo3;
 
-import java.util.List;
-import java.util.Collections;
-import java.util.ArrayList;
+public class InvertirComportamiento extends Bloque {
+    private final ColaDeInstrucciones secuencia = new RecorridoNormal();
 
-public class InvertirComportamiento implements Bloque {
-    private final ColaDeInstrucciones secuencia = new ColaDeInstrucciones(new RecorridoInverso());
-    private Bloque siguienteBloque = new BloqueNulo();
+    InvertirComportamiento() {
+        siguiente = new BloqueNulo();
+    }
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
         secuencia.ejecutar(personaje, dibujo);
-        siguienteBloque.ejecutar(personaje, dibujo);
+        this.siguiente.ejecutar(personaje, dibujo);
     }
 
     @Override
-    public void siguiente(Bloque bloque){
-        siguienteBloque = bloque;
+    public InvertirComportamiento invertir() {
+        secuencia.invertir();
+        return this;
     }
 
     public void agregarBloque(Bloque bloque) {
-        secuencia.agregarBloque(bloque);
+        secuencia.agregarBloque(bloque.invertir());
     }
 }

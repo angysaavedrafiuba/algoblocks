@@ -27,11 +27,7 @@ public class Posicion2D{
         this.y = y;
     }
 
-    public boolean estaEn(Posicion2D posicion) {
-        return(posicion.getX() == this.x && posicion.getY() == this.y);
-    }
-
-    public boolean igualA(Posicion2D posicion){
+    public boolean esLaMismaQue(Posicion2D posicion){
         return(posicion.getX() == x && posicion.getY() == y);
     }
 
@@ -49,7 +45,7 @@ public class Posicion2D{
     public boolean equals(Object object) {
         Posicion2D posicionAComparar = (Posicion2D) object;
 
-        return (igualA(posicionAComparar));
+        return (esLaMismaQue(posicionAComparar));
     }
 
     /* Test only */

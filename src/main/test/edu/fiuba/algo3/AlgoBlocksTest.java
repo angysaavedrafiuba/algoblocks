@@ -75,16 +75,15 @@ public class AlgoBlocksTest {
         algoblocks.agregarBloque(new SubirLapiz());
         algoblocks.agregarBloque(new MoverALaIzquierda());
         bloqueDoble.agregarBloque(new MoverHaciaArriba());
+        bloqueInvertir.agregarBloque(new SubirLapiz());
         bloqueInvertir.agregarBloque(bloqueDoble);
         bloqueInvertir.agregarBloque(new BajarLapiz());
-        algoblocks.agregarBloque(bloqueInvertir); //(-2, 3), (-2, 4) & (-2, 5)
-
+        algoblocks.agregarBloque(bloqueInvertir); //(-2, 3), (-2, 2) & (-2, 1)
         dibujoEsperado.add(new Posicion2D(-2, 3));
-        dibujoEsperado.add(new Posicion2D(-2, 4));
-        dibujoEsperado.add(new Posicion2D(-2, 5));
+        dibujoEsperado.add(new Posicion2D(-2, 2));
+        dibujoEsperado.add(new Posicion2D(-2, 1));
 
-        algoblocks.agregarBloque(new MoverHaciaAbajo()); //(-2, 4)
-        dibujoEsperado.add(new Posicion2D(-2, 4));
+        algoblocks.agregarBloque(new MoverHaciaAbajo());
 
         algoblocks.ejecutar();
         dibujoLogrado = algoblocks.obtenerDibujo();

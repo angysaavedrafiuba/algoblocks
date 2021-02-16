@@ -1,21 +1,21 @@
 package edu.fiuba.algo3;
 
 public class Personaje {
-    private Lapiz lapiz;
+    private final Lapiz lapiz;
     public Posicion2D posicion;
 
     /* constructor */
     public Personaje(Posicion2D posicionInicial) {
         this.posicion = posicionInicial;
-        this.lapiz = new LapizConPuntaHaciaArriba();
+        this.lapiz = new Lapiz();
     }
 
-    public void setLapiz(Lapiz lapiz) {
-        this.lapiz = lapiz;
+    public void subirLapiz() {
+        lapiz.levantar();
     }
 
-    public boolean estaEn(Posicion2D posicion) {
-        return posicion.igualA(posicion);
+    public void bajarLapiz() {
+        lapiz.apoyar();
     }
 
     public void mover(Posicion2D posicion, Dibujo dibujo) {
@@ -24,9 +24,12 @@ public class Personaje {
     }
 
     /* Test only */
-
     public boolean lapizEstaArriba() {
         return lapiz.LapizArriba();
+    }
+
+    public boolean estaEn(Posicion2D posicion) {
+        return posicion.esLaMismaQue(posicion);
     }
 }
 

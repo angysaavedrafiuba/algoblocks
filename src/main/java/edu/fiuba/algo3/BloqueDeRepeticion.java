@@ -1,13 +1,11 @@
 package edu.fiuba.algo3;
 
-import java.util.ArrayList;
-
-public class BloqueDeRepeticion implements Bloque{
-    private ColaDeInstrucciones secuencia = new ColaDeInstrucciones(new RecorridoNormal());
-    private int repeticiones;
-    private Bloque siguienteBloque = new BloqueNulo();
+public class BloqueDeRepeticion extends Bloque{
+    private final RecorridoNormal secuencia = new RecorridoNormal();
+    private final int repeticiones;
 
     BloqueDeRepeticion(int repeticiones){
+        siguiente = new BloqueNulo();
         this.repeticiones = repeticiones;
     }
 
@@ -16,22 +14,13 @@ public class BloqueDeRepeticion implements Bloque{
         for(int i=0; i<repeticiones; i++) {
             secuencia.ejecutar(personaje, dibujo);
         }
-        siguienteBloque.ejecutar(personaje, dibujo);
+        this.siguiente.ejecutar(personaje, dibujo);
     }
 
     @Override
-    public void siguiente(Bloque bloque) {
-        siguienteBloque = bloque;
-    }
-
-    @Override
-    public void enlazar(Bloque bloque, Recorrido strategy){
-        try {
-            strategy.agregar(bloque);
-        }
-        catch (RuntimeException e){
-            throw e;
-        }
+    public Bloque invertir() {
+        secuencia.invertir();
+        return this;
     }
 
     public void agregarBloque(Bloque bloque) {
