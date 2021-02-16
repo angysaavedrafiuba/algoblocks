@@ -32,9 +32,12 @@ public class Posicion2D{
     }
 
     /* Revisar */
-    public void mover(Posicion2D posicion) {
-        this.x += posicion.getX();
-        this.y += posicion.getY();
+    public Posicion2D mover(Posicion2D posicion) {
+        return posicion.calcularNuevaPosicion(this.x, this.y);
+    }
+
+    private Posicion2D calcularNuevaPosicion(int xActual, int yActual) {
+        return new Posicion2D(this.x + xActual, this.y + yActual);
     }
 
     public Posicion2D clonarPosicion(){
