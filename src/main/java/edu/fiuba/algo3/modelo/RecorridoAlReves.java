@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 public class RecorridoAlReves implements Recorrido {
     private Bloque primerBloque = new BloqueNulo();

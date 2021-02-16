@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 public class MoverHaciaArriba extends Bloque {
     MoverHaciaArriba() {
