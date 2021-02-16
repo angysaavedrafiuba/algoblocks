@@ -1,17 +1,12 @@
 package edu.fiuba.algo3;
 
-public class RecorridoNormal implements Recorrido {
-    private Bloque primerBloque;
-    private Bloque ultimoBloque = new BloqueNulo();
-
-    RecorridoNormal() {
-        primerBloque = ultimoBloque;
-    }
+public class RecorridoAlReves implements Recorrido {
+    private Bloque primerBloque = new BloqueNulo();
 
     @Override
-    public void agregarBloque(Bloque bloque){
-        ultimoBloque.siguiente(bloque);
-        ultimoBloque = bloque;
+    public void agregarBloque(Bloque bloque) {
+        bloque.siguiente(primerBloque);
+        primerBloque = bloque;
     }
 
     @Override

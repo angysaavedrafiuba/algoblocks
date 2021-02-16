@@ -1,19 +1,18 @@
 package edu.fiuba.algo3;
 
-public class MoverALaDerecha implements Bloque {
-
-    private Bloque siguienteBloque = new BloqueNulo();
+public class MoverALaDerecha extends Bloque {
+    MoverALaDerecha() {
+        siguiente = new BloqueNulo();
+    }
 
     @Override
-    public void ejecutar(Personaje personaje, Tablero tablero) {
-        personaje.mover(new Posicion2D(Posicion2D.X_DERECHA, Posicion2D.Y_DERECHA), tablero);
-        siguienteBloque.ejecutar(personaje, tablero);
+    public void ejecutar(Personaje personaje, Dibujo dibujo) {
+        personaje.mover(new Posicion2D(Posicion2D.X_DERECHA, Posicion2D.Y_DERECHA), dibujo);
+        this.siguiente.ejecutar(personaje, dibujo);
     }
 
-    public void siguiente(Bloque bloque){
-        siguienteBloque = bloque;
+    @Override
+    public Bloque invertir() {
+        return new MoverALaIzquierda();
     }
-
-
-
 }

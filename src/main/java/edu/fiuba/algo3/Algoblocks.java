@@ -1,23 +1,22 @@
 package edu.fiuba.algo3;
 
-
 import java.util.ArrayList;
 
 public class Algoblocks {
-    private final Tablero tablero = new Tablero();
-    private final ColaDeInstrucciones bloques = new ColaDeInstrucciones(new RecorridoNormal());
+    private final Personaje personaje = new Personaje(Posicion2D.posicionInicial());
+    private final Dibujo dibujo = new Dibujo();
+    private final RecorridoNormal bloques = new RecorridoNormal();
 
     public void agregarBloque(Bloque bloque){
         bloques.agregarBloque(bloque);
     }
 
     public void ejecutar(){
-        tablero.ejecutarAlgoritmo(bloques);
+        bloques.ejecutar(this.personaje, this.dibujo);
     }
 
-
-    //Test only
+    /* Test only */
     public ArrayList<Posicion2D> obtenerDibujo() {
-        return this.tablero.obtenerDibujo();
+        return this.dibujo.posicionesDibujadas();
     }
 }

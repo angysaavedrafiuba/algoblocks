@@ -1,9 +1,9 @@
 package edu.fiuba.algo3;
 
 public interface Recorrido {
+    void ejecutar(Personaje personaje, Dibujo dibujo);
 
-    void ultimoBloque(Bloque bloque);
-    void agregar(Bloque bloque);
+    void agregarBloque(Bloque bloque);
 
-    Bloque primerBloque();
+    void invertir();
 }

@@ -1,16 +1,19 @@
 package edu.fiuba.algo3;
 
-public class BajarLapiz implements Bloque {
-    private Bloque siguienteBloque = new BloqueNulo();
-
-    @Override
-    public void ejecutar(Personaje personaje, Tablero tablero){
-        personaje.setLapiz(new LapizConPuntaHaciaAbajo());
-        personaje.mover(new Posicion2D(0,0), tablero);
-        siguienteBloque.ejecutar(personaje, tablero);
+public class BajarLapiz extends Bloque {
+    BajarLapiz() {
+        siguiente = new BloqueNulo();
     }
 
-    public void siguiente(Bloque bloque){
-        siguienteBloque = bloque;
+    @Override
+    public void ejecutar(Personaje personaje, Dibujo dibujo){
+        personaje.bajarLapiz();
+        personaje.mover(new Posicion2D(0,0), dibujo);
+        this.siguiente.ejecutar(personaje, dibujo);
+    }
+
+    @Override
+    public SubirLapiz invertir() {
+        return new SubirLapiz();
     }
 }

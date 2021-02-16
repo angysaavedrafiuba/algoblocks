@@ -1,16 +1,33 @@
 package edu.fiuba.algo3;
 
-public class BloqueNulo implements Bloque {
-
-    private Bloque siguiente;
-
-    @Override
-    public void ejecutar(Personaje personaje, Tablero tablero) {
-
+public class BloqueNulo extends Bloque {
+    BloqueNulo() {
+        siguiente = null;
     }
 
     @Override
-    public void siguiente(Bloque bloque) {
-        throw new RuntimeException("No se puede agregar un bloque al nulo");
+    public void ejecutar(Personaje personaje, Dibujo dibujo) {
+        try {
+            this.siguiente.ejecutar(personaje, dibujo);
+        }
+        catch (RuntimeException e) { }
+    }
+
+    @Override
+    public Bloque invertir() {
+        return this;
+    }
+
+    @Override
+    public Bloque invertirSecuencia() {
+        Bloque nuevoSiguiente;
+        try {
+            nuevoSiguiente = this.siguiente.invertirSecuencia();
+        }
+        catch (RuntimeException e) {
+            return this;
+        }
+        this.siguiente = nuevoSiguiente;
+        return this;
     }
 }

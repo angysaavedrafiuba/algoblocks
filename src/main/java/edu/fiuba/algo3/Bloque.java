@@ -1,17 +1,20 @@
 package edu.fiuba.algo3;
 
-public interface Bloque {
-    void ejecutar(Personaje personaje, Tablero tablero);
+public abstract class Bloque {
+    protected Bloque siguiente;
 
-    default void enlazar(Bloque bloque, Recorrido strategy){
-        try {
-            strategy.agregar(bloque);
-        }
-        catch (RuntimeException e){
-            throw e;
-        }
-
+    public Bloque invertirSecuencia() {
+        Bloque nuevoSiguiente = this.siguiente.invertirSecuencia();
+        Bloque invertido = this.invertir();
+        invertido.siguiente(nuevoSiguiente);
+        return invertido;
     }
 
-    void siguiente(Bloque bloque);
+    public void siguiente(Bloque bloque) {
+        this.siguiente = bloque;
+    }
+
+    public abstract Bloque invertir();
+
+    public abstract void ejecutar(Personaje personaje, Dibujo dibujo);
 }
