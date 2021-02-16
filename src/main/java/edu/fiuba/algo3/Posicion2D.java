@@ -31,8 +31,7 @@ public class Posicion2D{
         return(posicion.getX() == x && posicion.getY() == y);
     }
 
-    /* Revisar */
-    public Posicion2D mover(Posicion2D posicion) {
+    public Posicion2D calcularNuevaPosicion(Posicion2D posicion) {
         return posicion.calcularNuevaPosicion(this.x, this.y);
     }
 
