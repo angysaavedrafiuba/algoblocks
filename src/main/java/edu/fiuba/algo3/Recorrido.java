@@ -1,7 +1,6 @@
 package edu.fiuba.algo3;
 
-public interface ColaDeInstrucciones {
-
+public interface Recorrido {
     void ejecutar(Personaje personaje, Dibujo dibujo);
 
     void agregarBloque(Bloque bloque);

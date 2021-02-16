@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-public class RecorridoAlReves implements ColaDeInstrucciones {
+public class RecorridoAlReves implements Recorrido {
     private Bloque primerBloque = new BloqueNulo();
 
     @Override

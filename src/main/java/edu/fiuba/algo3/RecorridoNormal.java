@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-public class RecorridoNormal implements ColaDeInstrucciones {
+public class RecorridoNormal implements Recorrido {
     private Bloque primerBloque;
     private Bloque ultimoBloque = new BloqueNulo();
 
