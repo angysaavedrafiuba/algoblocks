@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AlgoBlocksTest {
+public class AlgoblocksTest {
 
     @Test
     public void test01IntegracionConBloquesDeMovimientoYLapiz() {
