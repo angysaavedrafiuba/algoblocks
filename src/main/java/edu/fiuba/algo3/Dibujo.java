@@ -13,10 +13,6 @@ public class Dibujo {
         lapiz.dibujar(this, posicionADibujar);
     }
 
-    public ArrayList<Posicion2D> posicionesDibujadas() {
-        return posicionesDibujadas;
-    }
-
     /* Test only */
     public boolean enBlanco() {
         return(posicionesDibujadas.isEmpty());
@@ -24,5 +20,9 @@ public class Dibujo {
 
     public boolean estaDibujada(Posicion2D posicionAVerificar) {
         return posicionesDibujadas.stream().anyMatch(pos -> pos.esLaMismaQue(posicionAVerificar));
+    }
+
+    public ArrayList<Posicion2D> posicionesDibujadas() {
+        return posicionesDibujadas;
     }
 }

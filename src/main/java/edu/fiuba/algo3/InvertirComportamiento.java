@@ -1,10 +1,10 @@
 package edu.fiuba.algo3;
 
 public class InvertirComportamiento extends Bloque {
-    private final ColaDeInstrucciones secuencia = new RecorridoNormal();
+    private final Recorrido secuencia = new RecorridoNormal();
 
     InvertirComportamiento() {
-        siguiente = new BloqueNulo();
+        this.siguiente = new BloqueNulo();
     }
 
     @Override

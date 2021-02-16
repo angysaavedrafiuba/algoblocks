@@ -11,7 +11,7 @@ public abstract class Bloque {
     }
 
     public void siguiente(Bloque bloque) {
-        siguiente = bloque;
+        this.siguiente = bloque;
     }
 
     public abstract Bloque invertir();

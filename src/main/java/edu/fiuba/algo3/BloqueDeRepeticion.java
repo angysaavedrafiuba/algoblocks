@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-public class BloqueDeRepeticion extends Bloque{
+public class BloqueDeRepeticion extends Bloque {
     private final RecorridoNormal secuencia = new RecorridoNormal();
     private final int repeticiones;
 
