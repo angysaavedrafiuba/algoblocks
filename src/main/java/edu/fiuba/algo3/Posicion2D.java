@@ -1,34 +1,29 @@
 package edu.fiuba.algo3;
 
-public class Posicion2D{
-    private int x, y;
+public class Posicion2D {
+    static int xLimite = 21;
+    static int yLimite = 21;
 
     public static final int X_DERECHA   =   1;
     public static final int Y_DERECHA   =   0;
 
     public static final int X_IZQUIERDA =  -1;
-    public static final int Y_IZQUIERDA   =   0;
+    public static final int Y_IZQUIERDA =   0;
     public static final int X_ABAJO     =   0;
     public static final int Y_ABAJO     =  -1;
 
     public static final int X_ARRIBA    =   0;
     public static final int Y_ARRIBA    =   1;
 
-    public int getX() {
-        return x;
+    public static Posicion2D posicionInicial() {
+        return new Posicion2D((xLimite/2), (yLimite/2));
     }
 
-    public int getY() {
-        return y;
-    }
+    private int x, y;
 
     public Posicion2D(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public boolean esLaMismaQue(Posicion2D posicion){
-        return(posicion.getX() == x && posicion.getY() == y);
     }
 
     public Posicion2D calcularNuevaPosicion(Posicion2D posicion) {
@@ -36,13 +31,16 @@ public class Posicion2D{
     }
 
     private Posicion2D calcularNuevaPosicion(int xActual, int yActual) {
-        return new Posicion2D(this.x + xActual, this.y + yActual);
+        int nuevaX = Math.abs((this.x + xActual) % xLimite);
+        int nuevaY = Math.abs((this.y + yActual) % yLimite);
+        return new Posicion2D(nuevaX, nuevaY);
     }
 
     public Posicion2D clonarPosicion(){
         return (new Posicion2D(this.x, this.y));
     }
 
+    /* Test only */
     @Override
     public boolean equals(Object object) {
         Posicion2D posicionAComparar = (Posicion2D) object;
@@ -50,12 +48,23 @@ public class Posicion2D{
         return (esLaMismaQue(posicionAComparar));
     }
 
-    /* Test only */
     @Override
     public java.lang.String toString() {
         return "Posicion2D{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    public boolean esLaMismaQue(Posicion2D posicion){
+        return(posicion.getX() == x && posicion.getY() == y);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

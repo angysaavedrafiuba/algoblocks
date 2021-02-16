@@ -1,22 +1,22 @@
 package edu.fiuba.algo3;
 
 public class Lapiz {
-    Punta punta = new PuntaLevantada();
+    Punta estado = new PuntaLevantada();
 
     void dibujar(Dibujo dibujo, Posicion2D posicionADibujar) {
-        punta.dibujar(dibujo, posicionADibujar);
+        estado.dibujar(dibujo, posicionADibujar);
     }
 
     public void levantar() {
-        punta = new PuntaLevantada();
+        estado = new PuntaLevantada();
     }
 
     public void apoyar() {
-        punta = new PuntaApoyada();
+        estado = new PuntaApoyada();
     }
 
     /* Test only */
     boolean LapizArriba() {
-        return this.punta.estaLevantada();
+        return this.estado.estaLevantada();
     }
 }
