@@ -43,6 +43,10 @@ public class Posicion2D {
     /* Test only */
     @Override
     public boolean equals(Object object) {
+        if (!(object instanceof Posicion2D)) {
+            return false;
+        }
+
         Posicion2D posicionAComparar = (Posicion2D) object;
 
         return (esLaMismaQue(posicionAComparar));
