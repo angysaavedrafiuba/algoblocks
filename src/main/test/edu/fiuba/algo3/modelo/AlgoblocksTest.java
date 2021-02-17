@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,13 +7,12 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgoblocksTest {
+    Algoblocks algoblocks = new Algoblocks(); //(10,10)
+    ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>(4);
+    ArrayList<Posicion2D> dibujoLogrado;
 
     @Test
     public void test01IntegracionConBloquesDeMovimientoYLapiz() {
-        Algoblocks algoblocks = new Algoblocks();           // (10,10)
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>(4);
-        ArrayList<Posicion2D> dibujoLogrado;
-
         algoblocks.agregarBloque(new MoverALaDerecha());    // (11,10)
         algoblocks.agregarBloque(new MoverALaDerecha());    // (12,10)
         algoblocks.agregarBloque(new MoverHaciaAbajo());    // (12,9)
@@ -50,9 +48,6 @@ public class AlgoblocksTest {
 
     @Test
     public void test02IntegracionConBloquesDeMovimientoLapizRepeticionEInversion() {
-        Algoblocks algoblocks = new Algoblocks();           // (10,10)
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
-        ArrayList<Posicion2D> dibujoLogrado;
         BloqueDeRepeticion bloqueDoble = new BloqueDeRepeticion(2);
         BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(3);
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
@@ -94,10 +89,6 @@ public class AlgoblocksTest {
 
     @Test
     public void test03LuegoDeDibujarPosicionesElDibujoSeMantieneAunEjecutandoNuevamenteElAlgoritmo() {
-        Algoblocks algoblocks = new Algoblocks();           // (10,10)
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
-        ArrayList<Posicion2D> dibujoLogrado;
-
         algoblocks.agregarBloque(new BajarLapiz()); //(10, 10)
         algoblocks.agregarBloque(new MoverALaDerecha());
         algoblocks.agregarBloque(new MoverALaDerecha());
@@ -118,10 +109,6 @@ public class AlgoblocksTest {
 
     @Test
     public void test04ELDibujoSigueSiendoConsistenteSiSeReiniciaElAlgoritmoLuegoDeDibujarYSeAgreganNuevosBloques() {
-        Algoblocks algoblocks = new Algoblocks();           // (10,10)
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
-        ArrayList<Posicion2D> dibujoLogrado;
-
         algoblocks.agregarBloque(new BajarLapiz()); //(10, 10)
         algoblocks.agregarBloque(new MoverALaDerecha());
         algoblocks.agregarBloque(new MoverALaDerecha());

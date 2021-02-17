@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.math.BigInteger;
-
 public class Posicion2D {
     static int xLimite = 21;
     static int yLimite = 21;

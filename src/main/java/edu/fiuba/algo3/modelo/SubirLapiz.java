@@ -6,7 +6,7 @@ public class SubirLapiz extends Bloque {
     }
 
     public void ejecutar(Personaje personaje, Dibujo dibujo){
-        personaje.subirLapiz();
+        personaje.levantarLapiz();
         this.siguiente.ejecutar(personaje, dibujo);
     }
 

@@ -7,13 +7,14 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RecorridoNormalTest {
+    RecorridoNormal recorrido = new RecorridoNormal();
+    Dibujo dibujo = new Dibujo();
+    Personaje personaje = new Personaje(Posicion2D.posicionInicial());
+    ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
 
     @Test
     public void test01SeAgregaUnBloqueAUnRecorridoNormalYAlEjecutarloGeneraUnDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
+        personaje.apoyarLapiz();
         ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
 
         recorrido.agregarBloque(new MoverALaDerecha());
@@ -26,10 +27,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test02SeAgreganDosBloquesAUnRecorridoNormalYAlEjecutarloGeneraUnDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
+        personaje.apoyarLapiz();
         ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
 
         recorrido.agregarBloque(new MoverALaDerecha());
@@ -44,11 +42,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test02SeAgreganVariosBloquesAUnRecorridoNormalYAlEjecutarloGeneraUnDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
         BloqueDeRepeticion repeticion = new BloqueDeRepeticion(3);
 
         recorrido.agregarBloque(new MoverALaDerecha());
@@ -70,11 +64,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test04InvertirUnRecorridoDeUnBloqueGeneraUnDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
 
         recorrido.agregarBloque(new MoverALaDerecha());
         recorrido.invertir();
@@ -88,11 +78,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test05InvertirUnRecorridoConVariosBloquesGeneraUnDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
 
         recorrido.agregarBloque(new MoverALaDerecha());
         recorrido.agregarBloque(new MoverALaIzquierda());
@@ -110,11 +96,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test06InvertirUnRecorridoConBloquesCombinadosGeneraUnDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
         BloqueDeRepeticion repeticion = new BloqueDeRepeticion(2);
         InvertirComportamiento inversion = new InvertirComportamiento();
 
@@ -137,11 +119,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test07EjecutarDosVecesElMismoRecorridoGeneraUnDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
 
         recorrido.agregarBloque(new MoverHaciaArriba());
         recorrido.agregarBloque(new MoverHaciaAbajo());
@@ -167,11 +145,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test08EjecutarUnRecorridoLuegoInvertirloYVolverloAEjecutarDibujaAcordemente() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
 
         recorrido.agregarBloque(new MoverHaciaArriba());
         recorrido.agregarBloque(new MoverHaciaAbajo());
@@ -198,11 +172,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test09EjecutarUnRecorridoLuegoDeReiniciarloNoGeneraDibujo() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
 
         recorrido.agregarBloque(new MoverHaciaArriba());
         recorrido.agregarBloque(new MoverHaciaAbajo());
@@ -224,11 +194,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test10EjecutarUnRecorridoLuegoDeReiniciarYAgregarleBloquesGeneraDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
 
         recorrido.agregarBloque(new MoverHaciaArriba());
         recorrido.agregarBloque(new MoverHaciaAbajo());
@@ -257,11 +223,7 @@ public class RecorridoNormalTest {
 
     @Test
     public void test11CombinarAgregadoDeBloquesConReinicioEInversionDeUnRecorridoGeneraUnDibujoAcorde() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-        personaje.bajarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+        personaje.apoyarLapiz();
 
         recorrido.agregarBloque(new MoverHaciaArriba());
         recorrido.agregarBloque(new MoverHaciaAbajo());
@@ -299,10 +261,6 @@ public class RecorridoNormalTest {
 
     @Test
     public void test12InvertirYEjecutarUnRecorridoVacioNoGeneraNingunEfectoNiDibujo() {
-        RecorridoNormal recorrido = new RecorridoNormal();
-        Dibujo dibujo = new Dibujo();
-        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
-
         recorrido.invertir();
         recorrido.ejecutar(personaje, dibujo);
 
