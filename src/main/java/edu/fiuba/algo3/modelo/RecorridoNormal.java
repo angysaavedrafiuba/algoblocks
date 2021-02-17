@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 public class RecorridoNormal implements Recorrido {
     private Bloque primerBloque;
@@ -24,8 +24,9 @@ public class RecorridoNormal implements Recorrido {
         primerBloque = primerBloque.invertirSecuencia();
     }
 
-    /* Test only */
-    public Bloque primerBloque() {
-        return primerBloque;
+    @Override
+    public void reiniciar() {
+        ultimoBloque = new BloqueNulo();
+        primerBloque = ultimoBloque;
     }
 }

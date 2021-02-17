@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
@@ -11,8 +11,12 @@ public class Algoblocks {
         bloques.agregarBloque(bloque);
     }
 
-    public void ejecutar(){
+    public void ejecutar() {
         bloques.ejecutar(this.personaje, this.dibujo);
+    }
+
+    public void reiniciarAlgoritmo() {
+        bloques.reiniciar();
     }
 
     /* Test only */

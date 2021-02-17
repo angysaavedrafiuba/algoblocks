@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 public abstract class Bloque {
     protected Bloque siguiente;
@@ -17,4 +17,5 @@ public abstract class Bloque {
     public abstract Bloque invertir();
 
     public abstract void ejecutar(Personaje personaje, Dibujo dibujo);
+
 }
