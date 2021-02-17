@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.math.BigInteger;
+
 public class Posicion2D {
     static int xLimite = 21;
     static int yLimite = 21;
@@ -19,7 +21,7 @@ public class Posicion2D {
         return new Posicion2D((xLimite/2), (yLimite/2));
     }
 
-    private int x, y;
+    private final int x, y;
 
     public Posicion2D(int x, int y) {
         this.x = x;
@@ -31,8 +33,8 @@ public class Posicion2D {
     }
 
     private Posicion2D calcularNuevaPosicion(int xActual, int yActual) {
-        int nuevaX = Math.abs((this.x + xActual) % xLimite);
-        int nuevaY = Math.abs((this.y + yActual) % yLimite);
+        int nuevaX = (this.x + xActual + xLimite) % (xLimite);
+        int nuevaY = (this.y + yActual + yLimite) % (yLimite);
         return new Posicion2D(nuevaX, nuevaY);
     }
 

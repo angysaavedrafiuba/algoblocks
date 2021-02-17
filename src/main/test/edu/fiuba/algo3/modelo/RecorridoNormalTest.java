@@ -296,4 +296,16 @@ public class RecorridoNormalTest {
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
+
+    @Test
+    public void test12InvertirYEjecutarUnRecorridoVacioNoGeneraNingunEfectoNiDibujo() {
+        RecorridoNormal recorrido = new RecorridoNormal();
+        Dibujo dibujo = new Dibujo();
+        Personaje personaje = new Personaje(Posicion2D.posicionInicial());
+
+        recorrido.invertir();
+        recorrido.ejecutar(personaje, dibujo);
+
+        assertTrue(dibujo.posicionesDibujadas().isEmpty());
+    }
 }

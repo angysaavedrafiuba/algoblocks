@@ -69,4 +69,38 @@ public class Posicion2DTest {
 
         assertTrue(posicion.esLaMismaQue(new Posicion2D(1,2)));
     }
+
+    @Test
+    public void test09MoverseHaciaArribaEnLaAlturaYIgualA20ExcedeElLimiteSuperiorYVuelveA0(){
+        Posicion2D posicion = new Posicion2D(10,20);
+        posicion = posicion.calcularNuevaPosicion(new Posicion2D(0,1));
+
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(10,0)));
+    }
+
+    @Test
+    public void test10MoverseHaciaAbajoEnLaAlturaYIgualA0ExcedeElLimiteInferiorYVuelveA20(){
+        Posicion2D posicion = new Posicion2D(10,0);
+        posicion = posicion.calcularNuevaPosicion(new Posicion2D(0,-1));
+
+        System.out.println((-1)%21);
+
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(10,20)));
+    }
+
+    @Test
+    public void test11MoverseHaciaArribaEnLaAlturaXIgualA20ExcedeElLimiteSuperiorYVuelveA0(){
+        Posicion2D posicion = new Posicion2D(20,10);
+        posicion = posicion.calcularNuevaPosicion(new Posicion2D(1,0));
+
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(0,10)));
+    }
+
+    @Test
+    public void test12MoverseHaciaArribaEnLaAlturaXIgualA0ExcedeElLimiteInferiorYVuelveA0(){
+        Posicion2D posicion = new Posicion2D(0,10);
+        posicion = posicion.calcularNuevaPosicion(new Posicion2D(-1,0));
+
+        assertTrue(posicion.esLaMismaQue(new Posicion2D(20,10)));
+    }
 }
