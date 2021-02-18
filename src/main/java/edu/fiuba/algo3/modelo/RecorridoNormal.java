@@ -29,6 +29,7 @@ public class RecorridoNormal implements Recorrido {
         primerBloque = ultimoBloque;
     }
 
+    @Override
     public void removerUltimo() {
         try {
             ultimoBloque = primerBloque.removerUltimo(primerBloque);

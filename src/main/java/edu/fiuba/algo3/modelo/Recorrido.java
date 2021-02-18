@@ -8,4 +8,6 @@ public interface Recorrido {
     void invertir();
 
     void reiniciar();
+
+    void removerUltimo();
 }
