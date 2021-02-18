@@ -2,9 +2,8 @@ package edu.fiuba.algo3;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
 
 /**
  * JavaFX App
@@ -13,12 +12,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
+        ContenedorJuego pane = new ContenedorJuego();
+        Scene scene = new Scene(pane, 900,500);
+        Inicializar inicioJuego = new Inicializar(stage, scene);
 
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
-        stage.setScene(scene);
+        Scene pantallaInicio = new Scene(inicioJuego,900,500);
+
+        stage.setScene(pantallaInicio);
         stage.show();
     }
 
