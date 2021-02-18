@@ -15,7 +15,6 @@ public class RecorridoNormalTest {
     @Test
     public void test01SeAgregaUnBloqueAUnRecorridoNormalYAlEjecutarloGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
 
         recorrido.agregarBloque(new MoverALaDerecha());
         dibujoEsperado.add(new Posicion2D(11, 10));
@@ -28,7 +27,6 @@ public class RecorridoNormalTest {
     @Test
     public void test02SeAgreganDosBloquesAUnRecorridoNormalYAlEjecutarloGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
 
         recorrido.agregarBloque(new MoverALaDerecha());
         recorrido.agregarBloque(new MoverHaciaArriba());
@@ -265,5 +263,129 @@ public class RecorridoNormalTest {
         recorrido.ejecutar(personaje, dibujo);
 
         assertTrue(dibujo.posicionesDibujadas().isEmpty());
+    }
+
+    @Test
+    public void test13RemoverUnBloqueDeUnRecorridoVacioNoAfectaSuIntegridad() {
+        personaje.apoyarLapiz();
+
+        recorrido.removerUltimo();
+        recorrido.ejecutar(personaje, dibujo);
+
+        assertTrue(dibujo.posicionesDibujadas().isEmpty());
+    }
+
+    @Test
+    public void test14RemuevoElUltimoBloqueYElAlgoritmoEjecutadoEsCorrecto() {
+        personaje.apoyarLapiz();
+
+        recorrido.agregarBloque(new MoverHaciaArriba());
+        recorrido.agregarBloque(new MoverHaciaAbajo());
+        recorrido.agregarBloque(new MoverALaIzquierda());
+        recorrido.agregarBloque(new MoverALaDerecha());
+        recorrido.removerUltimo();
+        recorrido.ejecutar(personaje, dibujo);
+
+        dibujoEsperado.add(new Posicion2D(10, 11));
+        dibujoEsperado.add(new Posicion2D(10, 10));
+        dibujoEsperado.add(new Posicion2D(9, 10));
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+    }
+
+    @Test
+    public void test15PuedeRemoverseUnBloqueYLuegoAgregarUnNuevoYElComportamientoEsCorrecto() {
+        personaje.apoyarLapiz();
+
+        recorrido.agregarBloque(new MoverHaciaArriba());
+        recorrido.agregarBloque(new MoverHaciaAbajo());
+        recorrido.removerUltimo();
+        recorrido.agregarBloque(new MoverHaciaAbajo());
+        recorrido.ejecutar(personaje, dibujo);
+
+        dibujoEsperado.add(new Posicion2D(10, 11));
+        dibujoEsperado.add(new Posicion2D(10, 10));
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+    }
+
+    @Test
+    public void test16IntentarRemoverDeUnRecorridoVacioYLuegoAgregarNuevosBloquesNoCausaProblemas() {
+        personaje.apoyarLapiz();
+
+        recorrido.removerUltimo();
+        recorrido.agregarBloque(new MoverHaciaAbajo());
+        recorrido.agregarBloque(new MoverHaciaAbajo());
+        recorrido.agregarBloque(new MoverHaciaAbajo());
+        recorrido.ejecutar(personaje, dibujo);
+
+        dibujoEsperado.add(new Posicion2D(10, 9));
+        dibujoEsperado.add(new Posicion2D(10, 8));
+        dibujoEsperado.add(new Posicion2D(10, 7));
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+    }
+
+    @Test
+    public void test17PuedeRemoverseElUltimoBloqueDeUnBloqueDeRepeticionYElFuncionamientoEsCorrecto() {
+        BloqueDeRepeticion invertir = new BloqueDeRepeticion(2);
+
+        recorrido.agregarBloque(new BajarLapiz()); //(10, 10)
+        recorrido.agregarBloque(new MoverALaDerecha());
+        invertir.agregarBloque(new MoverHaciaArriba());
+        invertir.agregarBloque(new MoverHaciaArriba());
+        recorrido.agregarBloque(invertir);
+        recorrido.agregarBloque(new MoverALaDerecha());
+
+        dibujoEsperado.add(new Posicion2D(10, 10));
+        dibujoEsperado.add(new Posicion2D(11, 10));
+        dibujoEsperado.add(new Posicion2D(11, 11));
+        dibujoEsperado.add(new Posicion2D(11, 12));
+        dibujoEsperado.add(new Posicion2D(11, 13));
+        dibujoEsperado.add(new Posicion2D(11, 14));
+        dibujoEsperado.add(new Posicion2D(12, 14));
+
+        recorrido.ejecutar(personaje, dibujo);
+        recorrido.removerUltimo();
+        invertir.removerUltimo();
+
+        dibujoEsperado.add(new Posicion2D(12, 14));
+        dibujoEsperado.add(new Posicion2D(13, 14));
+        dibujoEsperado.add(new Posicion2D(13, 15));
+        dibujoEsperado.add(new Posicion2D(13, 16));
+
+        recorrido.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+    }
+
+    @Test
+    public void test17PuedeRemoverseElUltimoBloqueDeUnBloqueDeInversionYElFuncionamientoEsCorrecto() {
+        InvertirComportamiento invertir = new InvertirComportamiento();
+
+        recorrido.agregarBloque(new BajarLapiz()); //(10, 10)
+        recorrido.agregarBloque(new MoverALaDerecha());
+        invertir.agregarBloque(new MoverHaciaArriba());
+        invertir.agregarBloque(new MoverHaciaArriba());
+        recorrido.agregarBloque(invertir);
+        recorrido.agregarBloque(new MoverALaDerecha());
+
+        dibujoEsperado.add(new Posicion2D(10, 10));
+        dibujoEsperado.add(new Posicion2D(11, 10));
+        dibujoEsperado.add(new Posicion2D(11, 9));
+        dibujoEsperado.add(new Posicion2D(11, 8));
+        dibujoEsperado.add(new Posicion2D(12, 8));
+
+        recorrido.ejecutar(personaje, dibujo);
+        recorrido.removerUltimo();
+        invertir.removerUltimo();
+
+        dibujoEsperado.add(new Posicion2D(12, 8));
+        dibujoEsperado.add(new Posicion2D(13, 8));
+        dibujoEsperado.add(new Posicion2D(13, 7));
+
+        recorrido.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
 }

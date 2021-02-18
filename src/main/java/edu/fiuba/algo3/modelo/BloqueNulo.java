@@ -30,4 +30,9 @@ public class BloqueNulo extends Bloque {
         this.siguiente = nuevoSiguiente;
         return this;
     }
+
+    @Override
+    public Bloque removerUltimo(Bloque anterior) {
+        return this.siguiente.removerUltimo(anterior);
+    }
 }

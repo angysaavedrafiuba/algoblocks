@@ -19,6 +19,14 @@ public class Algoblocks {
         bloques.reiniciar();
     }
 
+    public void removerUltimo() {
+        bloques.removerUltimo();
+    }
+
+    public void reiniciarDibujo() {
+        dibujo.reiniciar();
+    }
+
     /* Test only */
     public ArrayList<Posicion2D> obtenerDibujo() {
         return this.dibujo.posicionesDibujadas();

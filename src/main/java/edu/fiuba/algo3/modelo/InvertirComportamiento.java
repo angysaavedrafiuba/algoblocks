@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class InvertirComportamiento extends Bloque {
-    private final Recorrido secuencia = new RecorridoNormal();
+    private final RecorridoNormal secuencia = new RecorridoNormal();
 
     InvertirComportamiento() {
         this.siguiente = new BloqueNulo();
@@ -21,5 +21,9 @@ public class InvertirComportamiento extends Bloque {
 
     public void agregarBloque(Bloque bloque) {
         secuencia.agregarBloque(bloque.invertir());
+    }
+
+    public void removerUltimo() {
+        secuencia.removerUltimo();
     }
 }

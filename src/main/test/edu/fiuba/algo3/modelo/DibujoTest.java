@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,17 +7,17 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DibujoTest {
+    Dibujo dibujo = new Dibujo();
+    ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
+    RecorridoNormal algoritmo = new RecorridoNormal();
 
     @Test
     public void test01ElDibujoSeCreaEnBlanco(){
-        Dibujo dibujo = new Dibujo();
-
         assertTrue(dibujo.enBlanco());
     }
 
     @Test
     public void test02SiDibujamosLaPosicion2y2LuegoSeEncuentraDibujada(){
-        Dibujo dibujo = new Dibujo();
         Posicion2D posicionADibujar = new Posicion2D(2,2);
 
         dibujo.dibujar(posicionADibujar);
@@ -27,7 +26,6 @@ public class DibujoTest {
 
     @Test
     public void test03DibujarConUnLapizHaciaArribaNoProduceDibujo(){
-        Dibujo dibujo = new Dibujo();
         Posicion2D posicionADibujar = new Posicion2D(2,2);
 
         dibujo.dibujarConLapiz(posicionADibujar, new Lapiz());
@@ -36,7 +34,6 @@ public class DibujoTest {
 
     @Test
     public void test04SiDibujamosLaPosicion2y2ConUnLapizHaciaAbajoEfectivamenteSeDibuja(){
-        Dibujo dibujo = new Dibujo();
         Posicion2D posicionADibujar = new Posicion2D(2,2);
         Lapiz lapiz = new Lapiz();
         lapiz.apoyar();
@@ -47,8 +44,6 @@ public class DibujoTest {
 
     @Test
     public void test05IntercalarLapizLevantadoYApoyadoNoAfectaElComportamientoDelDibujo() {
-        Dibujo dibujo = new Dibujo();
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>(5);
         Lapiz lapizApoyado = new Lapiz();
         lapizApoyado.apoyar();
         Lapiz lapizLevantado = new Lapiz();
@@ -69,9 +64,6 @@ public class DibujoTest {
 
     @Test
     public void test04UnBloqueDeRepeticionDobleConMovimientoReflejaUnDibujoAcorde(){
-        Dibujo dibujo = new Dibujo();
-        ArrayList <Posicion2D> dibujoEsperado = new ArrayList<>();
-        RecorridoNormal algoritmo = new RecorridoNormal();
         BloqueDeRepeticion bloqueRepeticion = new BloqueDeRepeticion(2);
 
         algoritmo.agregarBloque(new BajarLapiz()); //(10,10)
@@ -91,9 +83,6 @@ public class DibujoTest {
 
     @Test
     public void test05UnBloqueDeRepeticionTripleConMovimientoReflejaUnDibujoAcorde(){
-        Dibujo dibujo = new Dibujo();
-        ArrayList <Posicion2D> dibujoEsperado = new ArrayList<>();
-        RecorridoNormal algoritmo = new RecorridoNormal();
         BloqueDeRepeticion bloqueRepeticion = new BloqueDeRepeticion(3);
 
         algoritmo.agregarBloque(new BajarLapiz()); //(10,10)
@@ -114,9 +103,6 @@ public class DibujoTest {
 
     @Test
     public void test06VariosBloquesDeRepeticionConMovimientosCombinadosReflejanUnDibujoAcorde(){
-        Dibujo dibujo = new Dibujo();
-        ArrayList <Posicion2D> dibujoEsperado = new ArrayList<>();
-        RecorridoNormal algoritmo = new RecorridoNormal();
         BloqueDeRepeticion bloqueDoble = new BloqueDeRepeticion(2);
         BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(3);
 
@@ -149,9 +135,6 @@ public class DibujoTest {
 
     @Test
     public void test07UnBloqueDeRepeticionDentroDeUnInvertirComportamientoGeneraUnDibujoAcorde(){
-        Dibujo dibujo = new Dibujo();
-        ArrayList <Posicion2D> dibujoEsperado = new ArrayList<>();
-        RecorridoNormal algoritmo = new RecorridoNormal();
         BloqueDeRepeticion bloqueDoble = new BloqueDeRepeticion(2);
         BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(3);
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
@@ -183,9 +166,6 @@ public class DibujoTest {
 
     @Test
     public void test08BloquesDeSubirYBajarJuntoConRepeticionEInversionGeneranDibujoAcorde(){
-        Dibujo dibujo = new Dibujo();
-        ArrayList <Posicion2D> dibujoEsperado = new ArrayList<>();
-        RecorridoNormal algoritmo = new RecorridoNormal();
         BloqueDeRepeticion bloqueDoble = new BloqueDeRepeticion(2);
         BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(3);
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
@@ -223,5 +203,35 @@ public class DibujoTest {
         ArrayList<Posicion2D> dibujoLogrado = dibujo.posicionesDibujadas();
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+    }
+
+    @Test
+    public void test09ElDibujoSeEncuentraEnBlancoLuegoDeReiniciarlo() {
+        algoritmo.agregarBloque(new BajarLapiz());
+        algoritmo.agregarBloque(new MoverALaDerecha());
+        dibujoEsperado.add(new Posicion2D(10, 10));
+        dibujoEsperado.add(new Posicion2D(11, 10));
+        algoritmo.ejecutar(new Personaje(new Posicion2D(10, 10)), dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+
+        dibujo.reiniciar();
+
+        assertTrue(dibujo.posicionesDibujadas().isEmpty());
+    }
+
+    @Test
+    public void test10PuedoVolverADibujarLuegoDeReiniciarElDibujo() {
+        algoritmo.agregarBloque(new BajarLapiz());
+        algoritmo.agregarBloque(new MoverALaDerecha());
+        dibujoEsperado.add(new Posicion2D(10, 10));
+        dibujoEsperado.add(new Posicion2D(11, 10));
+        algoritmo.ejecutar(new Personaje(new Posicion2D(10, 10)), dibujo);
+
+        dibujo.reiniciar();
+
+        algoritmo.ejecutar(new Personaje(new Posicion2D(10, 10)), dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
 }

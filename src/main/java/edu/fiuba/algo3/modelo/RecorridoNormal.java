@@ -19,7 +19,6 @@ public class RecorridoNormal implements Recorrido {
         primerBloque.ejecutar(personaje, dibujo);
     }
 
-    @Override
     public void invertir() {
         primerBloque = primerBloque.invertirSecuencia();
     }
@@ -28,5 +27,11 @@ public class RecorridoNormal implements Recorrido {
     public void reiniciar() {
         ultimoBloque = new BloqueNulo();
         primerBloque = ultimoBloque;
+    }
+
+    public void removerUltimo() {
+        try {
+            ultimoBloque = primerBloque.removerUltimo(primerBloque);
+        } catch (RuntimeException e) { }
     }
 }
