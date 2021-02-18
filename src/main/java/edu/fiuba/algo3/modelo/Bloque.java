@@ -17,4 +17,13 @@ public abstract class Bloque {
     public abstract Bloque invertir();
 
     public abstract void ejecutar(Personaje personaje, Dibujo dibujo);
+
+    public Bloque removerUltimo(Bloque anterior) {
+        try {
+            return siguiente.removerUltimo(this);
+        } catch (RuntimeException e) {
+            anterior.siguiente = new BloqueNulo();
+            return anterior;
+        }
+    }
 }

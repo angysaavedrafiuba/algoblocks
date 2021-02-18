@@ -10,11 +10,11 @@ public class Personaje {
         this.lapiz = new Lapiz();
     }
 
-    public void subirLapiz() {
+    public void levantarLapiz() {
         lapiz.levantar();
     }
 
-    public void bajarLapiz() {
+    public void apoyarLapiz() {
         lapiz.apoyar();
     }
 

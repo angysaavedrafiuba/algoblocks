@@ -19,13 +19,20 @@ public class RecorridoNormal implements Recorrido {
         primerBloque.ejecutar(personaje, dibujo);
     }
 
-    @Override
     public void invertir() {
         primerBloque = primerBloque.invertirSecuencia();
     }
 
-    /* Test only */
-    public Bloque primerBloque() {
-        return primerBloque;
+    @Override
+    public void reiniciar() {
+        ultimoBloque = new BloqueNulo();
+        primerBloque = ultimoBloque;
+    }
+
+    @Override
+    public void removerUltimo() {
+        try {
+            ultimoBloque = primerBloque.removerUltimo(primerBloque);
+        } catch (RuntimeException e) { }
     }
 }

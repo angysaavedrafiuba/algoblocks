@@ -7,7 +7,7 @@ public class BajarLapiz extends Bloque {
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo){
-        personaje.bajarLapiz();
+        personaje.apoyarLapiz();
         personaje.mover(new Posicion2D(0,0), dibujo);
         this.siguiente.ejecutar(personaje, dibujo);
     }

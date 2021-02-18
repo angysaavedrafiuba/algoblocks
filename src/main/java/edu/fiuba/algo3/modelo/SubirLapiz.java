@@ -5,8 +5,9 @@ public class SubirLapiz extends Bloque {
         siguiente = new BloqueNulo();
     }
 
+    @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo){
-        personaje.subirLapiz();
+        personaje.levantarLapiz();
         this.siguiente.ejecutar(personaje, dibujo);
     }
 
@@ -14,4 +15,5 @@ public class SubirLapiz extends Bloque {
     public Bloque invertir() {
         return new BajarLapiz();
     }
+    
 }

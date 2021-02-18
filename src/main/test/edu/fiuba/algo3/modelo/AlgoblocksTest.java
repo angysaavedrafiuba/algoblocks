@@ -8,13 +8,12 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgoblocksTest {
+    Algoblocks algoblocks = new Algoblocks(); //(10,10)
+    ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>(4);
+    ArrayList<Posicion2D> dibujoLogrado;
 
     @Test
     public void test01IntegracionConBloquesDeMovimientoYLapiz() {
-        Algoblocks algoblocks = new Algoblocks();           // (10,10)
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>(4);
-        ArrayList<Posicion2D> dibujoLogrado;
-
         algoblocks.agregarBloque(new MoverALaDerecha());    // (11,10)
         algoblocks.agregarBloque(new MoverALaDerecha());    // (12,10)
         algoblocks.agregarBloque(new MoverHaciaAbajo());    // (12,9)
@@ -50,9 +49,6 @@ public class AlgoblocksTest {
 
     @Test
     public void test02IntegracionConBloquesDeMovimientoLapizRepeticionEInversion() {
-        Algoblocks algoblocks = new Algoblocks();           // (10,10)
-        ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
-        ArrayList<Posicion2D> dibujoLogrado;
         BloqueDeRepeticion bloqueDoble = new BloqueDeRepeticion(2);
         BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(3);
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
@@ -86,6 +82,110 @@ public class AlgoblocksTest {
 
         algoblocks.agregarBloque(new MoverHaciaAbajo());
 
+        algoblocks.ejecutar();
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+    }
+
+    @Test
+    public void test03LuegoDeDibujarPosicionesElDibujoSeMantieneAunEjecutandoNuevamenteElAlgoritmo() {
+        algoblocks.agregarBloque(new BajarLapiz()); //(10, 10)
+        algoblocks.agregarBloque(new MoverALaDerecha());
+        algoblocks.agregarBloque(new MoverALaDerecha());
+        dibujoEsperado.add(new Posicion2D(10,10));
+        dibujoEsperado.add(new Posicion2D(11,10));
+        dibujoEsperado.add(new Posicion2D(12,10));
+
+        algoblocks.ejecutar();
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+
+        algoblocks.reiniciarAlgoritmo();
+        algoblocks.ejecutar();
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+    }
+
+    @Test
+    public void test04ELDibujoSigueSiendoConsistenteSiSeReiniciaElAlgoritmoLuegoDeDibujarYSeAgreganNuevosBloques() {
+        algoblocks.agregarBloque(new BajarLapiz()); //(10, 10)
+        algoblocks.agregarBloque(new MoverALaDerecha());
+        algoblocks.agregarBloque(new MoverALaDerecha());
+        dibujoEsperado.add(new Posicion2D(10,10));
+        dibujoEsperado.add(new Posicion2D(11,10));
+        dibujoEsperado.add(new Posicion2D(12,10));
+
+        algoblocks.ejecutar();
+        algoblocks.reiniciarAlgoritmo();
+
+        algoblocks.agregarBloque(new MoverHaciaAbajo());
+        algoblocks.agregarBloque(new MoverHaciaAbajo());
+        dibujoEsperado.add(new Posicion2D(12,9));
+        dibujoEsperado.add(new Posicion2D(12,8));
+
+        algoblocks.ejecutar();
+
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+    }
+
+    @Test
+    public void test05ELDibujoEsConsistenteAlDibujarEliminarBloquesYEjecutarNuevamente() {
+        algoblocks.agregarBloque(new BajarLapiz()); //(10, 10)
+        algoblocks.agregarBloque(new MoverALaDerecha());
+        algoblocks.agregarBloque(new MoverALaDerecha());
+        dibujoEsperado.add(new Posicion2D(10,10));
+        dibujoEsperado.add(new Posicion2D(11,10));
+        dibujoEsperado.add(new Posicion2D(12,10));
+
+        algoblocks.ejecutar();
+        algoblocks.reiniciarAlgoritmo();
+        algoblocks.agregarBloque(new MoverHaciaAbajo());
+        algoblocks.agregarBloque(new MoverALaIzquierda());
+        algoblocks.agregarBloque(new MoverHaciaAbajo());
+        dibujoEsperado.add(new Posicion2D(12,9));
+        dibujoEsperado.add(new Posicion2D(11,9));
+        dibujoEsperado.add(new Posicion2D(11,8));
+
+        algoblocks.ejecutar();
+        algoblocks.removerUltimo();
+
+        dibujoEsperado.add(new Posicion2D(11,7));
+        dibujoEsperado.add(new Posicion2D(10,7));
+
+        algoblocks.ejecutar();
+
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+    }
+
+    @Test
+    public void test06ElDibujoPuedeReiniciarseYLuegoDibujarNuevamente() {
+        algoblocks.agregarBloque(new BajarLapiz()); //(10, 10)
+        algoblocks.agregarBloque(new MoverALaDerecha());
+        algoblocks.agregarBloque(new MoverALaDerecha());
+        dibujoEsperado.add(new Posicion2D(10,10));
+        dibujoEsperado.add(new Posicion2D(11,10));
+        dibujoEsperado.add(new Posicion2D(12,10));
+
+        algoblocks.ejecutar();
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+
+        algoblocks.reiniciarDibujo();
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertTrue(dibujoLogrado.isEmpty());
+
+        dibujoEsperado = new ArrayList<Posicion2D>();
+        dibujoEsperado.add(new Posicion2D(12,10));
+        dibujoEsperado.add(new Posicion2D(13,10));
+        dibujoEsperado.add(new Posicion2D(14,10));
         algoblocks.ejecutar();
         dibujoLogrado = algoblocks.obtenerDibujo();
 

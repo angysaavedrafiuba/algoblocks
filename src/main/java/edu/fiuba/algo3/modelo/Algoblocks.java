@@ -11,8 +11,20 @@ public class Algoblocks {
         bloques.agregarBloque(bloque);
     }
 
-    public void ejecutar(){
+    public void ejecutar() {
         bloques.ejecutar(this.personaje, this.dibujo);
+    }
+
+    public void reiniciarAlgoritmo() {
+        bloques.reiniciar();
+    }
+
+    public void removerUltimo() {
+        bloques.removerUltimo();
+    }
+
+    public void reiniciarDibujo() {
+        dibujo.reiniciar();
     }
 
     /* Test only */
