@@ -23,6 +23,10 @@ public class BloqueDeRepeticion extends Bloque {
         return this;
     }
 
+    public void removerUltimo() {
+        secuencia.removerUltimo();
+    }
+
     public void agregarBloque(Bloque bloque) {
         secuencia.agregarBloque(bloque);
     }
