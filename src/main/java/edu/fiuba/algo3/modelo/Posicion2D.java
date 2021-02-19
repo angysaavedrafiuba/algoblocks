@@ -4,22 +4,33 @@ public class Posicion2D {
     static int xLimite = 21;
     static int yLimite = 21;
 
-    public static final int X_DERECHA   =   1;
-    public static final int Y_DERECHA   =   0;
+    private static final int X_DERECHA   =   1;
+    private static final int Y_DERECHA   =   0;
 
-    public static final int X_IZQUIERDA =  -1;
-    public static final int Y_IZQUIERDA =   0;
-    public static final int X_ABAJO     =   0;
-    public static final int Y_ABAJO     =  -1;
+    private static final int X_IZQUIERDA =  -1;
+    private static final int Y_IZQUIERDA =   0;
 
-    public static final int X_ARRIBA    =   0;
-    public static final int Y_ARRIBA    =   1;
+    private static final int X_ABAJO     =   0;
+    private static final int Y_ABAJO     =  -1;
+
+    private static final int X_ARRIBA    =   0;
+    private static final int Y_ARRIBA    =   1;
+
+
+    private final int x, y;
 
     public static Posicion2D posicionInicial() {
         return new Posicion2D((xLimite/2), (yLimite/2));
     }
 
-    private final int x, y;
+    public static Posicion2D derecha    ()  { return new Posicion2D(X_DERECHA, Y_DERECHA);      }
+    public static Posicion2D izquierda  ()  { return new Posicion2D(X_IZQUIERDA, Y_IZQUIERDA);  }
+    public static Posicion2D abajo      ()  { return new Posicion2D(X_ABAJO, Y_ABAJO);          }
+    public static Posicion2D arriba     ()  { return new Posicion2D(X_ARRIBA, Y_ARRIBA);        }
+
+
+
+
 
     public Posicion2D(int x, int y) {
         this.x = x;

@@ -67,11 +67,11 @@ public class DibujoTest {
     public void test04UnBloqueDeRepeticionDobleConMovimientoReflejaUnDibujoAcorde(){
         BloqueDeRepeticion bloqueRepeticion = new BloqueDeRepeticion(2);
 
-        algoritmo.agregarBloque(new BajarLapiz()); //(10,10)
+        algoritmo.agregarBloque(new Bloque(new BajarLapiz())); //(10,10)
         dibujoEsperado.add(new Posicion2D(0,0));
 
-        bloqueRepeticion.agregarBloque(new MoverALaDerecha());
-        algoritmo.agregarBloque(bloqueRepeticion); //(11, 10) & (12, 10)
+        bloqueRepeticion.agregarBloque(new Bloque(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new Bloque(bloqueRepeticion)); //(11, 10) & (12, 10)
         dibujoEsperado.add(new Posicion2D(1,0));
         dibujoEsperado.add(new Posicion2D(2,0));
 
@@ -86,11 +86,11 @@ public class DibujoTest {
     public void test05UnBloqueDeRepeticionTripleConMovimientoReflejaUnDibujoAcorde(){
         BloqueDeRepeticion bloqueRepeticion = new BloqueDeRepeticion(3);
 
-        algoritmo.agregarBloque(new BajarLapiz()); //(10,10)
+        algoritmo.agregarBloque(new Bloque(new BajarLapiz())); //(10,10)
         dibujoEsperado.add(new Posicion2D(10,10));
 
-        bloqueRepeticion.agregarBloque(new MoverALaIzquierda());
-        algoritmo.agregarBloque(bloqueRepeticion); //(9, 10), (8, 10) & (7, 10)
+        bloqueRepeticion.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        algoritmo.agregarBloque(new Bloque(bloqueRepeticion)); //(9, 10), (8, 10) & (7, 10)
         dibujoEsperado.add(new Posicion2D(9,10));
         dibujoEsperado.add(new Posicion2D(8,10));
         dibujoEsperado.add(new Posicion2D(7,10));
@@ -107,13 +107,13 @@ public class DibujoTest {
         BloqueDeRepeticion bloqueDoble = new BloqueDeRepeticion(2);
         BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(3);
 
-        algoritmo.agregarBloque(new BajarLapiz());//(10,10)
+        algoritmo.agregarBloque(new Bloque(new BajarLapiz()));//(10,10)
         dibujoEsperado.add(new Posicion2D(10,10));
 
-        bloqueDoble.agregarBloque(new MoverALaIzquierda());
-        bloqueDoble.agregarBloque(new MoverALaDerecha());
-        bloqueDoble.agregarBloque(new MoverALaDerecha());
-        algoritmo.agregarBloque(bloqueDoble); //(9, 10), (10, 10), (11, 10) & (10, 10)
+        bloqueDoble.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        bloqueDoble.agregarBloque(new Bloque(new MoverALaDerecha()));
+        bloqueDoble.agregarBloque(new Bloque(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new Bloque(bloqueDoble)); //(9, 10), (10, 10), (11, 10) & (10, 10)
         dibujoEsperado.add(new Posicion2D(9,10));
         dibujoEsperado.add(new Posicion2D(10,10));
         dibujoEsperado.add(new Posicion2D(11,10));
@@ -121,8 +121,8 @@ public class DibujoTest {
         dibujoEsperado.add(new Posicion2D(11,10));
         dibujoEsperado.add(new Posicion2D(12,10));
 
-        bloqueTriple.agregarBloque(new MoverHaciaArriba());
-        algoritmo.agregarBloque(bloqueTriple); //(10, 11), (10, 12) & (10, 13)
+        bloqueTriple.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        algoritmo.agregarBloque(new Bloque(bloqueTriple)); //(10, 11), (10, 12) & (10, 13)
         dibujoEsperado.add(new Posicion2D(12, 11));
         dibujoEsperado.add(new Posicion2D(12, 12));
         dibujoEsperado.add(new Posicion2D(12, 13));
@@ -140,18 +140,18 @@ public class DibujoTest {
         BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(3);
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
 
-        algoritmo.agregarBloque(new BajarLapiz());//(10,10)
+        algoritmo.agregarBloque(new Bloque(new BajarLapiz()));//(10,10)
         dibujoEsperado.add(new Posicion2D(10,10));
 
-        bloqueDoble.agregarBloque(new MoverALaIzquierda());
-        algoritmo.agregarBloque(bloqueDoble); //(9, 10) & (8, 10)
+        bloqueDoble.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        algoritmo.agregarBloque(new Bloque(bloqueDoble)); //(9, 10) & (8, 10)
         dibujoEsperado.add(new Posicion2D(9,10));
         dibujoEsperado.add(new Posicion2D(8,10));
 
-        bloqueInvertir.agregarBloque(new MoverALaIzquierda());
-        bloqueTriple.agregarBloque(new MoverHaciaArriba());
-        bloqueInvertir.agregarBloque(bloqueTriple);
-        algoritmo.agregarBloque(bloqueInvertir); //(9, 10), (9, 9), (9, 8) & (9, 7)
+        bloqueInvertir.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        bloqueTriple.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        bloqueInvertir.agregarBloque(new Bloque(bloqueTriple));
+        algoritmo.agregarBloque(new Bloque(bloqueInvertir)); //(9, 10), (9, 9), (9, 8) & (9, 7)
 
         dibujoEsperado.add(new Posicion2D(9, 10));
         dibujoEsperado.add(new Posicion2D(9, 9));
@@ -167,40 +167,61 @@ public class DibujoTest {
 
     @Test
     public void test08BloquesDeSubirYBajarJuntoConRepeticionEInversionGeneranDibujoAcorde(){
-        BloqueDeRepeticion bloqueDoble = new BloqueDeRepeticion(2);
-        BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(3);
+        int repeticionesPrimerBloque = 2;
+        int repeticionesSegundoBloque = 3;
+
+        BloqueDeRepeticion bloqueDoble = new BloqueDeRepeticion(repeticionesPrimerBloque);
+        BloqueDeRepeticion bloqueTriple = new BloqueDeRepeticion(repeticionesSegundoBloque);
+
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
 
-        algoritmo.agregarBloque(new MoverALaDerecha());
-        algoritmo.agregarBloque(new MoverALaDerecha());
+        Posicion2D posicionActual = Posicion2D.posicionInicial();
 
-        algoritmo.agregarBloque(new BajarLapiz()); //(12, 10)
-        dibujoEsperado.add(new Posicion2D(12,10));
 
-        bloqueTriple.agregarBloque(new MoverHaciaArriba());
-        bloqueTriple.agregarBloque(new MoverALaIzquierda());
-        algoritmo.agregarBloque(bloqueTriple); //(12, 11), (11, 11), (11, 12), (10, 12), (12, 13) & (9, 13)
-        dibujoEsperado.add(new Posicion2D(12, 11));
-        dibujoEsperado.add(new Posicion2D(11, 11));
-        dibujoEsperado.add(new Posicion2D(11, 12));
-        dibujoEsperado.add(new Posicion2D(10, 12));
-        dibujoEsperado.add(new Posicion2D(10, 13));
-        dibujoEsperado.add(new Posicion2D(9,13));
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
 
-        algoritmo.agregarBloque(new SubirLapiz());
-        algoritmo.agregarBloque(new MoverALaIzquierda());
-        bloqueDoble.agregarBloque(new MoverHaciaArriba());
-        bloqueInvertir.agregarBloque(new SubirLapiz());
-        bloqueInvertir.agregarBloque(bloqueDoble);
-        algoritmo.agregarBloque(bloqueInvertir); //(8, 13), (8, 12) & (8, 11)
-        dibujoEsperado.add(new Posicion2D(8, 13));
-        dibujoEsperado.add(new Posicion2D(8, 12));
-        dibujoEsperado.add(new Posicion2D(8, 11));
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
 
-        algoritmo.agregarBloque(new MoverHaciaAbajo()); //(8, 10)
-        dibujoEsperado.add(new Posicion2D(8, 10));
+        algoritmo.agregarBloque(new Bloque(new BajarLapiz()));
+        dibujoEsperado.add(posicionActual);
 
-        algoritmo.ejecutar(new Personaje(new Posicion2D(10, 10)), dibujo);
+        bloqueTriple.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        bloqueTriple.agregarBloque(new Bloque(new MoverALaIzquierda()));
+
+        for (int i = 0; i < repeticionesSegundoBloque; i++) {
+            posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+            dibujoEsperado.add(posicionActual);
+
+            posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+            dibujoEsperado.add(posicionActual);
+        }
+
+        algoritmo.agregarBloque(new Bloque(bloqueTriple));
+
+        algoritmo.agregarBloque(new Bloque(new SubirLapiz()));
+
+        algoritmo.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+
+        bloqueInvertir.agregarBloque(new Bloque(new SubirLapiz()));
+        dibujoEsperado.add(posicionActual);
+
+        bloqueDoble.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        for (int i = 0; i < repeticionesSegundoBloque; i++) {
+            posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+            dibujoEsperado.add(posicionActual);
+        }
+
+        bloqueInvertir.agregarBloque(new Bloque(bloqueDoble));
+
+        algoritmo.agregarBloque(new Bloque(bloqueInvertir));
+
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+
+        algoritmo.ejecutar(new Personaje(Posicion2D.posicionInicial()), dibujo);
         ArrayList<Posicion2D> dibujoLogrado = dibujo.posicionesDibujadas();
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
@@ -208,8 +229,8 @@ public class DibujoTest {
 
     @Test
     public void test09ElDibujoSeEncuentraEnBlancoLuegoDeReiniciarlo() {
-        algoritmo.agregarBloque(new BajarLapiz());
-        algoritmo.agregarBloque(new MoverALaDerecha());
+        algoritmo.agregarBloque(new Bloque(new BajarLapiz()));
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
         dibujoEsperado.add(new Posicion2D(10, 10));
         dibujoEsperado.add(new Posicion2D(11, 10));
         algoritmo.ejecutar(new Personaje(new Posicion2D(10, 10)), dibujo);
@@ -223,8 +244,8 @@ public class DibujoTest {
 
     @Test
     public void test10PuedoVolverADibujarLuegoDeReiniciarElDibujo() {
-        algoritmo.agregarBloque(new BajarLapiz());
-        algoritmo.agregarBloque(new MoverALaDerecha());
+        algoritmo.agregarBloque(new Bloque(new BajarLapiz()));
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
         dibujoEsperado.add(new Posicion2D(10, 10));
         dibujoEsperado.add(new Posicion2D(11, 10));
         algoritmo.ejecutar(new Personaje(new Posicion2D(10, 10)), dibujo);
@@ -236,3 +257,6 @@ public class DibujoTest {
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
 }
+
+// bajar  /     rep1      /      rep2     /     rep3      /
+// 12,10 / 12,11 / 13,11 / 13,12 / 14,12 / 14,13 / 15,13 /

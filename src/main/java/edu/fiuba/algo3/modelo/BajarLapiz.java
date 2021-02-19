@@ -1,19 +1,20 @@
 package edu.fiuba.algo3.modelo;
 
-public class BajarLapiz extends Bloque {
-    BajarLapiz() {
-        siguiente = new BloqueNulo();
-    }
+public class BajarLapiz implements EstadoDeBloque {
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo){
         personaje.apoyarLapiz();
         personaje.mover(new Posicion2D(0,0), dibujo);
-        this.siguiente.ejecutar(personaje, dibujo);
     }
 
     @Override
-    public SubirLapiz invertir() {
+    public EstadoDeBloque invertir() {
         return new SubirLapiz();
+    }
+
+    @Override
+    public void agregarBloque(Bloque bloque) {
+
     }
 }

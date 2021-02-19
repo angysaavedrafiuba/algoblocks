@@ -115,7 +115,7 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(2, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaDerecha()));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -127,7 +127,7 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(-2, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaIzquierda());
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaIzquierda()));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -139,8 +139,8 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(0, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaDerecha()));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -152,8 +152,8 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(-2, 2);
 
-        bloqueRepetir.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetir.agregarBloque(new MoverHaciaArriba());
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        bloqueRepetir.agregarBloque(new Bloque(new MoverHaciaArriba()));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -165,8 +165,8 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(2, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        bloqueRepetir.agregarBloque(new BajarLapiz());
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaDerecha()));
+        bloqueRepetir.agregarBloque(new Bloque(new BajarLapiz()));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -180,8 +180,8 @@ public class PersonajeTest {
         BloqueDeRepeticion otroBloqueRepetir = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(4, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        otroBloqueRepetir.agregarBloque(bloqueRepetir);
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaDerecha()));
+        otroBloqueRepetir.agregarBloque(new Bloque(bloqueRepetir));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -193,7 +193,7 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(3, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaDerecha()));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -205,8 +205,8 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(0, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaDerecha()));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -218,8 +218,8 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetir = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(3, 0);
 
-        bloqueRepetir.agregarBloque(new MoverALaDerecha());
-        bloqueRepetir.agregarBloque(new BajarLapiz());
+        bloqueRepetir.agregarBloque(new Bloque(new MoverALaDerecha()));
+        bloqueRepetir.agregarBloque(new Bloque(new BajarLapiz()));
         bloqueRepetir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -233,8 +233,8 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetirTriple = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(6, 0);
 
-        bloqueRepetirDoble.agregarBloque(new MoverALaDerecha());
-        bloqueRepetirTriple.agregarBloque(bloqueRepetirDoble);
+        bloqueRepetirDoble.agregarBloque(new Bloque(new MoverALaDerecha()));
+        bloqueRepetirTriple.agregarBloque(new Bloque(bloqueRepetirDoble));
         bloqueRepetirTriple.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -247,8 +247,8 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetirDoble = new BloqueDeRepeticion(2);
         Posicion2D posicionEsperada = new Posicion2D(6, 0);
 
-        bloqueRepetirTriple.agregarBloque(new MoverALaDerecha());
-        bloqueRepetirDoble.agregarBloque(bloqueRepetirTriple);
+        bloqueRepetirTriple.agregarBloque(new Bloque(new MoverALaDerecha()));
+        bloqueRepetirDoble.agregarBloque(new Bloque(bloqueRepetirTriple));
         bloqueRepetirDoble.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -261,10 +261,10 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetirTriple = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(0, 0);
 
-        bloqueRepetirDoble.agregarBloque(new MoverALaDerecha());
-        bloqueRepetirTriple.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetirTriple.agregarBloque(bloqueRepetirDoble);
-        bloqueRepetirTriple.agregarBloque(new MoverALaIzquierda());
+        bloqueRepetirDoble.agregarBloque(new Bloque(new MoverALaDerecha()));
+        bloqueRepetirTriple.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        bloqueRepetirTriple.agregarBloque(new Bloque(bloqueRepetirDoble));
+        bloqueRepetirTriple.agregarBloque(new Bloque(new MoverALaIzquierda()));
         bloqueRepetirTriple.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -277,10 +277,10 @@ public class PersonajeTest {
         BloqueDeRepeticion bloqueRepetirTriple = new BloqueDeRepeticion(3);
         Posicion2D posicionEsperada = new Posicion2D(0, 0);
 
-        bloqueRepetirTriple.agregarBloque(new MoverALaDerecha());
-        bloqueRepetirDoble.agregarBloque(new MoverALaIzquierda());
-        bloqueRepetirDoble.agregarBloque(bloqueRepetirTriple);
-        bloqueRepetirDoble.agregarBloque(new MoverALaIzquierda());
+        bloqueRepetirTriple.agregarBloque(new Bloque(new MoverALaDerecha()));
+        bloqueRepetirDoble.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        bloqueRepetirDoble.agregarBloque(new Bloque(bloqueRepetirTriple));
+        bloqueRepetirDoble.agregarBloque(new Bloque(new MoverALaIzquierda()));
         bloqueRepetirDoble.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.estaEn(posicionEsperada));
@@ -291,8 +291,8 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
 
-        bloqueInvertir.agregarBloque(new SubirLapiz());
-        bloqueInvertir.agregarBloque(new BajarLapiz());
+        bloqueInvertir.agregarBloque(new Bloque(new SubirLapiz()));
+        bloqueInvertir.agregarBloque(new Bloque(new BajarLapiz()));
         bloqueInvertir.ejecutar(personaje, new Dibujo());
 
         assertTrue(personaje.lapizEstaArriba());
@@ -303,8 +303,8 @@ public class PersonajeTest {
         Personaje personaje = new Personaje(new Posicion2D(0, 0));
         InvertirComportamiento bloqueInvertir = new InvertirComportamiento();
 
-        bloqueInvertir.agregarBloque(new BajarLapiz());
-        bloqueInvertir.agregarBloque(new SubirLapiz());
+        bloqueInvertir.agregarBloque(new Bloque(new BajarLapiz()));
+        bloqueInvertir.agregarBloque(new Bloque(new SubirLapiz()));
         bloqueInvertir.ejecutar(personaje, new Dibujo());
 
         assertFalse(personaje.lapizEstaArriba());

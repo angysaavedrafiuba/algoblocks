@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RecorridoNormalTest {
-    RecorridoNormal recorrido = new RecorridoNormal();
+    RecorridoNormal algoritmo = new RecorridoNormal();
     Dibujo dibujo = new Dibujo();
     Personaje personaje = new Personaje(Posicion2D.posicionInicial());
     ArrayList<Posicion2D> dibujoEsperado = new ArrayList<>();
@@ -16,10 +16,10 @@ public class RecorridoNormalTest {
     public void test01SeAgregaUnBloqueAUnRecorridoNormalYAlEjecutarloGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new MoverALaDerecha());
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
         dibujoEsperado.add(new Posicion2D(11, 10));
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -28,12 +28,12 @@ public class RecorridoNormalTest {
     public void test02SeAgreganDosBloquesAUnRecorridoNormalYAlEjecutarloGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new MoverALaDerecha());
-        recorrido.agregarBloque(new MoverHaciaArriba());
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
         dibujoEsperado.add(new Posicion2D(11, 10));
         dibujoEsperado.add(new Posicion2D(11, 11));
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -41,13 +41,13 @@ public class RecorridoNormalTest {
     @Test
     public void test02SeAgreganVariosBloquesAUnRecorridoNormalYAlEjecutarloGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
-        BloqueDeRepeticion repeticion = new BloqueDeRepeticion(3);
+        Bloque repeticion = new Bloque(new BloqueDeRepeticion(3));
 
-        recorrido.agregarBloque(new MoverALaDerecha());
-        repeticion.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(repeticion);
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        repeticion.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        algoritmo.agregarBloque(repeticion);
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
         dibujoEsperado.add(new Posicion2D(11, 10));
         dibujoEsperado.add(new Posicion2D(11, 11));
         dibujoEsperado.add(new Posicion2D(11, 12));
@@ -55,7 +55,7 @@ public class RecorridoNormalTest {
         dibujoEsperado.add(new Posicion2D(11, 14));
         dibujoEsperado.add(new Posicion2D(11, 13));
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -63,13 +63,15 @@ public class RecorridoNormalTest {
     @Test
     public void test04InvertirUnRecorridoDeUnBloqueGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
+        InvertirComportamiento invertido = new InvertirComportamiento();
+        Posicion2D posicionActual = Posicion2D.posicionInicial();
 
-        recorrido.agregarBloque(new MoverALaDerecha());
-        recorrido.invertir();
+        invertido.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
 
-        dibujoEsperado.add(new Posicion2D(9, 10));
-
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.agregarBloque(new Bloque(invertido));
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -78,16 +80,24 @@ public class RecorridoNormalTest {
     public void test05InvertirUnRecorridoConVariosBloquesGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new MoverALaDerecha());
-        recorrido.agregarBloque(new MoverALaIzquierda());
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.invertir();
+        InvertirComportamiento invertido = new InvertirComportamiento();
+        Posicion2D posicionActual = Posicion2D.posicionInicial();
 
-        dibujoEsperado.add(new Posicion2D(9, 10));
-        dibujoEsperado.add(new Posicion2D(10, 10));
-        dibujoEsperado.add(new Posicion2D(10, 9));
+        invertido.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
 
-        recorrido.ejecutar(personaje, dibujo);
+        invertido.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        invertido.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.agregarBloque(new Bloque(invertido));
+
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -95,22 +105,32 @@ public class RecorridoNormalTest {
     @Test
     public void test06InvertirUnRecorridoConBloquesCombinadosGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
-        BloqueDeRepeticion repeticion = new BloqueDeRepeticion(2);
-        InvertirComportamiento inversion = new InvertirComportamiento();
+        int repeticiones = 2;
+        BloqueDeRepeticion repeticion = new BloqueDeRepeticion(repeticiones);
+        InvertirComportamiento invertido = new InvertirComportamiento();
+        Posicion2D posicionActual = Posicion2D.posicionInicial();
 
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        inversion.agregarBloque(new MoverALaDerecha());
-        repeticion.agregarBloque(inversion);
-        recorrido.agregarBloque(repeticion);
-        recorrido.invertir();
+        invertido.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        invertido.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        invertido.agregarBloque(new Bloque(new MoverALaDerecha()));
 
-        dibujoEsperado.add(new Posicion2D(10, 9));
-        dibujoEsperado.add(new Posicion2D(10, 10));
-        dibujoEsperado.add(new Posicion2D(11, 10));
-        dibujoEsperado.add(new Posicion2D(12, 10));
 
-        recorrido.ejecutar(personaje, dibujo);
+        for (int i = 0; i < repeticiones; i++) {
+            posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+            dibujoEsperado.add(posicionActual);
+
+            posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+            dibujoEsperado.add(posicionActual);
+
+            posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+            dibujoEsperado.add(posicionActual);
+        }
+
+        repeticion.agregarBloque(new Bloque(invertido));
+        algoritmo.agregarBloque(new Bloque(repeticion));
+
+
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -119,24 +139,25 @@ public class RecorridoNormalTest {
     public void test07EjecutarDosVecesElMismoRecorridoGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverALaIzquierda());
+
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverALaIzquierda()));
 
         dibujoEsperado.add(new Posicion2D(10, 11));
         dibujoEsperado.add(new Posicion2D(10, 10));
         dibujoEsperado.add(new Posicion2D(10, 9));
         dibujoEsperado.add(new Posicion2D(9, 9));
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         dibujoEsperado.add(new Posicion2D(9, 10));
         dibujoEsperado.add(new Posicion2D(9, 9));
         dibujoEsperado.add(new Posicion2D(9, 8));
         dibujoEsperado.add(new Posicion2D(8, 8));
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -144,26 +165,48 @@ public class RecorridoNormalTest {
     @Test
     public void test08EjecutarUnRecorridoLuegoInvertirloYVolverloAEjecutarDibujaAcordemente() {
         personaje.apoyarLapiz();
+        Posicion2D posicionActual = Posicion2D.posicionInicial();
+        InvertirComportamiento invertido = new InvertirComportamiento();
 
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverALaIzquierda());
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+        dibujoEsperado.add(posicionActual);
 
-        dibujoEsperado.add(new Posicion2D(10, 11));
-        dibujoEsperado.add(new Posicion2D(10, 10));
-        dibujoEsperado.add(new Posicion2D(10, 9));
-        dibujoEsperado.add(new Posicion2D(9, 9));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
 
-        recorrido.ejecutar(personaje, dibujo);
-        recorrido.invertir();
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
 
-        dibujoEsperado.add(new Posicion2D(9, 8));
-        dibujoEsperado.add(new Posicion2D(9, 9));
-        dibujoEsperado.add(new Posicion2D(9, 10));
-        dibujoEsperado.add(new Posicion2D(10, 10));
+        algoritmo.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
 
-        recorrido.ejecutar(personaje, dibujo);
+
+        algoritmo.ejecutar(personaje, dibujo);
+        algoritmo.reiniciar();
+
+        invertido.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
+
+        invertido.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+        dibujoEsperado.add(posicionActual);
+
+        invertido.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+        dibujoEsperado.add(posicionActual);
+
+        invertido.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.agregarBloque(new Bloque(invertido));
+
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -172,20 +215,20 @@ public class RecorridoNormalTest {
     public void test09EjecutarUnRecorridoLuegoDeReiniciarloNoGeneraDibujo() {
         personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverALaIzquierda());
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverALaIzquierda()));
 
         dibujoEsperado.add(new Posicion2D(10, 11));
         dibujoEsperado.add(new Posicion2D(10, 10));
         dibujoEsperado.add(new Posicion2D(10, 9));
         dibujoEsperado.add(new Posicion2D(9, 9));
 
-        recorrido.ejecutar(personaje, dibujo);
-        recorrido.reiniciar();
+        algoritmo.ejecutar(personaje, dibujo);
+        algoritmo.reiniciar();
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -194,27 +237,27 @@ public class RecorridoNormalTest {
     public void test10EjecutarUnRecorridoLuegoDeReiniciarYAgregarleBloquesGeneraDibujoAcorde() {
         personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverALaIzquierda());
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverALaIzquierda()));
 
         dibujoEsperado.add(new Posicion2D(10, 11));
         dibujoEsperado.add(new Posicion2D(10, 10));
         dibujoEsperado.add(new Posicion2D(10, 9));
         dibujoEsperado.add(new Posicion2D(9, 9));
 
-        recorrido.ejecutar(personaje, dibujo);
-        recorrido.reiniciar();
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
+        algoritmo.reiniciar();
+        algoritmo.ejecutar(personaje, dibujo);
 
-        recorrido.agregarBloque(new MoverALaDerecha());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
 
         dibujoEsperado.add(new Posicion2D(10, 9));
         dibujoEsperado.add(new Posicion2D(10, 8));
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
@@ -222,45 +265,58 @@ public class RecorridoNormalTest {
     @Test
     public void test11CombinarAgregadoDeBloquesConReinicioEInversionDeUnRecorridoGeneraUnDibujoAcorde() {
         personaje.apoyarLapiz();
+        InvertirComportamiento invertido = new InvertirComportamiento();
+        Posicion2D posicionActual = Posicion2D.posicionInicial();
 
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverALaIzquierda());
-        recorrido.invertir();
+        invertido.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
 
-        dibujoEsperado.add(new Posicion2D(10, 9));
-        dibujoEsperado.add(new Posicion2D(10, 10));
-        dibujoEsperado.add(new Posicion2D(10, 11));
-        dibujoEsperado.add(new Posicion2D(11, 11));
+        invertido.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+        dibujoEsperado.add(posicionActual);
 
-        recorrido.ejecutar(personaje, dibujo);
-        recorrido.invertir();
+        invertido.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+        dibujoEsperado.add(posicionActual);
 
-        dibujoEsperado.add(new Posicion2D(11, 12));
-        dibujoEsperado.add(new Posicion2D(11, 11));
-        dibujoEsperado.add(new Posicion2D(11, 10));
-        dibujoEsperado.add(new Posicion2D(10, 10));
+        invertido.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
 
-        recorrido.ejecutar(personaje, dibujo);
-        recorrido.reiniciar();
+        algoritmo.agregarBloque(new Bloque(invertido));
 
-        recorrido.agregarBloque(new MoverALaDerecha());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.invertir();
+        algoritmo.ejecutar(personaje, dibujo);
 
-        dibujoEsperado.add(new Posicion2D(9, 10));
-        dibujoEsperado.add(new Posicion2D(9, 11));
+        algoritmo.reiniciar();
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+        algoritmo.reiniciar();
+
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
 
     @Test
     public void test12InvertirYEjecutarUnRecorridoVacioNoGeneraNingunEfectoNiDibujo() {
-        recorrido.invertir();
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertTrue(dibujo.posicionesDibujadas().isEmpty());
     }
@@ -269,8 +325,8 @@ public class RecorridoNormalTest {
     public void test13RemoverUnBloqueDeUnRecorridoVacioNoAfectaSuIntegridad() {
         personaje.apoyarLapiz();
 
-        recorrido.removerUltimo();
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.removerUltimo();
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertTrue(dibujo.posicionesDibujadas().isEmpty());
     }
@@ -279,12 +335,12 @@ public class RecorridoNormalTest {
     public void test14RemuevoElUltimoBloqueYElAlgoritmoEjecutadoEsCorrecto() {
         personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverALaIzquierda());
-        recorrido.agregarBloque(new MoverALaDerecha());
-        recorrido.removerUltimo();
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverALaIzquierda()));
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        algoritmo.removerUltimo();
+        algoritmo.ejecutar(personaje, dibujo);
 
         dibujoEsperado.add(new Posicion2D(10, 11));
         dibujoEsperado.add(new Posicion2D(10, 10));
@@ -297,11 +353,11 @@ public class RecorridoNormalTest {
     public void test15PuedeRemoverseUnBloqueYLuegoAgregarUnNuevoYElComportamientoEsCorrecto() {
         personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.removerUltimo();
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.removerUltimo();
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.ejecutar(personaje, dibujo);
 
         dibujoEsperado.add(new Posicion2D(10, 11));
         dibujoEsperado.add(new Posicion2D(10, 10));
@@ -313,11 +369,11 @@ public class RecorridoNormalTest {
     public void test16IntentarRemoverDeUnRecorridoVacioYLuegoAgregarNuevosBloquesNoCausaProblemas() {
         personaje.apoyarLapiz();
 
-        recorrido.removerUltimo();
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.agregarBloque(new MoverHaciaAbajo());
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.removerUltimo();
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.agregarBloque(new Bloque(new MoverHaciaAbajo()));
+        algoritmo.ejecutar(personaje, dibujo);
 
         dibujoEsperado.add(new Posicion2D(10, 9));
         dibujoEsperado.add(new Posicion2D(10, 8));
@@ -328,63 +384,63 @@ public class RecorridoNormalTest {
 
     @Test
     public void test17PuedeRemoverseElUltimoBloqueDeUnBloqueDeRepeticionYElFuncionamientoEsCorrecto() {
-        BloqueDeRepeticion invertir = new BloqueDeRepeticion(2);
+        int repeticiones = 2;
+        BloqueDeRepeticion repeticion = new BloqueDeRepeticion(repeticiones);
+        Posicion2D posicionActual = Posicion2D.posicionInicial();
+        personaje.apoyarLapiz();
 
-        recorrido.agregarBloque(new BajarLapiz()); //(10, 10)
-        recorrido.agregarBloque(new MoverALaDerecha());
-        invertir.agregarBloque(new MoverHaciaArriba());
-        invertir.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(invertir);
-        recorrido.agregarBloque(new MoverALaDerecha());
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
 
-        dibujoEsperado.add(new Posicion2D(10, 10));
-        dibujoEsperado.add(new Posicion2D(11, 10));
-        dibujoEsperado.add(new Posicion2D(11, 11));
-        dibujoEsperado.add(new Posicion2D(11, 12));
-        dibujoEsperado.add(new Posicion2D(11, 13));
-        dibujoEsperado.add(new Posicion2D(11, 14));
-        dibujoEsperado.add(new Posicion2D(12, 14));
+        repeticion.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        for (int i = 0; i < repeticiones; i++) {
+            posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+            dibujoEsperado.add(posicionActual);
+        }
 
-        recorrido.ejecutar(personaje, dibujo);
-        recorrido.removerUltimo();
-        invertir.removerUltimo();
+        repeticion.agregarBloque(new Bloque(new MoverHaciaArriba()));
 
-        dibujoEsperado.add(new Posicion2D(12, 14));
-        dibujoEsperado.add(new Posicion2D(13, 14));
-        dibujoEsperado.add(new Posicion2D(13, 15));
-        dibujoEsperado.add(new Posicion2D(13, 16));
 
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.agregarBloque(new Bloque(repeticion));
+
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        repeticion.removerUltimo();
+
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
 
     @Test
-    public void test17PuedeRemoverseElUltimoBloqueDeUnBloqueDeInversionYElFuncionamientoEsCorrecto() {
+    public void test18PuedeRemoverseElUltimoBloqueDeUnBloqueDeInversionYElFuncionamientoEsCorrecto() {
         InvertirComportamiento invertir = new InvertirComportamiento();
+        Posicion2D posicionActual = Posicion2D.posicionInicial();
 
-        recorrido.agregarBloque(new BajarLapiz()); //(10, 10)
-        recorrido.agregarBloque(new MoverALaDerecha());
-        invertir.agregarBloque(new MoverHaciaArriba());
-        invertir.agregarBloque(new MoverHaciaArriba());
-        recorrido.agregarBloque(invertir);
-        recorrido.agregarBloque(new MoverALaDerecha());
+        personaje.apoyarLapiz();
 
-        dibujoEsperado.add(new Posicion2D(10, 10));
-        dibujoEsperado.add(new Posicion2D(11, 10));
-        dibujoEsperado.add(new Posicion2D(11, 9));
-        dibujoEsperado.add(new Posicion2D(11, 8));
-        dibujoEsperado.add(new Posicion2D(12, 8));
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
 
-        recorrido.ejecutar(personaje, dibujo);
-        recorrido.removerUltimo();
+        invertir.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
+
+        invertir.agregarBloque(new Bloque(new MoverHaciaArriba()));
+
+        algoritmo.agregarBloque(new Bloque(invertir));
+
+        algoritmo.agregarBloque(new Bloque(new MoverALaDerecha()));
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
         invertir.removerUltimo();
 
-        dibujoEsperado.add(new Posicion2D(12, 8));
-        dibujoEsperado.add(new Posicion2D(13, 8));
-        dibujoEsperado.add(new Posicion2D(13, 7));
-
-        recorrido.ejecutar(personaje, dibujo);
+        algoritmo.ejecutar(personaje, dibujo);
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }

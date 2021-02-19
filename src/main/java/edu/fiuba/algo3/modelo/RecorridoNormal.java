@@ -1,38 +1,22 @@
 package edu.fiuba.algo3.modelo;
 
-public class RecorridoNormal implements Recorrido {
-    private Bloque primerBloque;
-    private Bloque ultimoBloque = new BloqueNulo();
+import java.util.ArrayList;
+
+public class RecorridoNormal extends Recorrido {
 
     RecorridoNormal() {
-        primerBloque = ultimoBloque;
+        this.bloques = new ArrayList<Bloque>();
     }
 
     @Override
     public void agregarBloque(Bloque bloque){
-        ultimoBloque.siguiente(bloque);
-        ultimoBloque = bloque;
+        this.bloques.add(bloque);
     }
 
     @Override
-    public void ejecutar(Personaje personaje, Dibujo dibujo) {
-        primerBloque.ejecutar(personaje, dibujo);
-    }
-
-    public void invertir() {
-        primerBloque = primerBloque.invertirSecuencia();
-    }
-
-    @Override
-    public void reiniciar() {
-        ultimoBloque = new BloqueNulo();
-        primerBloque = ultimoBloque;
-    }
-
-    @Override
-    public void removerUltimo() {
-        try {
-            ultimoBloque = primerBloque.removerUltimo(primerBloque);
-        } catch (RuntimeException e) { }
+    public Recorrido invertir() {
+        RecorridoInverso nuevoRecorrido = new RecorridoInverso();
+        bloques.forEach(bloque -> nuevoRecorrido.agregarBloque(bloque));
+        return nuevoRecorrido;
     }
 }

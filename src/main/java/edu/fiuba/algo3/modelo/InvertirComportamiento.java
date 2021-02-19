@@ -1,29 +1,24 @@
 package edu.fiuba.algo3.modelo;
 
-public class InvertirComportamiento extends Bloque {
-    private final RecorridoNormal secuencia = new RecorridoNormal();
+public class InvertirComportamiento implements EstadoDeBloque {
 
-    InvertirComportamiento() {
-        this.siguiente = new BloqueNulo();
-    }
+    private final RecorridoInverso bloques = new RecorridoInverso();
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
-        secuencia.ejecutar(personaje, dibujo);
-        this.siguiente.ejecutar(personaje, dibujo);
+        bloques.ejecutar(personaje, dibujo);
     }
 
     @Override
-    public InvertirComportamiento invertir() {
-        secuencia.invertir();
+    public EstadoDeBloque invertir() {
         return this;
     }
 
     public void agregarBloque(Bloque bloque) {
-        secuencia.agregarBloque(bloque.invertir());
+        bloques.agregarBloque(bloque);
     }
 
     public void removerUltimo() {
-        secuencia.removerUltimo();
+        bloques.removerUltimo();
     }
 }

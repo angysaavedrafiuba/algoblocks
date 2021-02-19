@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -59,8 +58,8 @@ public class AlgoblocksTest {
         algoblocks.agregarBloque(new BajarLapiz()); //(12, 10)
         dibujoEsperado.add(new Posicion2D(12,10));
 
-        bloqueTriple.agregarBloque(new MoverHaciaArriba());
-        bloqueTriple.agregarBloque(new MoverALaIzquierda());
+        bloqueTriple.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        bloqueTriple.agregarBloque(new Bloque(new MoverALaIzquierda()));
         algoblocks.agregarBloque(bloqueTriple); //(12, 11), (11, 11), (11, 12), (10, 12), (10, 13) & (9, 13)
         dibujoEsperado.add(new Posicion2D(12, 11));
         dibujoEsperado.add(new Posicion2D(11, 11));
@@ -71,10 +70,10 @@ public class AlgoblocksTest {
 
         algoblocks.agregarBloque(new SubirLapiz());
         algoblocks.agregarBloque(new MoverALaIzquierda());
-        bloqueDoble.agregarBloque(new MoverHaciaArriba());
-        bloqueInvertir.agregarBloque(new SubirLapiz());
-        bloqueInvertir.agregarBloque(bloqueDoble);
-        bloqueInvertir.agregarBloque(new BajarLapiz());
+        bloqueDoble.agregarBloque(new Bloque(new MoverHaciaArriba()));
+        bloqueInvertir.agregarBloque(new Bloque(new SubirLapiz()));
+        bloqueInvertir.agregarBloque(new Bloque(bloqueDoble));
+        bloqueInvertir.agregarBloque(new Bloque(new BajarLapiz()));
         algoblocks.agregarBloque(bloqueInvertir); //(8, 13), (8, 12) & (8, 11)
         dibujoEsperado.add(new Posicion2D(8, 13));
         dibujoEsperado.add(new Posicion2D(8, 12));

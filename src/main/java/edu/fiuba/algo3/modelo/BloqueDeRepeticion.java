@@ -1,33 +1,33 @@
 package edu.fiuba.algo3.modelo;
 
-public class BloqueDeRepeticion extends Bloque {
-    private final RecorridoNormal secuencia = new RecorridoNormal();
+public class BloqueDeRepeticion implements EstadoDeBloque{
+    private Recorrido bloques = new RecorridoNormal();
     private final int repeticiones;
 
     BloqueDeRepeticion(int repeticiones){
-        siguiente = new BloqueNulo();
         this.repeticiones = repeticiones;
     }
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
         for(int i=0; i<repeticiones; i++) {
-            secuencia.ejecutar(personaje, dibujo);
+            bloques.ejecutar(personaje, dibujo);
         }
-        this.siguiente.ejecutar(personaje, dibujo);
     }
 
     @Override
-    public Bloque invertir() {
-        secuencia.invertir();
+    public EstadoDeBloque invertir() {
+        this.bloques = bloques.invertir();
         return this;
     }
 
-    public void removerUltimo() {
-        secuencia.removerUltimo();
+    @Override
+    public void agregarBloque(Bloque bloque) {
+        bloques.agregarBloque(bloque);
     }
 
-    public void agregarBloque(Bloque bloque) {
-        secuencia.agregarBloque(bloque);
+    public void removerUltimo(){
+        bloques.removerUltimo();
     }
+
 }

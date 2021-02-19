@@ -7,8 +7,8 @@ public class Algoblocks {
     private final Dibujo dibujo = new Dibujo();
     private final RecorridoNormal bloques = new RecorridoNormal();
 
-    public void agregarBloque(Bloque bloque){
-        bloques.agregarBloque(bloque);
+    public void agregarBloque(EstadoDeBloque estado){
+        bloques.agregarBloque(new Bloque(estado));
     }
 
     public void ejecutar() {
