@@ -2,11 +2,12 @@ package edu.fiuba.algo3.modelo;
 
 public class InvertirComportamiento implements EstadoDeBloque {
 
-    private final RecorridoInverso bloques = new RecorridoInverso();
+    private Recorrido bloques;
+
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
-        bloques.ejecutar(personaje, dibujo);
+        this.bloques.clonar().ejecutar(personaje, dibujo);
     }
 
     @Override
@@ -14,11 +15,9 @@ public class InvertirComportamiento implements EstadoDeBloque {
         return this;
     }
 
-    public void agregarBloque(Bloque bloque) {
-        bloques.agregarBloque(bloque);
+    @Override
+    public void setBloques(Recorrido bloques) {
+        this.bloques = bloques.invertir();
     }
 
-    public void removerUltimo() {
-        bloques.removerUltimo();
-    }
 }

@@ -1,12 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-public class Bloque{
+public abstract class Bloque {
 
-    private EstadoDeBloque estado;
-
-    Bloque(EstadoDeBloque estadoDeBloque){
-        this.estado = estadoDeBloque;
-    }
+    protected EstadoDeBloque estado;
 
     public void invertir(){
         this.estado = this.estado.invertir();
@@ -16,8 +12,5 @@ public class Bloque{
         this.estado.ejecutar(personaje, dibujo);
     }
 
-    public void agregarBloque(Bloque bloque){
-        estado.agregarBloque(bloque);
-    }
-
+    public abstract Bloque clonar();
 }

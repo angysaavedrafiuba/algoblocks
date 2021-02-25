@@ -12,7 +12,8 @@ public class MoverHaciaArriba implements EstadoDeBloque {
     }
 
     @Override
-    public void agregarBloque(Bloque bloque) {
+    public void setBloques(Recorrido bloques) {
 
     }
+
 }

@@ -14,7 +14,9 @@ public class MoverALaIzquierda implements EstadoDeBloque {
     }
 
     @Override
-    public void agregarBloque(Bloque bloque) {
+    public void setBloques(Recorrido bloques) {
 
     }
+
+
 }

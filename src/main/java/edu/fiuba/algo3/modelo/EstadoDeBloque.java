@@ -6,5 +6,6 @@ public interface EstadoDeBloque {
 
     EstadoDeBloque invertir();
 
-    void agregarBloque(Bloque bloque);
+    void setBloques(Recorrido bloques);
+
 }
