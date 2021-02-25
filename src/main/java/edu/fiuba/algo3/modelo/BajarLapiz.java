@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 public class BajarLapiz implements EstadoDeBloque {
-
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo){
         personaje.apoyarLapiz();
@@ -12,10 +11,4 @@ public class BajarLapiz implements EstadoDeBloque {
     public EstadoDeBloque invertir() {
         return new SubirLapiz();
     }
-
-    @Override
-    public void setBloques(Recorrido bloques) {
-
-    }
-
 }

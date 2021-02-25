@@ -2,21 +2,21 @@ package edu.fiuba.algo3.modelo;
 
 public class BloqueDeRepeticion implements EstadoDeBloque{
     private final int repeticiones;
-    private Recorrido bloques;
+    private RecorridoNormal bloques;
 
     BloqueDeRepeticion(int repeticiones){
         this.repeticiones = repeticiones;
     }
 
     @Override
-    public void setBloques(Recorrido bloques){
+    public void setBloques(RecorridoNormal bloques){
         this.bloques = bloques;
     }
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
         for(int i=0; i<repeticiones; i++) {
-            bloques.clonar().ejecutar(personaje, dibujo);
+            bloques.ejecutar(personaje, dibujo);
         }
     }
 
@@ -25,5 +25,4 @@ public class BloqueDeRepeticion implements EstadoDeBloque{
         this.bloques = this.bloques.invertir();
         return this;
     }
-
 }

@@ -11,9 +11,4 @@ public class MoverHaciaArriba implements EstadoDeBloque {
         return new MoverHaciaAbajo();
     }
 
-    @Override
-    public void setBloques(Recorrido bloques) {
-
-    }
-
 }

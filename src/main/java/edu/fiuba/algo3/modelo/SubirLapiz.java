@@ -11,10 +11,4 @@ public class SubirLapiz implements EstadoDeBloque {
     public EstadoDeBloque invertir() {
         return new BajarLapiz();
     }
-
-    @Override
-    public void setBloques(Recorrido bloques) {
-
-    }
-
 }

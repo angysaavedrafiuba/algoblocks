@@ -16,7 +16,6 @@ public class Posicion2D {
     private static final int X_ARRIBA    =   0;
     private static final int Y_ARRIBA    =   1;
 
-
     private final int x, y;
 
     public static Posicion2D posicionInicial() {
@@ -27,10 +26,6 @@ public class Posicion2D {
     public static Posicion2D izquierda  ()  { return new Posicion2D(X_IZQUIERDA, Y_IZQUIERDA);  }
     public static Posicion2D abajo      ()  { return new Posicion2D(X_ABAJO, Y_ABAJO);          }
     public static Posicion2D arriba     ()  { return new Posicion2D(X_ARRIBA, Y_ARRIBA);        }
-
-
-
-
 
     public Posicion2D(int x, int y) {
         this.x = x;
