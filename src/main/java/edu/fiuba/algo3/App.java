@@ -1,5 +1,7 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.controlador.BotonEntrar;
+import edu.fiuba.algo3.controlador.ControladorDeJuego;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -7,8 +9,6 @@ import javafx.stage.Stage;
 import javafx.fxml.*;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 /**
  * JavaFX App
@@ -18,11 +18,27 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        URL url = getClass().getClassLoader().getResource("inicio.fxml");
-        Parent root = FXMLLoader.load(Objects.requireNonNull(url));
-        Scene scene = new Scene(root, 640, 440);
+        FXMLLoader loaderInicio = new FXMLLoader(getClass().getClassLoader().getResource("inicio.fxml"));
+        FXMLLoader loaderJuego  = new FXMLLoader(getClass().getClassLoader().getResource("juego2.fxml"));
+
+
+        Parent inicio   = loaderInicio.load();
+        Parent juego    = loaderJuego.load();
+
+        Scene escenaInicio  = new Scene(inicio, 640,440);
+        Scene escenaJuego   = new Scene(juego, 640, 440);
+
+        ControladorDeJuego controladorPrincipal = loaderJuego.getController();
+        controladorPrincipal.init(escenaJuego);
+
         stage.setTitle("AlgoBlocks");
-        stage.setScene(scene);
+
+        BotonEntrar entrarEventHandler = loaderInicio.getController();
+        entrarEventHandler.init(stage, escenaJuego);
+
+        stage.setScene(escenaInicio);
+        stage.setFullScreen(true);
+        stage.setResizable(false);
         stage.show();
 
         /*

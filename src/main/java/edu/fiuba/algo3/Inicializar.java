@@ -1,6 +1,5 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.controlador.BotonEntrar;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -28,8 +27,8 @@ public class Inicializar extends VBox {
         label.setText("TP algoblocks");
         label.setTextFill(Color.RED);
 
-        BotonEntrar inicializarEvento = new BotonEntrar(stage,escena);
-        boton.setOnAction(inicializarEvento);
+        //BotonEntrar inicializarEvento = new BotonEntrar(stage,escena);
+        //boton.setOnAction(inicializarEvento);
 
         this.getChildren().addAll(label, boton);
     }

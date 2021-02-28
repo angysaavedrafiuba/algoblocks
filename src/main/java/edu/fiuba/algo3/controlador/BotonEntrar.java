@@ -1,22 +1,32 @@
 package edu.fiuba.algo3.controlador;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.SceneAntialiasing;
 import javafx.stage.Stage;
 
-public class BotonEntrar implements EventHandler<ActionEvent> {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class BotonEntrar implements Initializable {
     Stage stage;
     Scene otraEscena;
 
-    public BotonEntrar(Stage stage, Scene escena){
-        this.stage = stage;
-        this.otraEscena = escena;
-    }
+    public BotonEntrar(){ }
 
     @Override
-    public void handle(ActionEvent actionEvent) {
-        stage.setScene(otraEscena);
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
+
+    @FXML
+    public void cambiarEscena(){
+        this.stage.setScene(this.otraEscena);
+        this.stage.setFullScreen(true);
+        this.stage.setResizable(false);
+    }
+
+    @FXML
+    public void init(Stage stage, Scene scene){
+        this.stage = stage;
+        this.otraEscena = scene;
     }
 }
