@@ -1,12 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class Personaje {
     private final Lapiz lapiz;
     public Posicion2D posicion;
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     /* constructor */
     public Personaje(Posicion2D posicionInicial) {
         this.posicion = posicionInicial;
+        support.firePropertyChange("posicion", null, posicion);
         this.lapiz = new Lapiz();
     }
 
@@ -19,8 +24,14 @@ public class Personaje {
     }
 
     public void mover(Posicion2D posicion, Dibujo dibujo) {
-        this.posicion = this.posicion.calcularNuevaPosicion(posicion);
+        Posicion2D nuevaPosicion = this.posicion.calcularNuevaPosicion(posicion);
         dibujo.dibujarConLapiz(this.posicion, this.lapiz);
+        support.firePropertyChange("posicion", this.posicion, nuevaPosicion);
+        this.posicion = nuevaPosicion;
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
     }
 
     /* Test only */
