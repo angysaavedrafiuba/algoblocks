@@ -15,7 +15,7 @@ public class PanelDeBloques extends VBox {
     PanelDeBloques(Rectangle2D screenBounds, Scene scene, Algoblocks algoblocks){
         super();
         this.scene = scene;
-        super.setPrefWidth(screenBounds.getWidth() * 0.15);
+        super.setPrefWidth(screenBounds.getWidth() * 0.20);
         super.setPadding(new Insets(0, 0 ,0, screenBounds.getWidth() * 0.02));
         super.setStyle("-fx-background-color: #ff2e63;");
         super.setAlignment(Pos.CENTER);
