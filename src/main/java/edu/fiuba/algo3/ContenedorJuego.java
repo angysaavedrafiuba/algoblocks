@@ -51,13 +51,8 @@ public class ContenedorJuego extends BorderPane {
         rectangulo.setFill(Color.BEIGE);
         rectangulo.widthProperty().bind(stack.widthProperty().subtract(50));
         rectangulo.heightProperty().bind(stack.heightProperty().subtract(50));
-
         stack.getChildren().addAll(rectangulo);
-
         this.setCenter(stack);
-
-
-
     }
 
 }

@@ -24,6 +24,7 @@
                               <Image url="@play-button.png" />
                            </image>
                         </ImageView>
+                        <ImageView fx:id="target" fitHeight="71.0" fitWidth="105.0" layoutX="80.0" layoutY="14.0" onDragDropped="#handleImageDrop" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
               </content>
@@ -38,7 +39,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" onMouseEntered="#setPointer" onMouseExited="#setDefaultCursor" prefHeight="639.0" prefWidth="151.0" style="-fx-background-color: #ff2e63;">
                      <children>
-                        <ImageView fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#logClick" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
+                        <ImageView fx:id="source" fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="14.0" onDragDetected="#handleDragDetection" onMouseClicked="#logClick" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
                            <image>
                               <Image url="@draw-east.png" />
                            </image>
@@ -94,7 +95,7 @@
                   <Image url="@canopen.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="103.0" fitWidth="77.0" layoutX="572.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="77.0" layoutX="572.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@character-east.png" />
                </image>

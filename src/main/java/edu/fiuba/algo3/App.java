@@ -21,7 +21,6 @@ public class App extends Application {
         FXMLLoader loaderInicio = new FXMLLoader(getClass().getClassLoader().getResource("inicio.fxml"));
         FXMLLoader loaderJuego  = new FXMLLoader(getClass().getClassLoader().getResource("juego2.fxml"));
 
-
         Parent inicio   = loaderInicio.load();
         Parent juego    = loaderJuego.load();
 
