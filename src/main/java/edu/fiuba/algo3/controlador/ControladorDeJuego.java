@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.controlador;
 
-
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +19,7 @@ public class ControladorDeJuego implements Initializable {
     @FXML
     public ImageView target;
 
-    public ControladorDeJuego(){};
+    public ControladorDeJuego() { }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {}
@@ -64,5 +63,4 @@ public class ControladorDeJuego implements Initializable {
         target.setImage(image);
         //https://www.genuinecoder.com/drag-and-drop-in-javafx-html/
     }
-
 }

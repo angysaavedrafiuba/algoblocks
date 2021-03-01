@@ -14,94 +14,58 @@
 <BorderPane prefHeight="766.0" prefWidth="1391.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controlador.ControladorDeJuego">
    <top>
       <HBox prefHeight="120.0" prefWidth="600.0" style="-fx-background-color: #ff2e63; -fx-border-color: #252a34; -fx-border-width: 3px;" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane prefHeight="114.0" prefWidth="1385.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="1384.0" style="-fx-background-color: #ff2e63;">
-                     <children>
-                        <ImageView fitHeight="56.0" fitWidth="75.0" layoutX="7.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
-                           <image>
-                              <Image url="@play-button.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="target" fitHeight="71.0" fitWidth="105.0" layoutX="80.0" layoutY="14.0" onDragDropped="#handleImageDrop" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
-         </children>
+         <ScrollPane prefHeight="114.0" prefWidth="1385.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="1384.0" style="-fx-background-color: #ff2e63;">
+               <ImageView fitHeight="56.0" fitWidth="75.0" layoutX="7.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
+                  <Image url="@play-button.png" />
+               </ImageView>
+               <ImageView fx:id="target" fitHeight="71.0" fitWidth="105.0" layoutX="80.0" layoutY="14.0" onDragDropped="#handleImageDrop" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true" />
+            </AnchorPane>
+         </ScrollPane>
       </HBox>
    </top>
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="646.0" prefWidth="171.0" style="-fx-background-color: #ff2e63; -fx-border-width: 3px; -fx-border-color: #252a34;" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane prefHeight="640.0" prefWidth="135.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" onMouseEntered="#setPointer" onMouseExited="#setDefaultCursor" prefHeight="639.0" prefWidth="151.0" style="-fx-background-color: #ff2e63;">
-                     <children>
-                        <ImageView fx:id="source" fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="14.0" onDragDetected="#handleDragDetection" onMouseClicked="#logClick" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
-                           <image>
-                              <Image url="@draw-east.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="92.0" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
-                           <image>
-                              <Image url="@draw-west.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="170.0" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
-                           <image>
-                              <Image url="@draw-north.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="251.0" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
-                           <image>
-                              <Image url="@draw-south.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="67.0" fitWidth="124.0" layoutX="13.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@bajar.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="75.0" fitWidth="118.0" layoutX="13.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@subir.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="67.0" fitWidth="119.0" layoutX="13.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@repeticion.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="69.0" fitWidth="119.0" layoutX="13.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="67.0" fitWidth="118.0" layoutX="13.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@invertir.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
-         </children>
+         <ScrollPane prefHeight="640.0" prefWidth="135.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" onMouseEntered="#setPointer" onMouseExited="#setDefaultCursor" prefHeight="639.0" prefWidth="151.0" style="-fx-background-color: #ff2e63;">
+               <ImageView fx:id="source" fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="14.0" onDragDetected="#handleDragDetection" onMouseClicked="#logClick" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
+                  <Image url="@draw-east.png" />
+               </ImageView>
+               <ImageView fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="92.0" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
+                  <Image url="@draw-west.png" />
+               </ImageView>
+               <ImageView fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="170.0" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
+                  <Image url="@draw-north.png" />
+               </ImageView>
+               <ImageView fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="251.0" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
+                  <Image url="@draw-south.png" />
+               </ImageView>
+               <ImageView fitHeight="67.0" fitWidth="124.0" layoutX="13.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@bajar.png" />
+               </ImageView>
+               <ImageView fitHeight="75.0" fitWidth="118.0" layoutX="13.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@subir.png" />
+               </ImageView>
+               <ImageView fitHeight="67.0" fitWidth="119.0" layoutX="13.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@repeticion.png" />
+               </ImageView>
+               <ImageView fitHeight="69.0" fitWidth="119.0" layoutX="13.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true" />
+               <ImageView fitHeight="67.0" fitWidth="118.0" layoutX="13.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@invertir.png" />
+               </ImageView>
+            </AnchorPane>
+         </ScrollPane>
       </VBox>
    </left>
    <center>
       <Pane prefHeight="289.0" prefWidth="441.0" style="-fx-background-color: #08d9d6; -fx-border-color: #252a34; -fx-border-width: 3px;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="60.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
-               <image>
-                  <Image url="@canopen.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="77.0" layoutX="572.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@character-east.png" />
-               </image>
-            </ImageView>
-            <Canvas height="643.0" width="1217.0" />
-         </children>
+         <ImageView fitHeight="60.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
+            <Image url="@canopen.png" />
+         </ImageView>
+         <ImageView fitHeight="60.0" fitWidth="77.0" layoutX="572.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@character-east.png" />
+         </ImageView>
+         <Canvas height="643.0" width="1217.0" />
       </Pane>
    </center>
    <opaqueInsets>
