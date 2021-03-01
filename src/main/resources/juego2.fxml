@@ -11,11 +11,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="766.0" prefWidth="1391.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controlador.ControladorDeJuego">
+<?import javafx.stage.Screen?>
+
+   <BorderPane prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width}" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controlador.ControladorDeJuego">
+   <fx:define>
+      <Screen fx:factory="getPrimary" fx:id="screen" />
+   </fx:define>
    <top>
-      <HBox prefHeight="120.0" prefWidth="600.0" style="-fx-background-color: #ff2e63; -fx-border-color: #252a34; -fx-border-width: 3px;" BorderPane.alignment="CENTER">
-         <ScrollPane prefHeight="114.0" prefWidth="1385.0">
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="98.0" prefWidth="1384.0" style="-fx-background-color: #ff2e63;">
+      <HBox prefHeight="${screen.visualBounds.height*0.2}" prefWidth="${screen.visualBounds.width}" style="-fx-background-color: #ff2e63; -fx-border-color: #252a34; -fx-border-width: 3px;" BorderPane.alignment="CENTER">
+         <ScrollPane prefHeight="${screen.visualBounds.height*0.2}" prefWidth="${screen.visualBounds.width}">
+            <AnchorPane prefHeight="${screen.visualBounds.height*0.2}" prefWidth="${screen.visualBounds.width}" style="-fx-background-color: #ff2e63;">
                <ImageView fitHeight="56.0" fitWidth="75.0" layoutX="7.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
                   <Image url="@play-button.png" />
                </ImageView>
@@ -25,9 +30,9 @@
       </HBox>
    </top>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="646.0" prefWidth="171.0" style="-fx-background-color: #ff2e63; -fx-border-width: 3px; -fx-border-color: #252a34;" BorderPane.alignment="CENTER">
-         <ScrollPane prefHeight="640.0" prefWidth="135.0">
-            <AnchorPane minHeight="0.0" minWidth="0.0" onMouseEntered="#setPointer" onMouseExited="#setDefaultCursor" prefHeight="639.0" prefWidth="151.0" style="-fx-background-color: #ff2e63;">
+      <VBox alignment="TOP_CENTER" prefHeight="${screen.visualBounds.height*0.8}" prefWidth="${screen.visualBounds.width * 0.2}" style="-fx-background-color: #ff2e63; -fx-border-width: 3px; -fx-border-color: #252a34;" BorderPane.alignment="CENTER">
+         <ScrollPane prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width*0.2}">
+            <AnchorPane minHeight="0.0" minWidth="0.0" onMouseEntered="#setPointer" onMouseExited="#setDefaultCursor" prefHeight="${screen.visualBounds.height}" prefWidth="${screen.visualBounds.width*0.2}" style="-fx-background-color: #ff2e63;">
                <ImageView fx:id="source" fitHeight="74.0" fitWidth="122.0" layoutX="14.0" layoutY="14.0" onDragDetected="#handleDragDetection" onMouseClicked="#logClick" onMouseEntered="#setPointer" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
                   <Image url="@draw-east.png" />
                </ImageView>
@@ -58,11 +63,11 @@
       </VBox>
    </left>
    <center>
-      <Pane prefHeight="289.0" prefWidth="441.0" style="-fx-background-color: #08d9d6; -fx-border-color: #252a34; -fx-border-width: 3px;" BorderPane.alignment="CENTER">
+      <Pane prefHeight="${screen.visualBounds.height*0.8}" prefWidth="${screen.visualBounds.width*0.8}" style="-fx-background-color: #08d9d6; -fx-border-color: #252a34; -fx-border-width: 3px;" BorderPane.alignment="CENTER">
          <ImageView fitHeight="60.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: pointer;">
             <Image url="@canopen.png" />
          </ImageView>
-         <ImageView fitHeight="60.0" fitWidth="77.0" layoutX="572.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="60.0" fitWidth="77.0" layoutX="${screen.visualBounds.width*0.35}" layoutY="${screen.visualBounds.height*0.35}" pickOnBounds="true" preserveRatio="true">
             <Image url="@character-east.png" />
          </ImageView>
          <Canvas height="643.0" width="1217.0" />
