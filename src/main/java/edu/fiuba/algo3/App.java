@@ -2,9 +2,12 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.controlador.BotonEntrar;
 import edu.fiuba.algo3.controlador.ControladorDeJuego;
+import edu.fiuba.algo3.vista.ContenedorPrincipalJuego;
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.fxml.*;
 
@@ -19,17 +22,17 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader loaderInicio = new FXMLLoader(getClass().getClassLoader().getResource("inicio.fxml"));
-        FXMLLoader loaderJuego  = new FXMLLoader(getClass().getClassLoader().getResource("juego2.fxml"));
 
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
         Parent inicio   = loaderInicio.load();
-        Parent juego    = loaderJuego.load();
+        ContenedorPrincipalJuego juego = new ContenedorPrincipalJuego();
 
-        Scene escenaInicio  = new Scene(inicio, 640,440);
-        Scene escenaJuego   = new Scene(juego, 640, 440);
+        Scene escenaInicio  = new Scene(inicio, screenBounds.getWidth(),    screenBounds.getHeight());
+        Scene escenaJuego   = new Scene(juego,  screenBounds.getWidth(),    screenBounds.getHeight());
 
-        ControladorDeJuego controladorPrincipal = loaderJuego.getController();
-        controladorPrincipal.init(escenaJuego);
+        juego.setEscena(escenaJuego);
+        juego.inicializar(screenBounds);
 
         stage.setTitle("AlgoBlocks");
 
@@ -38,19 +41,8 @@ public class App extends Application {
 
         stage.setScene(escenaInicio);
         stage.setFullScreen(true);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.show();
-
-        /*
-        ContenedorJuego pane = new ContenedorJuego();
-        Scene scene = new Scene(pane, 900,500);
-        Inicializar inicioJuego = new Inicializar(stage, scene);
-
-        Scene pantallaInicio = new Scene(inicioJuego,900,500);
-        stage.setScene(pantallaInicio);
-        stage.show();
-        */
-
     }
 
     public static void main(String[] args) {
