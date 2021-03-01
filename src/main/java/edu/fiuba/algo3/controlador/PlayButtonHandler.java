@@ -1,2 +1,4 @@
-package edu.fiuba.algo3.controlador;public class PlayButtonHandler {
+package edu.fiuba.algo3.controlador;
+
+public class PlayButtonHandler {
 }

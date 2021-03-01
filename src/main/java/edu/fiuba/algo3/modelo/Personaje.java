@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.concurrent.TimeUnit;
 
 public class Personaje {
     private final Lapiz lapiz;

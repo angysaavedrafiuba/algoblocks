@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlador;
+package edu.fiuba.algo3.listeners;
 
 import edu.fiuba.algo3.modelo.Posicion2D;
 

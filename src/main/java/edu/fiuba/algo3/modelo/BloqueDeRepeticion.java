@@ -4,7 +4,7 @@ public class BloqueDeRepeticion implements EstadoDeBloque{
     private final int repeticiones;
     private RecorridoNormal bloques;
 
-    BloqueDeRepeticion(int repeticiones){
+    public BloqueDeRepeticion(int repeticiones){
         this.repeticiones = repeticiones;
     }
 

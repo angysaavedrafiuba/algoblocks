@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo;
 public class BloqueAgregable extends Bloque{
     private RecorridoNormal bloques = new RecorridoNormal();
 
-    BloqueAgregable(EstadoDeBloque estado){
+    public BloqueAgregable(EstadoDeBloque estado){
         this.estado = estado;
     }
 

@@ -1,8 +1,8 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.controlador.BotonEntrar;
-import edu.fiuba.algo3.controlador.ControladorDeJuego;
-import edu.fiuba.algo3.modelo.Algoblocks;
+
+import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.ContenedorPrincipalJuego;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -24,12 +24,12 @@ public class App extends Application {
 
         FXMLLoader loaderInicio = new FXMLLoader(getClass().getClassLoader().getResource("inicio.fxml"));
 
-        Algoblocks algoblocks = Algoblocks.getInstance();
+        Algoblocks.Create();
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
         Parent inicio   = loaderInicio.load();
-        ContenedorPrincipalJuego juego = new ContenedorPrincipalJuego(algoblocks);
+        ContenedorPrincipalJuego juego = new ContenedorPrincipalJuego();
 
         Scene escenaInicio  = new Scene(inicio, screenBounds.getWidth(),    screenBounds.getHeight());
         Scene escenaJuego   = new Scene(juego,  screenBounds.getWidth(),    screenBounds.getHeight());
@@ -43,6 +43,7 @@ public class App extends Application {
         entrarEventHandler.init(stage, escenaJuego);
 
         stage.setScene(escenaInicio);
+        stage.setScene(escenaJuego);
         stage.setFullScreen(true);
         stage.setResizable(true);
         stage.show();

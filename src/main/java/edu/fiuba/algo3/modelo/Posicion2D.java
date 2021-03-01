@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 public class Posicion2D {
-    static int xLimite = 21;
-    static int yLimite = 21;
+    public static int xLimite = 21;
+    public static int yLimite = 21;
 
     private static final int X_DERECHA   =   1;
     private static final int Y_DERECHA   =   0;

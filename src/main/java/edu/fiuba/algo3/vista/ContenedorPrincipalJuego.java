@@ -10,8 +10,9 @@ public class ContenedorPrincipalJuego extends BorderPane {
     Scene scene;
     private Algoblocks algoblocks;
 
-    public ContenedorPrincipalJuego(Algoblocks algoblocks){
+    public ContenedorPrincipalJuego(){
         super();
+        this.algoblocks = Algoblocks.getInstance();
     }
 
     public void setEscena(Scene escenaJuego) {
