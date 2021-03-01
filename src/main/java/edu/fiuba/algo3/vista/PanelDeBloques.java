@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.modelo.Algoblocks;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -11,7 +12,7 @@ public class PanelDeBloques extends VBox {
 
     Scene scene;
 
-    PanelDeBloques(Rectangle2D screenBounds, Scene scene){
+    PanelDeBloques(Rectangle2D screenBounds, Scene scene, Algoblocks algoblocks){
         super();
         this.scene = scene;
         super.setPrefWidth(screenBounds.getWidth() * 0.15);

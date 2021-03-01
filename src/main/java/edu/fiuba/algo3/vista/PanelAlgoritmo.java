@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.modelo.Algoblocks;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -12,7 +13,7 @@ public class PanelAlgoritmo extends HBox {
 
     Scene scene;
 
-    PanelAlgoritmo(Rectangle2D screenBounds, Scene scene){
+    PanelAlgoritmo(Rectangle2D screenBounds, Scene scene, Algoblocks algoblocks){
         super();
         this.scene = scene;
         super.getChildren().add(new ImagenConComportamiento("play-button.png", screenBounds, this.scene));

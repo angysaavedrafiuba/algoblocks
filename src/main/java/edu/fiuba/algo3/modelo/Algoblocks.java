@@ -7,6 +7,14 @@ public class Algoblocks {
     private final Dibujo dibujo = new Dibujo();
     private final RecorridoNormal bloques = new RecorridoNormal();
 
+    private static final Algoblocks instance = new Algoblocks();
+
+    public Algoblocks(){}
+
+    public static Algoblocks getInstance() {
+        return instance;
+    }
+
     public void agregarBloqueDeAccion(BloqueDeAccion bloque){
         bloques.agregarBloque(bloque);
     }
