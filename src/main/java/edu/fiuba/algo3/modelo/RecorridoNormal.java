@@ -27,10 +27,9 @@ public class RecorridoNormal {
     }
 
     private void clonar(List<Bloque> bloques){
-        ArrayList<Bloque> bloquesAntiguo = this.bloques;
         this.bloques = new ArrayList<>();
         bloques.forEach(bloque -> this.bloques.add(bloque.clonar()));
-        support.firePropertyChange("bloques", bloquesAntiguo, bloques);
+        support.firePropertyChange("bloques", bloques, bloques);
     }
 
     public void ejecutar(Personaje personaje, Dibujo dibujo){
