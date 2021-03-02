@@ -14,9 +14,11 @@ public class ControladorPersonaje implements PropertyChangeListener {
     Posicion2D posicion;
     double xMax;
     double yMax;
+    ControladorDibujo controladorDibujo;
 
-    public ControladorPersonaje(Rectangle2D screenBounds, ImagenPersonaje vista) {
+    public ControladorPersonaje(Rectangle2D screenBounds, ImagenPersonaje vista, ControladorDibujo controladorDibujo) {
         this.posicion = Posicion2D.posicionInicial();
+        this.controladorDibujo = controladorDibujo;
         xMax = screenBounds.getWidth() * 0.8;
         yMax = screenBounds.getHeight() * 0.8;
 
@@ -27,15 +29,16 @@ public class ControladorPersonaje implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        controladorDibujo.informarUltimaPosicion((Posicion2D) evt.getOldValue());
         this.posicion = (Posicion2D) evt.getNewValue();
         this.vista.update(this.getX(), this.getY());
     }
 
     public double getX(){
-        return (xMax/Posicion2D.xLimite)*posicion.getX();
+        return ((xMax/Posicion2D.xLimite)*posicion.getX() - 70);
     }
 
     public double getY(){
-        return yMax - (yMax/Posicion2D.yLimite)*posicion.getY();
+        return yMax - ((yMax/Posicion2D.yLimite)*posicion.getY() + 100);
     }
 }

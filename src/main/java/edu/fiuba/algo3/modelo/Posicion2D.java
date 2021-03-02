@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 public class Posicion2D {
+    // Para conservar la integridad de las pruebas automatizadas, los límites
+    // de x e y no deberían ser menores a 9.
     public static int xLimite = 21;
     public static int yLimite = 21;
 
@@ -76,5 +78,9 @@ public class Posicion2D {
 
     public int getY() {
         return y;
+    }
+
+    public boolean esLimite() {
+        return (this.x == xLimite - 1 || this.y == yLimite - 1 || this.x == 0 || this.y == 0);
     }
 }

@@ -11,17 +11,23 @@ import java.util.ArrayList;
 
 public class ControladorDibujo implements PropertyChangeListener {
     private final VistaDibujo vista;
-    ArrayList<Posicion2D> posicionesDibujadas;
+    Posicion2D ultimaPosicionPersonaje;
+    Posicion2D ultimaPosicionDibujada;
 
     public ControladorDibujo(Rectangle2D screenBounds, VistaDibujo vista) {
         this.vista = vista;
-        this.posicionesDibujadas = new ArrayList<>();
+        this.ultimaPosicionPersonaje = Posicion2D.posicionInicial();
+        this.ultimaPosicionDibujada = Posicion2D.posicionInicial();
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        this.posicionesDibujadas = (ArrayList<Posicion2D>) evt.getNewValue();
-        System.out.println("evento disparado con " + posicionesDibujadas);
-        this.vista.update(posicionesDibujadas);
+        Posicion2D posicionDibujada = (Posicion2D) evt.getNewValue();
+        this.vista.update(ultimaPosicionDibujada, posicionDibujada, ultimaPosicionPersonaje);
+        ultimaPosicionDibujada = posicionDibujada;
+    }
+
+    public void informarUltimaPosicion(Posicion2D posicion) {
+        this.ultimaPosicionPersonaje = posicion;
     }
 }

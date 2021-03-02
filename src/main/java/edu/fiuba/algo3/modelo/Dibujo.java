@@ -10,8 +10,7 @@ public class Dibujo {
 
     public void dibujar(Posicion2D posicionADibujar) {
         posicionesDibujadas.add(posicionADibujar.clonarPosicion());
-        System.out.println("voy a disparar un evento");
-        support.firePropertyChange("posicionesDibujadas", null, posicionesDibujadas);
+        support.firePropertyChange("ultimaPosicionPersonaje", null, (Posicion2D) posicionesDibujadas.get(posicionesDibujadas.size() - 1));
     }
 
     public void dibujarConLapiz(Posicion2D posicionADibujar, Lapiz lapiz) {
@@ -20,7 +19,6 @@ public class Dibujo {
 
     public void reiniciar() {
         posicionesDibujadas = new ArrayList<>();
-        support.firePropertyChange("posicionesDibujadas", null, posicionesDibujadas);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {

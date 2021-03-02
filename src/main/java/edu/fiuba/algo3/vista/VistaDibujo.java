@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.listeners.ControladorDibujo;
+import edu.fiuba.algo3.listeners.ControladorPersonaje;
 import edu.fiuba.algo3.modelo.Algoblocks;
 import edu.fiuba.algo3.modelo.Posicion2D;
 import javafx.geometry.Rectangle2D;
@@ -32,19 +33,20 @@ public class VistaDibujo extends Pane {
         gc.setLineWidth(5);
     }
 
-    public void update(ArrayList<Posicion2D> posicionesDibujadas) {
-        System.out.println("Me estoy actualizando");
-        gc.moveTo(Posicion2D.xLimite/2, Posicion2D.yLimite/2);
-        gc.beginPath();
-        posicionesDibujadas.forEach(posicion2D -> {
-            double nuevoX = transformarX(posicion2D.getX());
-            double nuevoY = transformarY(posicion2D.getY());
-            System.out.println("canvas a " + posicion2D.getX() + ", " + posicion2D.getY());
-            gc.lineTo(nuevoX, nuevoY);
+    public void update(Posicion2D anteultimaPosicionDibujada, Posicion2D posicionDibujada, Posicion2D ultimaPosicionPersonaje) {
+        double ultimaXdePersonaje = transformarX(ultimaPosicionPersonaje.getX());
+        double ultimaYdePersonaje = transformarY(ultimaPosicionPersonaje.getY());
+        double xPosicionDibujada = transformarX(posicionDibujada.getX());
+        double yPosicionDibujada = transformarY(posicionDibujada.getY());
+        if(!anteultimaPosicionDibujada.esLaMismaQue(ultimaPosicionPersonaje) ||
+                (anteultimaPosicionDibujada.esLimite() && posicionDibujada.esLimite())) {
+        } else {
+            gc.beginPath();
+            gc.moveTo(ultimaXdePersonaje, ultimaYdePersonaje);
+            gc.lineTo(xPosicionDibujada, yPosicionDibujada);
             gc.stroke();
-        });
-        gc.closePath();
-        //TODO: arreglar la posicion inicial para que coincida con la punta del lapiz del personaje
+            gc.closePath();
+        }
     }
 
     private double transformarX(int x) {
@@ -52,7 +54,10 @@ public class VistaDibujo extends Pane {
     }
 
     private double transformarY(int y) {
-        return (yMax/Posicion2D.yLimite)*y;
+        return yMax - (yMax/Posicion2D.yLimite)*y;
     }
 
+    public ControladorDibujo getControladorDibujo() {
+        return controladorDibujo;
+    }
 }

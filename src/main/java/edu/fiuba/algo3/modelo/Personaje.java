@@ -26,8 +26,8 @@ public class Personaje {
 
     public void mover(Posicion2D posicion, Dibujo dibujo) {
         Posicion2D nuevaPosicion = this.posicion.calcularNuevaPosicion(posicion);
-        dibujo.dibujarConLapiz(nuevaPosicion, this.lapiz);
         support.firePropertyChange("posicion", this.posicion, nuevaPosicion);
+        dibujo.dibujarConLapiz(nuevaPosicion, this.lapiz);
         this.posicion = nuevaPosicion;
     }
 
