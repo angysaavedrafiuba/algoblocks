@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.BotonPlayHandler;
+import edu.fiuba.algo3.controlador.BotonReiniciarHandler;
 import edu.fiuba.algo3.listeners.ControladorAlgoritmo;
 import edu.fiuba.algo3.modelo.Algoblocks;
 import javafx.geometry.Insets;
@@ -19,8 +20,10 @@ public class PanelAlgoritmo extends HBox {
         super();
         this.scene = scene;
         ImagenConComportamiento botonPlay = new ImagenConComportamiento("play-button.png", screenBounds, scene);
+        ImagenConComportamiento botonReiniciar = new ImagenConComportamiento("canopen.png", screenBounds, scene);
         botonPlay.setOnAction(new BotonPlayHandler());
-        super.getChildren().add(botonPlay);
+        botonReiniciar.setOnAction(new BotonReiniciarHandler());
+        super.getChildren().addAll(botonPlay, botonReiniciar);
         super.setStyle("-fx-background-color: #ff2e63;");
         super.setPrefHeight(screenBounds.getHeight() * 0.2);
         super.setPrefWidth(screenBounds.getWidth());
