@@ -17,44 +17,24 @@ public class VistaDibujo extends Pane {
     Algoblocks algoblocks = Algoblocks.getInstance();
     Canvas canvas;
     GraphicsContext gc;
-    double xMax;
-    double yMax;
 
     public VistaDibujo(Rectangle2D screenBounds) {
         super();
         controladorDibujo = new ControladorDibujo(screenBounds, this);
         algoblocks.addPropertyChangeListenerADibujo(controladorDibujo);
-        xMax = screenBounds.getWidth() * 0.8; //TODO refactorizar este hardcodeo
-        yMax = screenBounds.getHeight() * 0.8;
-        canvas = new Canvas(xMax, yMax);
+        canvas = controladorDibujo.generarCanvas();
         super.getChildren().add(canvas);
         gc = canvas.getGraphicsContext2D();
         gc.setStroke(Color.CORAL.brighter());
         gc.setLineWidth(5);
     }
 
-    public void update(Posicion2D anteultimaPosicionDibujada, Posicion2D posicionDibujada, Posicion2D ultimaPosicionPersonaje) {
-        double ultimaXdePersonaje = transformarX(ultimaPosicionPersonaje.getX());
-        double ultimaYdePersonaje = transformarY(ultimaPosicionPersonaje.getY());
-        double xPosicionDibujada = transformarX(posicionDibujada.getX());
-        double yPosicionDibujada = transformarY(posicionDibujada.getY());
-        if(!anteultimaPosicionDibujada.esLaMismaQue(ultimaPosicionPersonaje) ||
-                (anteultimaPosicionDibujada.esLimite() && posicionDibujada.esLimite())) {
-        } else {
-            gc.beginPath();
-            gc.moveTo(ultimaXdePersonaje, ultimaYdePersonaje);
-            gc.lineTo(xPosicionDibujada, yPosicionDibujada);
-            gc.stroke();
-            gc.closePath();
-        }
-    }
-
-    private double transformarX(int x) {
-        return (xMax/Posicion2D.xLimite)*x;
-    }
-
-    private double transformarY(int y) {
-        return yMax - (yMax/Posicion2D.yLimite)*y;
+    public void update(double ultimaXPersonaje, double ultimaYPersonaje, double xPosicionDibujada, double yPosicionDibujada) {
+        gc.beginPath();
+        gc.moveTo(ultimaXPersonaje, ultimaYPersonaje);
+        gc.lineTo(xPosicionDibujada, yPosicionDibujada);
+        gc.stroke();
+        gc.closePath();
     }
 
     public ControladorDibujo getControladorDibujo() {
