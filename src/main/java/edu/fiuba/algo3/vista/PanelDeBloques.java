@@ -29,8 +29,8 @@ public class PanelDeBloques extends VBox {
         super.getChildren().add(new ImagenConComportamiento("draw-south.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaAbajo()));
         super.getChildren().add(new ImagenConComportamiento("draw-east.png",    screenBounds, this.scene, new ControladorBloqueMoverADerecha()));
         super.getChildren().add(new ImagenConComportamiento("draw-west.png",    screenBounds, this.scene, new ControladorBloqueMoverAIzquierda()));
-        super.getChildren().add(new ImagenConComportamiento("bajar.png",        screenBounds, this.scene, new ControladorBloqueSubir()));
-        super.getChildren().add(new ImagenConComportamiento("subir.png",        screenBounds, this.scene, new ControladorBloqueBajar()));
+        super.getChildren().add(new ImagenConComportamiento("bajar.png",        screenBounds, this.scene, new ControladorBloqueBajar()));
+        super.getChildren().add(new ImagenConComportamiento("subir.png",        screenBounds, this.scene, new ControladorBloqueSubir()));
         super.getChildren().add(new ImagenConComportamiento("invertir.png",     screenBounds, this.scene));
         super.getChildren().add(new ImagenConComportamiento("repeticion.png",   screenBounds, this.scene));
     }
