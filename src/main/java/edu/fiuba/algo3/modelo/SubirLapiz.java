@@ -11,4 +11,9 @@ public class SubirLapiz implements EstadoDeBloque {
     public EstadoDeBloque invertir() {
         return new BajarLapiz();
     }
+
+    @Override
+    public String toString() {
+        return "SubirLapiz{}";
+    }
 }

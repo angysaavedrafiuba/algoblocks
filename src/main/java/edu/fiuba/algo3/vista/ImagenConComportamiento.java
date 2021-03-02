@@ -19,7 +19,7 @@ public class ImagenConComportamiento extends Pane {
     public ImagenConComportamiento(String nombreImagen, Rectangle2D screenBounds, Scene scene) {
         super();
         super.setPrefHeight(screenBounds.getHeight() * 0.15);
-        super.setPadding(new Insets(0, 0, 0, 0));
+        super.setPadding(new Insets(0, 10, 0, 10));
 
         String URLImagen = getClass().getClassLoader().getResource(nombreImagen).toExternalForm();
         Image img = new Image(URLImagen);

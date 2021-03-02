@@ -11,4 +11,8 @@ public class MoverHaciaAbajo implements EstadoDeBloque {
         return new MoverHaciaArriba();
     }
 
+    @Override
+    public String toString() {
+        return "MoverHaciaAbajo{}";
+    }
 }

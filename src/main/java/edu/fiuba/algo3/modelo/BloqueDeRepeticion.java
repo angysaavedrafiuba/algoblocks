@@ -25,4 +25,9 @@ public class BloqueDeRepeticion implements EstadoDeBloque{
         this.bloques = this.bloques.invertir();
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "BloqueDeRepeticion{}";
+    }
 }

@@ -11,4 +11,8 @@ public class MoverALaDerecha implements EstadoDeBloque {
         return new MoverALaIzquierda();
     }
 
+    @Override
+    public String toString() {
+        return "MoverALaDerecha{}";
+    }
 }

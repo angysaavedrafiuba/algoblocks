@@ -18,4 +18,8 @@ public class InvertirComportamiento implements EstadoDeBloque {
         this.bloques = bloques.clonar().invertir();
     }
 
+    @Override
+    public String toString() {
+        return "InvertirComportamiento{}";
+    }
 }

@@ -12,4 +12,9 @@ public abstract class Bloque {
     }
 
     public abstract Bloque clonar();
+
+    @Override
+    public String toString() {
+        return "Bloque{estado=" + estado.toString() + "}";
+    }
 }
