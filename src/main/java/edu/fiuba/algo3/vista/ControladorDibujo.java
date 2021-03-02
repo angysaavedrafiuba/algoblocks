@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.listeners;
+package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Posicion2D;
 import edu.fiuba.algo3.vista.Tablero;
@@ -32,9 +32,10 @@ public class ControladorDibujo implements PropertyChangeListener {
         double ultimaYdePersonaje = transformarY(ultimaPosicionPersonaje.getY());
         double xPosicionDibujada = transformarX(posicionDibujada.getX());
         double yPosicionDibujada = transformarY(posicionDibujada.getY());
-        if(!ultimaPosicionDibujada.esLaMismaQue(ultimaPosicionPersonaje) ||
-                (ultimaPosicionDibujada.esLimite() && posicionDibujada.esLimite())) {
-        } else {
+
+        if(ultimaPosicionDibujada.esLaMismaQue(ultimaPosicionPersonaje) ||
+                !(ultimaPosicionDibujada.esLimite() && posicionDibujada.esLimite())) {
+
             vista.update(ultimaXdePersonaje, ultimaYdePersonaje, xPosicionDibujada, yPosicionDibujada);
         }
 

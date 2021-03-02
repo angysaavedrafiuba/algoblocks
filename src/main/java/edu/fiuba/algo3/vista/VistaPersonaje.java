@@ -1,22 +1,19 @@
-package edu.fiuba.algo3.listeners;
+package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Posicion2D;
-import edu.fiuba.algo3.vista.ImagenPersonaje;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.concurrent.TimeUnit;
 
-public class ControladorPersonaje implements PropertyChangeListener {
+public class VistaPersonaje implements PropertyChangeListener {
     private final ImagenPersonaje vista;
     Posicion2D posicion;
     double xMax;
     double yMax;
     ControladorDibujo controladorDibujo;
 
-    public ControladorPersonaje(Rectangle2D screenBounds, ImagenPersonaje vista, ControladorDibujo controladorDibujo) {
+    public VistaPersonaje(Rectangle2D screenBounds, ImagenPersonaje vista, ControladorDibujo controladorDibujo) {
         this.posicion = Posicion2D.posicionInicial();
         this.controladorDibujo = controladorDibujo;
         xMax = screenBounds.getWidth() * 0.8;

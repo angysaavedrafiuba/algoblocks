@@ -43,7 +43,6 @@ public class App extends Application {
         entrarEventHandler.init(stage, escenaJuego);
 
         stage.setScene(escenaInicio);
-        stage.setScene(escenaJuego);
         stage.setFullScreen(true);
         stage.setResizable(true);
         stage.show();

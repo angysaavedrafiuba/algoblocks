@@ -8,11 +8,9 @@ import javafx.stage.Stage;
 
 public class ContenedorPrincipalJuego extends BorderPane {
     Scene scene;
-    private Algoblocks algoblocks;
 
     public ContenedorPrincipalJuego(){
         super();
-        this.algoblocks = Algoblocks.getInstance();
     }
 
     public void setEscena(Scene escenaJuego) {
@@ -20,8 +18,8 @@ public class ContenedorPrincipalJuego extends BorderPane {
     }
 
     public void inicializar(Rectangle2D screenBounds) {
-        super.setTop(new PanelAlgoritmo(screenBounds, scene, this.algoblocks));
-        super.setLeft(new PanelDeBloques(screenBounds, scene, this.algoblocks));
-        super.setCenter(new Tablero(screenBounds, this.algoblocks));
+        super.setTop(new PanelAlgoritmo(screenBounds, scene));
+        super.setLeft(new PanelDeBloques(screenBounds, scene));
+        super.setCenter(new Tablero(screenBounds));
     }
 }

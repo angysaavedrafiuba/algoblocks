@@ -1,11 +1,7 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonPlayHandler;
-import edu.fiuba.algo3.controlador.BotonReiniciarHandler;
-import edu.fiuba.algo3.listeners.ControladorAlgoritmo;
 import edu.fiuba.algo3.modelo.Algoblocks;
 import edu.fiuba.algo3.modelo.Bloque;
-import edu.fiuba.algo3.servicios.ServicioImagenes;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -17,12 +13,11 @@ import java.util.ArrayList;
 public class PanelAlgoritmo extends HBox {
 
     Scene scene;
-    ControladorAlgoritmo controladorAlgoritmo = new ControladorAlgoritmo(this);
-    Algoblocks algoblocks = Algoblocks.getInstance();
+    VistaAlgoritmo controladorAlgoritmo = new VistaAlgoritmo(this);
     private final Rectangle2D bounds;
 
 
-    PanelAlgoritmo(Rectangle2D screenBounds, Scene scene, Algoblocks algoblocks){
+    PanelAlgoritmo(Rectangle2D screenBounds, Scene scene){
         super();
         this.scene = scene;
         this.bounds = screenBounds;
@@ -36,12 +31,12 @@ public class PanelAlgoritmo extends HBox {
         super.setAlignment(Pos.CENTER_LEFT);
         super.setPadding(new Insets(screenBounds.getHeight() * 0.05, 0, 0, screenBounds.getWidth() * 0.031));
 
-        algoblocks.addPropertyChangeListenerAlAlgoritmo(this.controladorAlgoritmo);
+        Algoblocks.getInstance().getRecorridoNormal().addPropertyChangeListener(this.controladorAlgoritmo);
     }
 
     public void update(ArrayList<Bloque> bloques) {
         ArrayList<String> bloquesAAgregar = new ArrayList<String>();
-        bloques.forEach(bloque -> bloquesAAgregar.add(ServicioImagenes.getInstance().imagenCorrespondienteA(bloque)));
+        bloques.forEach(bloque -> bloquesAAgregar.add(MapeoDeBloques.getInstance().imagenCorrespondienteA(bloque)));
         super.getChildren().clear();
 
         super.getChildren().add(new BotonPlay(this.bounds, this.scene));

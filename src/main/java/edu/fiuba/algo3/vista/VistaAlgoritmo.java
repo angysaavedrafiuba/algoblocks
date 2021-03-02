@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.listeners;
+package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Bloque;
 import edu.fiuba.algo3.vista.PanelAlgoritmo;
@@ -7,11 +7,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
-public class ControladorAlgoritmo implements PropertyChangeListener {
+public class VistaAlgoritmo implements PropertyChangeListener {
     ArrayList<Bloque> bloques = new ArrayList<>();
     PanelAlgoritmo vista;
 
-    public ControladorAlgoritmo(PanelAlgoritmo vista){
+    public VistaAlgoritmo(PanelAlgoritmo vista){
         this.vista = vista;
     }
 

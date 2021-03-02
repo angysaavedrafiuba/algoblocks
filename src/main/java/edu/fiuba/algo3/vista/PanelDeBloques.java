@@ -18,7 +18,7 @@ public class PanelDeBloques extends VBox {
 
     Scene scene;
 
-    PanelDeBloques(Rectangle2D screenBounds, Scene scene, Algoblocks algoblocks){
+    PanelDeBloques(Rectangle2D screenBounds, Scene scene){
         super();
         this.scene = scene;
         super.setPrefWidth(screenBounds.getWidth() * 0.20);

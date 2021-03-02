@@ -1,14 +1,14 @@
-package edu.fiuba.algo3.servicios;
+package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.*;
 
 import java.util.HashMap;
 
-public class ServicioImagenes {
+public class MapeoDeBloques {
 
     private HashMap<String, String> mapeoDeImagenes = new HashMap<>();
 
-    private ServicioImagenes(){
+    private MapeoDeBloques(){
         mapeoDeImagenes.put(new BloqueDeAccion(new MoverHaciaArriba()).toString()  , "draw-north.png");
         mapeoDeImagenes.put(new BloqueDeAccion(new MoverALaDerecha()).toString()   , "draw-east.png");
         mapeoDeImagenes.put(new BloqueDeAccion(new MoverHaciaAbajo()).toString()   , "draw-south.png");
@@ -20,9 +20,9 @@ public class ServicioImagenes {
         mapeoDeImagenes.put(new BloqueAgregable(new InvertirComportamiento()).toString(), "invertir.png");
     }
 
-    private static ServicioImagenes instance = new ServicioImagenes();
+    private static MapeoDeBloques instance = new MapeoDeBloques();
 
-    public static ServicioImagenes getInstance() {
+    public static MapeoDeBloques getInstance() {
         return instance;
     }
 
