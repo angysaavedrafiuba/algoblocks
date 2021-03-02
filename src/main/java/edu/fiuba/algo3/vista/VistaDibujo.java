@@ -28,19 +28,23 @@ public class VistaDibujo extends Pane {
         canvas = new Canvas(xMax, yMax);
         super.getChildren().add(canvas);
         gc = canvas.getGraphicsContext2D();
-        gc.beginPath();
-        gc.setStroke(Color.BLACK.brighter());
+        gc.setStroke(Color.CORAL.brighter());
         gc.setLineWidth(5);
-        gc.moveTo(xMax/2, yMax/2);
     }
 
     public void update(ArrayList<Posicion2D> posicionesDibujadas) {
+        System.out.println("Me estoy actualizando");
+        gc.moveTo(Posicion2D.xLimite/2, Posicion2D.yLimite/2);
+        gc.beginPath();
         posicionesDibujadas.forEach(posicion2D -> {
             double nuevoX = transformarX(posicion2D.getX());
             double nuevoY = transformarY(posicion2D.getY());
-            gc.moveTo(nuevoX, nuevoY);
+            System.out.println("canvas a " + posicion2D.getX() + ", " + posicion2D.getY());
+            gc.lineTo(nuevoX, nuevoY);
+            gc.stroke();
         });
-        gc.stroke();
+        gc.closePath();
+        //TODO: arreglar la posicion inicial para que coincida con la punta del lapiz del personaje
     }
 
     private double transformarX(int x) {

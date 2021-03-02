@@ -21,6 +21,7 @@ public class ControladorDibujo implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         this.posicionesDibujadas = (ArrayList<Posicion2D>) evt.getNewValue();
+        System.out.println("evento disparado con " + posicionesDibujadas);
         this.vista.update(posicionesDibujadas);
     }
 }

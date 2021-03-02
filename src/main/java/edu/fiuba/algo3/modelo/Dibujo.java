@@ -10,6 +10,7 @@ public class Dibujo {
 
     public void dibujar(Posicion2D posicionADibujar) {
         posicionesDibujadas.add(posicionADibujar.clonarPosicion());
+        System.out.println("voy a disparar un evento");
         support.firePropertyChange("posicionesDibujadas", null, posicionesDibujadas);
     }
 
