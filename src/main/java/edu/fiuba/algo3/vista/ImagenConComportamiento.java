@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.BotonPlayHandler;
-import edu.fiuba.algo3.controlador.ControladorBloqueMoverADerecha;
-import edu.fiuba.algo3.controlador.HoverHandlerCursorADefault;
-import edu.fiuba.algo3.controlador.HoverHandlerCursorAPuntero;
+import edu.fiuba.algo3.controlador.*;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;

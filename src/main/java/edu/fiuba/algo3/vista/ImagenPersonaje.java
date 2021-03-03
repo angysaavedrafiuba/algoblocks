@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorDibujo;
 import edu.fiuba.algo3.modelo.Algoblocks;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;

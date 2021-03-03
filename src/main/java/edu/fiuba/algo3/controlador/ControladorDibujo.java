@@ -30,6 +30,7 @@ public class ControladorDibujo implements PropertyChangeListener {
         Posicion2D posicionDibujada = (Posicion2D) evt.getNewValue();
         if(posicionDibujada == null) {
             vista.reset();
+            ultimaPosicionDibujada = Posicion2D.posicionInicial();
             return;
         }
 
@@ -38,7 +39,7 @@ public class ControladorDibujo implements PropertyChangeListener {
         double xPosicionDibujada = transformarX(posicionDibujada.getX());
         double yPosicionDibujada = transformarY(posicionDibujada.getY());
 
-        if(ultimaPosicionDibujada.esLaMismaQue(ultimaPosicionPersonaje) ||
+        if(ultimaPosicionDibujada.esLaMismaQue(ultimaPosicionPersonaje) &&
                 !(ultimaPosicionDibujada.esLimite() && posicionDibujada.esLimite())) {
 
             vista.update(ultimaXdePersonaje, ultimaYdePersonaje, xPosicionDibujada, yPosicionDibujada);
