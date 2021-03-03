@@ -28,6 +28,11 @@ public class ControladorDibujo implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         Posicion2D posicionDibujada = (Posicion2D) evt.getNewValue();
+        if(posicionDibujada == null) {
+            vista.reset();
+            return;
+        }
+
         double ultimaXdePersonaje = transformarX(ultimaPosicionPersonaje.getX());
         double ultimaYdePersonaje = transformarY(ultimaPosicionPersonaje.getY());
         double xPosicionDibujada = transformarX(posicionDibujada.getX());

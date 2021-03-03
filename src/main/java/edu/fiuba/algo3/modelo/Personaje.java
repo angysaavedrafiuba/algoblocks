@@ -35,6 +35,13 @@ public class Personaje {
         support.addPropertyChangeListener(pcl);
     }
 
+    public void volverAPosicionInicial() {
+        Posicion2D antiguaPosicion = this.posicion.clonarPosicion();
+        this.posicion = Posicion2D.posicionInicial();
+        this.levantarLapiz();
+        support.firePropertyChange("posicion", antiguaPosicion, this.posicion);
+    }
+
     /* Test only */
     public boolean lapizEstaArriba() {
         return lapiz.LapizArriba();
@@ -43,6 +50,8 @@ public class Personaje {
     public boolean estaEn(Posicion2D posicion) {
         return posicion.esLaMismaQue(posicion);
     }
+
+
 }
 
 

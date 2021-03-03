@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
@@ -21,17 +22,22 @@ public class PanelAlgoritmo extends HBox {
         super();
         this.scene = scene;
         this.bounds = screenBounds;
-        BotonPlay botonPlay = new BotonPlay(screenBounds, scene);
-        BotonTacho botonReiniciar = new BotonTacho(screenBounds, scene);
 
-        super.getChildren().addAll(botonPlay, botonReiniciar);
-        super.setStyle("-fx-background-color: #ff2e63;");
-        super.setPrefHeight(screenBounds.getHeight() * 0.2);
-        super.setPrefWidth(screenBounds.getWidth());
-        super.setAlignment(Pos.CENTER_LEFT);
-        super.setPadding(new Insets(screenBounds.getHeight() * 0.05, 0, 0, screenBounds.getWidth() * 0.031));
+        Botonera botonera = new Botonera(screenBounds, scene);
+
+        super.getChildren().add(botonera);
+
+        this.initStyles();
 
         Algoblocks.getInstance().getRecorridoNormal().addPropertyChangeListener(this.controladorAlgoritmo);
+    }
+
+    private void initStyles() {
+        super.setStyle("-fx-background-color: #ff2e63;");
+        super.setPrefHeight(this.bounds.getHeight() * 0.2);
+        super.setPrefWidth(this.bounds.getWidth());
+        super.setAlignment(Pos.CENTER_LEFT);
+        super.setPadding(new Insets(this.bounds.getHeight() * 0.05, 0, 0, this.bounds.getWidth() * 0.031));
     }
 
     public void update(ArrayList<Bloque> bloques) {
@@ -39,8 +45,7 @@ public class PanelAlgoritmo extends HBox {
         bloques.forEach(bloque -> bloquesAAgregar.add(MapeoDeBloques.getInstance().imagenCorrespondienteA(bloque)));
         super.getChildren().clear();
 
-        super.getChildren().add(new BotonPlay(this.bounds, this.scene));
-        super.getChildren().add(new BotonTacho(this.bounds, this.scene));
+        super.getChildren().add(new Botonera(this.bounds, this.scene));
 
         bloquesAAgregar.forEach(imagen -> super.getChildren().add(new ImagenConComportamiento(imagen, this.bounds, this.scene)));
     }

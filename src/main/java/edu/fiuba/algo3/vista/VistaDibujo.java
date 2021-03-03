@@ -34,4 +34,8 @@ public class VistaDibujo extends Pane {
     public ControladorDibujo getControladorDibujo() {
         return controladorDibujo;
     }
+
+    public void reset() {
+        gc.clearRect(0,0,canvas.getWidth(), canvas.getHeight());
+    }
 }

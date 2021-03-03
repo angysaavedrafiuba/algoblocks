@@ -49,4 +49,10 @@ public class Algoblocks {
     public ArrayList<Posicion2D> obtenerDibujo() {
         return this.dibujo.posicionesDibujadas();
     }
+
+    public void reset() {
+        dibujo.reset();
+        bloques.reiniciar();
+        personaje.volverAPosicionInicial();
+    }
 }
