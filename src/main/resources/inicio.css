@@ -1,3 +1,5 @@
-#img{
-    -fx-bottom-padding: 200px;
+#inicio{
+    -fx-background-image: url("algoblocks.png");
+    -fx-background-size: stretch;
+    -fx-background-repeat: stretch;
 }
