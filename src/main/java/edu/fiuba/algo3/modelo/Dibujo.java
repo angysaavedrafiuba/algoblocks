@@ -40,7 +40,7 @@ public class Dibujo {
 
     public void reset() {
         ArrayList<Posicion2D> nuevoDibujo = new ArrayList<>();
-        support.firePropertyChange("ultimaPosicionPersonaje", this.posicionesDibujadas, null);
+        support.firePropertyChange( "ultimaPosicionPersonaje", this.posicionesDibujadas, null);
         this.posicionesDibujadas = nuevoDibujo;
     }
 }
