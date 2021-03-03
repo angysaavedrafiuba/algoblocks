@@ -16,7 +16,7 @@ public class ImagenPersonaje extends ImageView {
 
     ImagenPersonaje(Rectangle2D screenBounds, ControladorDibujo controladorDibujo){
         super();
-        String urlImagen = getClass().getClassLoader().getResource(URL_PERSONAJE_DERECHA).toExternalForm();
+        String urlImagen = getClass().getClassLoader().getResource("small_static_avatar.png").toExternalForm();
         Image personaje = new Image(urlImagen);
 
         vistaPersonaje = new VistaPersonaje(screenBounds, this, controladorDibujo);

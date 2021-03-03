@@ -32,7 +32,7 @@ public class VistaPersonaje implements PropertyChangeListener {
     }
 
     public double getX(){
-        return ((xMax/Posicion2D.xLimite)*posicion.getX() - 70);
+        return ((xMax/Posicion2D.xLimite)*posicion.getX() - 48);
     }
 
     public double getY(){
