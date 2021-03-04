@@ -15,6 +15,7 @@ public class PanelAlgoritmo extends HBox {
     VistaAlgoritmo controladorAlgoritmo = new VistaAlgoritmo(this);
     private final Rectangle2D bounds;
     public VistaBloquesAgregados vistaBloquesAgregados;
+    private int cantidadDeBloquesAgregados;
 
     PanelAlgoritmo(Rectangle2D screenBounds, Scene scene){
         super();
@@ -46,11 +47,14 @@ public class PanelAlgoritmo extends HBox {
     public void update(Bloque bloque) {
         if(bloque == null) {
             this.vistaBloquesAgregados.limpiar();
+            this.cantidadDeBloquesAgregados = 0;
             return;
         }
 
+        this.cantidadDeBloquesAgregados++;
+
         String imgBloqueAAgregar = MapeoDeBloques.getInstance().imagenCorrespondienteA(bloque);
-        this.vistaBloquesAgregados.update(1);
+        this.vistaBloquesAgregados.update(this.cantidadDeBloquesAgregados);
         ImagenBloqueEnAlgoritmo imagenBloque = new ImagenBloqueEnAlgoritmo(imgBloqueAAgregar, this.bounds, this.scene);
         this.vistaBloquesAgregados.agregarBloque(imagenBloque);
 
