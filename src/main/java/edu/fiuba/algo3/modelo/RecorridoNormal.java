@@ -4,6 +4,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class RecorridoNormal {
     ArrayList<Bloque> bloques = new ArrayList<>();
@@ -53,5 +54,16 @@ public class RecorridoNormal {
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
+    }
+
+    public void agregarBloqueAlBLoque(Bloque bloque, int id) {
+        BloqueAgregable bloqueEncontrado;
+        for(int i = 0; i < this.bloques.size(); i++) {
+            if(this.bloques.get(i).tieneId(id)) {
+                bloqueEncontrado = (BloqueAgregable) this.bloques.get(i);
+                bloqueEncontrado.agregarBloque(bloque);
+                break;
+            }
+        }
     }
 }

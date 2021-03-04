@@ -4,6 +4,8 @@ public class BloqueAgregable extends Bloque{
     private RecorridoNormal bloques = new RecorridoNormal();
 
     public BloqueAgregable(EstadoDeBloque estado){
+        super();
+        idParticular = super.getId();
         this.estado = estado;
     }
 

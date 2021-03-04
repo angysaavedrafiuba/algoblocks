@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public class BloqueDeAccion extends Bloque{
     public BloqueDeAccion(EstadoDeBloque estadoDeBloque){
+        super();
+        idParticular = super.getId();
         this.estado = estadoDeBloque;
     }
 
@@ -9,6 +11,4 @@ public class BloqueDeAccion extends Bloque{
     public Bloque clonar() {
         return new BloqueDeAccion(this.estado);
     }
-
-    
 }

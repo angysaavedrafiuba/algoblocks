@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class Bloque {
     protected EstadoDeBloque estado;
+    private static int idClase = 0;
+    int idParticular;
 
     public void invertir(){
         this.estado = this.estado.invertir();
@@ -16,5 +18,15 @@ public abstract class Bloque {
     @Override
     public String toString() {
         return "Bloque{estado=" + estado.toString() + "}";
+    }
+
+    protected int getId() {
+        int idActual = idClase;
+        idClase ++;
+        return idActual;
+    }
+
+    public boolean tieneId(int id) {
+        return id == this.idParticular;
     }
 }
