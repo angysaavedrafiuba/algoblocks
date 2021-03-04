@@ -28,21 +28,6 @@ public class ImagenConComportamiento extends Pane {
         super.getChildren().add(this.imgView);
     }
 
-    public ImagenConComportamiento(String nombreImagen, Rectangle2D screenBounds, Scene scene, EventHandler controlador) {
-        super();
-        super.setPrefHeight(screenBounds.getHeight() * 0.15);
-        super.setPadding(new Insets(20, 0, 50, 10));
-
-        String URLImagen = getClass().getClassLoader().getResource(nombreImagen).toExternalForm();
-        Image img = new Image(URLImagen);
-        this.imgView.setImage(img);
-
-        this.setOnMouseEntered(new HoverHandlerCursorAPuntero(scene));
-        this.setOnMouseExited(new HoverHandlerCursorADefault(scene));
-
-        super.getChildren().add(this.imgView);
-        super.setOnMouseClicked(controlador);
-    }
 
     protected void ajustarTamanio(Rectangle2D screenBounds, double proporcion) {
         double alto = this.imgView.getImage().getHeight();
@@ -54,6 +39,6 @@ public class ImagenConComportamiento extends Pane {
     }
 
     public void setOnAction(EventHandler eventHandler) {
-        super.setOnMouseClicked(eventHandler);
+        this.imgView.setOnMouseClicked(eventHandler);
     }
 }
