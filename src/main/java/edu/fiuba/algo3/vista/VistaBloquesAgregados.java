@@ -32,7 +32,7 @@ public class VistaBloquesAgregados extends Pane {
         HBox hBox = new HBox();
         hBox.setStyle("-fx-background-color: #ff2e63;");
         hBox.setPrefHeight(this.bounds.getHeight() * 0.2);
-        hBox.setPrefWidth(this.bounds.getWidth() * 3);
+        hBox.setPrefWidth(this.bounds.getWidth() * 0.8);
         hBox.setPadding(new Insets(bounds.getHeight() * 0.02, 0,0, bounds.getWidth() * 0.02));
 
         return hBox;
@@ -44,5 +44,16 @@ public class VistaBloquesAgregados extends Pane {
 
     public void limpiar() {
         this.hBox.getChildren().clear();
+    }
+
+    public void update(int size) {
+        int extraSize = size - 7;
+
+        if(extraSize < 1) {
+            this.hBox.setPrefWidth(bounds.getWidth() * 0.8);
+            return;
+        }
+
+        this.hBox.setPrefWidth(bounds.getWidth() * (0.9 + extraSize/5) );
     }
 }

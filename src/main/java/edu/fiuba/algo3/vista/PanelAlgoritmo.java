@@ -52,6 +52,8 @@ public class PanelAlgoritmo extends HBox {
         bloques.forEach(bloque -> bloquesAAgregar.add(MapeoDeBloques.getInstance().imagenCorrespondienteA(bloque)));
         this.vistaBloquesAgregados.limpiar();
 
+        this.vistaBloquesAgregados.update(bloquesAAgregar.size());
+
         bloquesAAgregar.forEach(imagen -> {
             ImagenBloqueEnAlgoritmo bloque = new ImagenBloqueEnAlgoritmo(imagen, this.bounds, this.scene);
             this.vistaBloquesAgregados.agregarBloque(bloque);
