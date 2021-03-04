@@ -22,7 +22,7 @@ public class VistaBloquesAgregados extends Pane {
         this.scrollPane = new ScrollPane(this.hBox);
         scrollPane.setPrefWidth(bounds.getWidth() * 0.8);
 
-        super.setStyle("-fx-background-color: #ff2e63;");
+        super.setStyle("-fx-background-color: #fa9579;");
         super.getChildren().add(this.scrollPane);
         super.setPrefWidth(bounds.getWidth() * 0.8);
         super.setHeight(bounds.getHeight() * 0.2);
@@ -30,7 +30,7 @@ public class VistaBloquesAgregados extends Pane {
 
     private HBox initHbox() {
         HBox hBox = new HBox();
-        hBox.setStyle("-fx-background-color: #ff2e63;");
+        hBox.setStyle("-fx-background-color: #fa9579;");
         hBox.setPrefHeight(this.bounds.getHeight() * 0.2);
         hBox.setPrefWidth(this.bounds.getWidth() * 0.8);
         hBox.setPadding(new Insets(bounds.getHeight() * 0.02, 0,0, bounds.getWidth() * 0.02));

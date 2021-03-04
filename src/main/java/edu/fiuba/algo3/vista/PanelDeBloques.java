@@ -40,7 +40,7 @@ public class PanelDeBloques extends HBox {
         super.setPrefHeight(screenBounds.getHeight() * 2);
         super.setPrefWidth(screenBounds.getWidth() * 0.20);
         super.setAlignment(Pos.TOP_RIGHT);
-        super.setStyle("-fx-background-color: #ff2e63;");
+        super.setStyle("-fx-background-color: #fa9579;");
 
         super.getChildren().add(scrollPane);
     }
@@ -52,7 +52,7 @@ public class PanelDeBloques extends HBox {
         vBox.setPrefWidth(screenBounds.getWidth() * 0.2);
         vBox.setPrefHeight(screenBounds.getHeight() * 1.3);
         vBox.setPadding(new Insets(20,0,0, screenBounds.getHeight() * 0.1));
-        vBox.setStyle("-fx-background-color: #ff2e63;");
+        vBox.setStyle("-fx-background-color: #fa9579;");
 
         System.out.println(vBox.getLayoutBounds());
 

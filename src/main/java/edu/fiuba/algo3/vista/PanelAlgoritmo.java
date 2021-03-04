@@ -40,7 +40,7 @@ public class PanelAlgoritmo extends HBox {
     }
 
     private void initStyles() {
-        super.setStyle("-fx-background-color: #ff2e63;");
+        super.setStyle("-fx-background-color: #fa9579;");
         super.setPrefHeight(this.bounds.getHeight() * 0.2);
         super.setPrefWidth(this.bounds.getWidth());
         super.setAlignment(Pos.CENTER_LEFT);

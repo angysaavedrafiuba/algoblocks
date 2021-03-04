@@ -45,14 +45,14 @@ public class Algoblocks {
 
     public RecorridoNormal getRecorridoNormal(){ return bloques; }
 
-    /* Test only */
-    public ArrayList<Posicion2D> obtenerDibujo() {
-        return this.dibujo.posicionesDibujadas();
-    }
-
     public void reset() {
         dibujo.reset();
         bloques.reiniciar();
         personaje.volverAPosicionInicial();
+    }
+
+    /* Test only */
+    public ArrayList<Posicion2D> obtenerDibujo() {
+        return this.dibujo.posicionesDibujadas();
     }
 }
