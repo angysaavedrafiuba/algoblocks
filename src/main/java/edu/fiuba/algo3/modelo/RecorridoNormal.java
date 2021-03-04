@@ -13,12 +13,12 @@ public class RecorridoNormal {
     public void agregarBloque(Bloque bloque){
         ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) bloques.clone();
         this.bloques.add(bloque);
-        support.firePropertyChange("bloques", bloquesAntiguo, bloques);
+        support.firePropertyChange("bloque", null, bloque);
     }
 
     public RecorridoNormal invertir() {
         bloques.forEach(Bloque::invertir);
-        support.firePropertyChange("bloques", bloques, bloques);
+        // support.firePropertyChange("bloques", bloques, bloques);
         return this;
     }
 
@@ -31,7 +31,6 @@ public class RecorridoNormal {
     private void clonar(List<Bloque> bloques){
         this.bloques = new ArrayList<>();
         bloques.forEach(bloque -> this.bloques.add(bloque.clonar()));
-        support.firePropertyChange("bloques", bloques, this.bloques);
     }
 
     public void ejecutar(Personaje personaje, Dibujo dibujo){
@@ -39,16 +38,15 @@ public class RecorridoNormal {
     }
 
     void reiniciar(){
-        ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) this.bloques.clone();
         this.bloques = new ArrayList<>();
-        support.firePropertyChange("bloques", bloquesAntiguo, bloques);
+        support.firePropertyChange("bloques", bloques, null);
     }
 
     void removerUltimo(){
-        ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) this.bloques.clone();
+        // ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) this.bloques.clone();
         if(!bloques.isEmpty()) {
             bloques.remove(bloques.size() - 1);
-            support.firePropertyChange("bloques", bloquesAntiguo, bloques);
+            // support.firePropertyChange("bloques", bloquesAntiguo, bloques);
         }
     }
 

@@ -8,7 +8,7 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 public class VistaAlgoritmo implements PropertyChangeListener {
-    ArrayList<Bloque> bloques = new ArrayList<>();
+    Bloque ultimoBloque;
     PanelAlgoritmo vista;
 
     public VistaAlgoritmo(PanelAlgoritmo vista){
@@ -17,7 +17,7 @@ public class VistaAlgoritmo implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        this.bloques = (ArrayList<Bloque>) evt.getNewValue();
-        this.vista.update(bloques);
+        this.ultimoBloque = (Bloque) evt.getNewValue();
+        this.vista.update(this.ultimoBloque);
     }
 }

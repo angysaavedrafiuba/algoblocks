@@ -7,16 +7,16 @@ import javafx.scene.media.AudioClip;
 
 import java.io.File;
 
-public class ControladorBloqueRepeticion extends SonidoClickBloque implements EventHandler {
+public class ControladorBloqueInvertir extends SonidoClickBloque implements EventHandler {
     RecorridoNormal recorrido;
 
-    public ControladorBloqueRepeticion(RecorridoNormal recorrido) {
+    public ControladorBloqueInvertir(RecorridoNormal recorrido) {
         this.recorrido = recorrido;
     }
 
     @Override
     public void handle(Event event) {
         this.iniciarSonido();
-        recorrido.agregarBloque(new BloqueAgregable(new BloqueDeRepeticion(0)));
+        recorrido.agregarBloque(new BloqueAgregable(new InvertirComportamiento()));
     }
 }

@@ -1,38 +1,25 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.*;
-import edu.fiuba.algo3.modelo.Algoblocks;
-import edu.fiuba.algo3.modelo.BloqueAgregable;
-import edu.fiuba.algo3.modelo.BloqueDeAccion;
-import edu.fiuba.algo3.modelo.MoverALaDerecha;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.Event;
-import javafx.event.EventHandler;
+import edu.fiuba.algo3.modelo.RecorridoNormal;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-import java.awt.*;
 
 public class PanelDeBloques extends HBox {
 
     Scene scene;
 
-    PanelDeBloques(Rectangle2D screenBounds, Scene scene){
+    PanelDeBloques(Rectangle2D screenBounds, Scene scene, RecorridoNormal recorrido){
         super();
 
         this.scene = scene;
 
-        VBox vBox = inicializarVBox(screenBounds);
+        VBox vBox = inicializarVBox(screenBounds, recorrido);
 
 
        ScrollPane scrollPane = new ScrollPane(vBox);
@@ -45,7 +32,7 @@ public class PanelDeBloques extends HBox {
         super.getChildren().add(scrollPane);
     }
 
-    private VBox inicializarVBox(Rectangle2D screenBounds){
+    private VBox inicializarVBox(Rectangle2D screenBounds, RecorridoNormal recorrido){
 
         VBox vBox = new VBox();
 
@@ -56,14 +43,14 @@ public class PanelDeBloques extends HBox {
 
         System.out.println(vBox.getLayoutBounds());
 
-        vBox.getChildren().add(new ImagenBloque("draw-north.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaArriba()));
-        vBox.getChildren().add(new ImagenBloque("draw-south.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaAbajo()));
-        vBox.getChildren().add(new ImagenBloque("draw-east.png",    screenBounds, this.scene, new ControladorBloqueMoverADerecha()));
-        vBox.getChildren().add(new ImagenBloque("draw-west.png",    screenBounds, this.scene, new ControladorBloqueMoverAIzquierda()));
-        vBox.getChildren().add(new ImagenBloque("bajar.png",        screenBounds, this.scene, new ControladorBloqueBajar()));
-        vBox.getChildren().add(new ImagenBloque("subir.png",        screenBounds, this.scene, new ControladorBloqueSubir()));
-        vBox.getChildren().add(new ImagenBloque("invertir.png",     screenBounds, this.scene, new ControladorBloqueRepeticion()));
-        vBox.getChildren().add(new ImagenBloque("repeticion.png",   screenBounds, this.scene, new ControladorBloqueInversion()));
+        vBox.getChildren().add(new ImagenBloque("draw-north.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaArriba(recorrido)));
+        vBox.getChildren().add(new ImagenBloque("draw-south.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaAbajo(recorrido)));
+        vBox.getChildren().add(new ImagenBloque("draw-east.png",    screenBounds, this.scene, new ControladorBloqueMoverADerecha(recorrido)));
+        vBox.getChildren().add(new ImagenBloque("draw-west.png",    screenBounds, this.scene, new ControladorBloqueMoverAIzquierda(recorrido)));
+        vBox.getChildren().add(new ImagenBloque("bajar.png",        screenBounds, this.scene, new ControladorBloqueBajar(recorrido)));
+        vBox.getChildren().add(new ImagenBloque("subir.png",        screenBounds, this.scene, new ControladorBloqueSubir(recorrido)));
+        vBox.getChildren().add(new ImagenBloque("invertir.png",     screenBounds, this.scene, new ControladorBloqueInvertir(recorrido)));
+        vBox.getChildren().add(new ImagenBloque("repeticion.png",   screenBounds, this.scene, new ControladorBloqueRepeticion(recorrido)));
 
         return vBox;
     }

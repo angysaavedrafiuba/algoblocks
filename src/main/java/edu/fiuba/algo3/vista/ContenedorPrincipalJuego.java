@@ -19,7 +19,7 @@ public class ContenedorPrincipalJuego extends BorderPane {
 
     public void inicializar(Rectangle2D screenBounds) {
         super.setTop(new PanelAlgoritmo(screenBounds, scene));
-        super.setLeft(new PanelDeBloques(screenBounds, scene));
+        super.setLeft(new PanelDeBloques(screenBounds, scene, Algoblocks.getInstance().getRecorridoNormal()));
         super.setCenter(new Tablero(screenBounds));
     }
 }
