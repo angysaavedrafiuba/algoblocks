@@ -12,14 +12,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class ContenedorBloqueCompuesto extends HBox {
+    VBox vBox1;
+    VBox vBox2;
 
     public ContenedorBloqueCompuesto(Scene scene, Rectangle2D bounds, BloqueAgregable bloque){
         super();
         super.setPrefWidth(bounds.getWidth());
         super.setPrefHeight(bounds.getHeight());
 
-        VBox vBox1 = new VBox();
-        VBox vBox2 = new VBox();
+        vBox1 = new VBox();
+        vBox2 = new VBox();
 
         vBox1.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
         vBox2.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
@@ -37,11 +39,16 @@ public class ContenedorBloqueCompuesto extends HBox {
 
         vBox1.setAlignment(Pos.TOP_CENTER);
         vBox1.setPadding(new Insets(bounds.getHeight() * 0.1, 0, 0, bounds.getWidth()*0.17));
-        AgregadorBloques.agregarBloques(vBox1, new Rectangle2D(0, 0, 1500, 1000), scene, bloque.getRecorrido());
+        vBox2.setAlignment(Pos.TOP_CENTER);
+        vBox2.setPadding(new Insets(bounds.getHeight() * 0.1, 0, 0, bounds.getWidth()*0.17));
 
+        AgregadorBloques.agregarBloques(vBox1, new Rectangle2D(0, 0, 1500, 1000), scene, bloque.getRecorrido());
 
         super.getChildren().add(red);
         super.getChildren().add(black);
-        //super.getChildren().add(new PanelDeBloques(bounds, scene, bloque.getRecorrido()));
+    }
+
+    public void agregarBloque(ImagenBloqueEnAlgoritmo imagenBloque) {
+        vBox2.getChildren().add(imagenBloque);
     }
 }

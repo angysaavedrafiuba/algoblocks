@@ -1,7 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class BloqueAgregable extends Bloque{
     private RecorridoNormal bloques = new RecorridoNormal();
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public BloqueAgregable(EstadoDeBloque estado){
         super();
@@ -44,5 +48,9 @@ public class BloqueAgregable extends Bloque{
 
     public RecorridoNormal getRecorrido() {
         return this.bloques;
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener controladorBloque) {
+        this.bloques.addPropertyChangeListener(controladorBloque);
     }
 }
