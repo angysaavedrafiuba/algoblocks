@@ -6,9 +6,10 @@ import edu.fiuba.algo3.modelo.MoverALaDerecha;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
-public class ControladorBloqueMoverADerecha implements EventHandler {
+public class ControladorBloqueMoverADerecha extends SonidoClickBloque implements EventHandler {
     @Override
     public void handle(Event event) {
+        this.iniciarSonido();
         Algoblocks.getInstance().agregarBloqueDeAccion(new BloqueDeAccion(new MoverALaDerecha()));
     }
 }
