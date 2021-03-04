@@ -16,12 +16,11 @@ public class ImagenConComportamiento extends Pane {
     public ImagenConComportamiento(String nombreImagen, Rectangle2D screenBounds, Scene scene) {
         super();
         super.setPrefHeight(screenBounds.getHeight() * 0.15);
-        super.setPadding(new Insets(0, 10, 0, 10));
+        super.setPadding(new Insets(10, 10, 10, 10));
 
         String URLImagen = getClass().getClassLoader().getResource(nombreImagen).toExternalForm();
         Image img = new Image(URLImagen);
         this.imgView.setImage(img);
-        this.ajustarTamanio(screenBounds);
 
         this.setOnMouseEntered(new HoverHandlerCursorAPuntero(scene));
         this.setOnMouseExited(new HoverHandlerCursorADefault(scene));
@@ -32,12 +31,11 @@ public class ImagenConComportamiento extends Pane {
     public ImagenConComportamiento(String nombreImagen, Rectangle2D screenBounds, Scene scene, EventHandler controlador) {
         super();
         super.setPrefHeight(screenBounds.getHeight() * 0.15);
-        super.setPadding(new Insets(0, 0, 0, 0));
+        super.setPadding(new Insets(20, 0, 50, 10));
 
         String URLImagen = getClass().getClassLoader().getResource(nombreImagen).toExternalForm();
         Image img = new Image(URLImagen);
         this.imgView.setImage(img);
-        this.ajustarTamanio(screenBounds);
 
         this.setOnMouseEntered(new HoverHandlerCursorAPuntero(scene));
         this.setOnMouseExited(new HoverHandlerCursorADefault(scene));
@@ -46,13 +44,13 @@ public class ImagenConComportamiento extends Pane {
         super.setOnMouseClicked(controlador);
     }
 
-    private void ajustarTamanio(Rectangle2D screenBounds) {
-        double alto = this.imgView.getFitHeight();
-        double ancho = this.imgView.getFitWidth();
+    protected void ajustarTamanio(Rectangle2D screenBounds, double proporcion) {
+        double alto = this.imgView.getImage().getHeight();
+        double ancho = this.imgView.getImage().getWidth();
         double relacion = ancho/alto;
-
-        this.imgView.setFitWidth(screenBounds.getHeight() * 0.085 * relacion);
-        this.imgView.setFitHeight(screenBounds.getHeight() * 0.085);
+        System.out.println();
+        this.imgView.setFitWidth(screenBounds.getHeight() * proporcion * relacion);
+        this.imgView.setFitHeight(screenBounds.getWidth() * proporcion);
     }
 
     public void setOnAction(EventHandler eventHandler) {

@@ -8,5 +8,6 @@ public class BotonTacho extends ImagenConComportamiento {
     public BotonTacho(Rectangle2D screenBounds, Scene scene) {
         super("canopen.png", screenBounds, scene);
         super.setOnAction(new BotonReiniciarHandler());
+        super.ajustarTamanio(screenBounds, 0.06);
     }
 }

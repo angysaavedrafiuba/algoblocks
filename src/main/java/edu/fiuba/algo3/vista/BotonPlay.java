@@ -10,5 +10,6 @@ public class BotonPlay extends ImagenConComportamiento {
     public BotonPlay(Rectangle2D screenBounds, Scene scene) {
         super("play-button.png", screenBounds, scene);
         super.setOnAction(new BotonPlayHandler());
+        super.ajustarTamanio(screenBounds, 0.06);
     }
 }
