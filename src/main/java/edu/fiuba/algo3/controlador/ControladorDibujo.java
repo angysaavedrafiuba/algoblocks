@@ -57,10 +57,10 @@ public class ControladorDibujo implements PropertyChangeListener {
     }
 
     private double transformarX(int x) {
-        return (xMax/Posicion2D.xLimite)*x;
+        return (xMax/(Posicion2D.xLimite))*x;
     }
 
     private double transformarY(int y) {
-        return yMax - (yMax/Posicion2D.yLimite)*y;
+        return yMax - (yMax/(Posicion2D.yLimite))*y;
     }
 }

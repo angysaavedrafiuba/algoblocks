@@ -21,10 +21,10 @@ public class ControladorBloqueCompuesto extends SonidoClickBloque implements Eve
     Scene escena;
 
     public ControladorBloqueCompuesto(BloqueAgregable bloque) {
-        Rectangle2D bounds = new Rectangle2D(700, 450, 0, 0);
-        HBox hBox = new ContenedorBloqueCompuesto(escena, bounds, bloque);
-        Pane paneGeneral = new Pane(hBox);
-        this.escena = new Scene(paneGeneral, 700, 450);
+        Rectangle2D bounds = new Rectangle2D(0, 0, 900, 600);
+        HBox bloquesAgregados = new ContenedorBloqueCompuesto(escena, bounds, bloque);
+        Pane paneGeneral = new Pane(bloquesAgregados);
+        this.escena = new Scene(paneGeneral, 900, 600);
         vistaBloque = new ContenedorBloqueCompuesto(this.escena, new Rectangle2D(700, 450, 0, 0), bloque);
     }
 
@@ -33,6 +33,7 @@ public class ControladorBloqueCompuesto extends SonidoClickBloque implements Eve
         Stage stage = new Stage();
 
         stage.setScene(this.escena);
+        stage.setResizable(false);
         stage.show();
     }
 }

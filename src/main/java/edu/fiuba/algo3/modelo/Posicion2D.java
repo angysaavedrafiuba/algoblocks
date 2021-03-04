@@ -48,6 +48,22 @@ public class Posicion2D {
         return (new Posicion2D(this.x, this.y));
     }
 
+    public boolean esLaMismaQue(Posicion2D posicion){
+        return(posicion.getX() == x && posicion.getY() == y);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public boolean esLimite() {
+        return (this.x == xLimite - 1 || this.y == yLimite - 1 || this.x == 0 || this.y == 0);
+    }
+
     /* Test only */
     @Override
     public boolean equals(Object object) {
@@ -66,21 +82,5 @@ public class Posicion2D {
                 "x=" + x +
                 ", y=" + y +
                 '}';
-    }
-
-    public boolean esLaMismaQue(Posicion2D posicion){
-        return(posicion.getX() == x && posicion.getY() == y);
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public boolean esLimite() {
-        return (this.x == xLimite - 1 || this.y == yLimite - 1 || this.x == 0 || this.y == 0);
     }
 }

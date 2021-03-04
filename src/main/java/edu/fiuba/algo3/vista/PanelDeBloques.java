@@ -41,8 +41,6 @@ public class PanelDeBloques extends HBox {
         vBox.setPadding(new Insets(20,0,0, screenBounds.getHeight() * 0.1));
         vBox.setStyle("-fx-background-color: #fa9579;");
 
-        System.out.println(vBox.getLayoutBounds());
-
         vBox.getChildren().add(new ImagenBloque("draw-north.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaArriba(recorrido)));
         vBox.getChildren().add(new ImagenBloque("draw-south.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaAbajo(recorrido)));
         vBox.getChildren().add(new ImagenBloque("draw-east.png",    screenBounds, this.scene, new ControladorBloqueMoverADerecha(recorrido)));

@@ -36,7 +36,7 @@ public class PanelAlgoritmo extends HBox {
     }
 
     private void initStyles() {
-        super.setStyle("-fx-background-color: #fa9579;");
+        super.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
         super.setPrefHeight(this.bounds.getHeight() * 0.2);
         super.setPrefWidth(this.bounds.getWidth());
         super.setAlignment(Pos.CENTER_LEFT);
