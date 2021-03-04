@@ -20,7 +20,7 @@ public class VistaDibujo extends Pane {
         canvas = controladorDibujo.generarCanvas();
         super.getChildren().add(canvas);
         gc = canvas.getGraphicsContext2D();
-        gc.setStroke(Color.web("#654062"));
+        gc.setStroke(Color.web(Colores.VIOLETA));
         gc.setLineWidth(5);
     }
 

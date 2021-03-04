@@ -8,7 +8,7 @@ public class Tablero extends Pane {
 
     public Tablero(Rectangle2D screenBounds) {
         super();
-        super.setStyle("-fx-background-color: #65d6ce");
+        super.setStyle("-fx-background-color: " + Colores.CELESTE + ";");
         VistaDibujo vistaDibujo = new VistaDibujo(screenBounds);
         ImagenPersonaje imagenPersonaje = new ImagenPersonaje(screenBounds, vistaDibujo.getControladorDibujo());
 

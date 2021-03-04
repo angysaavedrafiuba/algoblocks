@@ -22,8 +22,8 @@ public class ImagenConComportamiento extends Pane {
         Image img = new Image(URLImagen);
         this.imgView.setImage(img);
 
-        this.setOnMouseEntered(new HoverHandlerCursorAPuntero(scene));
-        this.setOnMouseExited(new HoverHandlerCursorADefault(scene));
+        // this.setOnMouseEntered(new HoverHandlerCursorAPuntero(scene));
+        // this.setOnMouseExited(new HoverHandlerCursorADefault(scene));
 
         super.getChildren().add(this.imgView);
     }

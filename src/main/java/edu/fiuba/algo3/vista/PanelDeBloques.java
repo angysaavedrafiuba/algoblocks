@@ -27,7 +27,7 @@ public class PanelDeBloques extends HBox {
         super.setPrefHeight(screenBounds.getHeight() * 2);
         super.setPrefWidth(screenBounds.getWidth() * 0.20);
         super.setAlignment(Pos.TOP_RIGHT);
-        super.setStyle("-fx-background-color: #fa9579;");
+        super.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
 
         super.getChildren().add(scrollPane);
     }
@@ -39,16 +39,9 @@ public class PanelDeBloques extends HBox {
         vBox.setPrefWidth(screenBounds.getWidth() * 0.2);
         vBox.setPrefHeight(screenBounds.getHeight() * 1.3);
         vBox.setPadding(new Insets(20,0,0, screenBounds.getHeight() * 0.1));
-        vBox.setStyle("-fx-background-color: #fa9579;");
+        vBox.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
 
-        vBox.getChildren().add(new ImagenBloque("draw-north.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaArriba(recorrido)));
-        vBox.getChildren().add(new ImagenBloque("draw-south.png",   screenBounds, this.scene, new ControladorBloqueMoverHaciaAbajo(recorrido)));
-        vBox.getChildren().add(new ImagenBloque("draw-east.png",    screenBounds, this.scene, new ControladorBloqueMoverADerecha(recorrido)));
-        vBox.getChildren().add(new ImagenBloque("draw-west.png",    screenBounds, this.scene, new ControladorBloqueMoverAIzquierda(recorrido)));
-        vBox.getChildren().add(new ImagenBloque("bajar.png",        screenBounds, this.scene, new ControladorBloqueBajar(recorrido)));
-        vBox.getChildren().add(new ImagenBloque("subir.png",        screenBounds, this.scene, new ControladorBloqueSubir(recorrido)));
-        vBox.getChildren().add(new ImagenBloque("invertir.png",     screenBounds, this.scene, new ControladorBloqueInvertir(recorrido)));
-        vBox.getChildren().add(new ImagenBloque("repeticion.png",   screenBounds, this.scene, new ControladorBloqueRepeticion(recorrido)));
+        AgregadorBloques.agregarBloques(vBox, screenBounds, scene, recorrido);
 
         return vBox;
     }
