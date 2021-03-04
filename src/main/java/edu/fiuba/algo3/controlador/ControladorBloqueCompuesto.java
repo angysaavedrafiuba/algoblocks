@@ -4,33 +4,35 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.ContenedorBloqueCompuesto;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ControladorBloqueCompuesto extends SonidoClickBloque implements EventHandler {
     ContenedorBloqueCompuesto vistaBloque;
     BloqueAgregable bloque;
+    Scene escena;
 
     public ControladorBloqueCompuesto(BloqueAgregable bloque) {
-        vistaBloque = new ContenedorBloqueCompuesto();
-        this.bloque = bloque;
+        Rectangle2D bounds = new Rectangle2D(700, 450, 0, 0);
+        HBox hBox = new ContenedorBloqueCompuesto(escena, bounds, bloque);
+        Pane paneGeneral = new Pane(hBox);
+        this.escena = new Scene(paneGeneral, 700, 450);
+        vistaBloque = new ContenedorBloqueCompuesto(this.escena, new Rectangle2D(700, 450, 0, 0), bloque);
     }
 
     @Override
     public void handle(Event event) {
-        BorderPane pane = new BorderPane();
-        Stage stageAyuda = new Stage();
-        HBox scrollBox = new HBox();
-        ScrollPane test = new ScrollPane(scrollBox);
+        Stage stage = new Stage();
 
-        Scene escena = new Scene(pane, 700, 450);
-        stageAyuda.setScene(escena);
-        stageAyuda.show();
+        stage.setScene(this.escena);
+        stage.show();
     }
 }

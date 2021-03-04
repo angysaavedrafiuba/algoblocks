@@ -41,4 +41,8 @@ public class BloqueAgregable extends Bloque{
     public int getId() {
         return idParticular;
     }
+
+    public RecorridoNormal getRecorrido() {
+        return this.bloques;
+    }
 }
