@@ -11,9 +11,9 @@ public class RecorridoNormal {
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void agregarBloque(Bloque bloque){
-        ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) bloques.clone();
+        Bloque bloqueAntiguo = bloques.isEmpty() ? null : bloques.get(bloques.size() - 1);
         this.bloques.add(bloque);
-        support.firePropertyChange("bloque", null, bloque);
+        support.firePropertyChange("bloque", bloqueAntiguo, bloque);
     }
 
     public RecorridoNormal invertir() {

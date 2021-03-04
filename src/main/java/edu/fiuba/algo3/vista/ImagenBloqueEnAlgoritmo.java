@@ -10,5 +10,6 @@ public class ImagenBloqueEnAlgoritmo extends ImagenConComportamiento{
     public ImagenBloqueEnAlgoritmo(String imagen, Rectangle2D bounds, Scene scene) {
         super(imagen, bounds, scene);
         ajustarTamanio(bounds, 0.08);
+
     }
 }

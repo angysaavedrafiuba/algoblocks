@@ -24,10 +24,9 @@ public class ControladorBloqueCompuesto extends SonidoClickBloque implements Eve
     public ControladorBloqueCompuesto(BloqueAgregable bloque) {
         bloque.addPropertyChangeListener(this);
         this.bounds = new Rectangle2D(0, 0, 900, 600);
-        HBox bloquesAgregados = new ContenedorBloqueCompuesto(escena, bounds, bloque);
-        Pane paneGeneral = new Pane(bloquesAgregados);
+        this.vistaBloque = new ContenedorBloqueCompuesto(escena, bounds, bloque);
+        Pane paneGeneral = new Pane(this.vistaBloque);
         this.escena = new Scene(paneGeneral, 900, 600);
-        this.vistaBloque = new ContenedorBloqueCompuesto(this.escena, new Rectangle2D(700, 450, 0, 0), bloque);
     }
 
     @Override
@@ -42,8 +41,6 @@ public class ControladorBloqueCompuesto extends SonidoClickBloque implements Eve
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         this.bloque = (Bloque) evt.getNewValue();
-        String imgBloqueAAgregar = MapeoDeBloques.getInstance().imagenCorrespondienteA(this.bloque);
-        ImagenBloqueEnAlgoritmo imagenBloque = new ImagenBloqueEnAlgoritmo(imgBloqueAAgregar, this.bounds, this.escena);
-        this.vistaBloque.agregarBloque(imagenBloque);
+        this.vistaBloque.update(this.bloque);
     }
 }
