@@ -20,13 +20,4 @@ public abstract class Bloque {
         return "Bloque{estado=" + estado.toString() + "}";
     }
 
-    protected int getId() {
-        int idActual = idClase;
-        idClase ++;
-        return idActual;
-    }
-
-    public boolean tieneId(int id) {
-        return id == this.idParticular;
-    }
 }

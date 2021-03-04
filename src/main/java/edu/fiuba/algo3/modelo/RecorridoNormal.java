@@ -18,7 +18,7 @@ public class RecorridoNormal {
 
     public RecorridoNormal invertir() {
         bloques.forEach(Bloque::invertir);
-        // support.firePropertyChange("bloques", bloques, bloques);
+        //support.firePropertyChange("bloques", bloques, bloques);
         return this;
     }
 
@@ -43,10 +43,10 @@ public class RecorridoNormal {
     }
 
     void removerUltimo(){
-        // ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) this.bloques.clone();
+        //ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) this.bloques.clone();
         if(!bloques.isEmpty()) {
             bloques.remove(bloques.size() - 1);
-            // support.firePropertyChange("bloques", bloquesAntiguo, bloques);
+            //support.firePropertyChange("bloques", bloquesAntiguo, bloques);
         }
     }
 
@@ -54,14 +54,4 @@ public class RecorridoNormal {
         support.addPropertyChangeListener(pcl);
     }
 
-    public void agregarBloqueAlBLoque(Bloque bloque, int id) {
-        BloqueAgregable bloqueEncontrado;
-        for(int i = 0; i < this.bloques.size(); i++) {
-            if(this.bloques.get(i).tieneId(id)) {
-                bloqueEncontrado = (BloqueAgregable) this.bloques.get(i);
-                bloqueEncontrado.agregarBloque(bloque);
-                break;
-            }
-        }
-    }
 }

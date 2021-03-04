@@ -455,27 +455,4 @@ public class RecorridoNormalTest {
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
-
-    @Test
-    public void test19PuedoAgregarBloquesAUnBloqueAgregableYaEnElAlgoritmoMedianteElUsoDeSuID() {
-        BloqueAgregable invertir = new BloqueAgregable(new InvertirComportamiento());
-        personaje.apoyarLapiz();
-
-        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
-        algoritmo.agregarBloque(invertir);
-        algoritmo.agregarBloqueAlBLoque(new BloqueDeAccion(new MoverHaciaArriba()), invertir.getId());
-        algoritmo.agregarBloqueAlBLoque(new BloqueDeAccion(new MoverHaciaArriba()), invertir.getId());
-        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
-        invertir.removerUltimo();
-        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
-        dibujoEsperado.add(posicionActual);
-        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
-        dibujoEsperado.add(posicionActual);
-        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
-        dibujoEsperado.add(posicionActual);
-
-        algoritmo.ejecutar(personaje, dibujo);
-
-        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
-    }
 }

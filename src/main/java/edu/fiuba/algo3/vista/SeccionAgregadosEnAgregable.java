@@ -11,6 +11,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+
+//TODO agregar boton de reset
 public class SeccionAgregadosEnAgregable extends Pane {
 
     VBox vBox;
