@@ -11,4 +11,9 @@ public class BloqueDeAccion extends Bloque{
     public Bloque clonar() {
         return new BloqueDeAccion(this.estado);
     }
+
+    @Override
+    public int getId() {
+        return idParticular;
+    }
 }

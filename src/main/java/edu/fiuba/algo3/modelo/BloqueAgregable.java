@@ -36,4 +36,9 @@ public class BloqueAgregable extends Bloque{
     public void removerUltimo(){
         bloques.removerUltimo();
     }
+
+    @Override
+    public int getId() {
+        return idParticular;
+    }
 }
