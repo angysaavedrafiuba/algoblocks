@@ -31,7 +31,7 @@ public class ControladorBloqueCompuesto extends SonidoClickBloque implements Eve
     @Override
     public void handle(Event event) {
         Stage stage = new Stage();
-
+        stage.setTitle("Bloque compuesto");
         stage.setScene(this.escena);
         stage.setResizable(false);
         stage.show();

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Algoblocks;
 import edu.fiuba.algo3.modelo.BloqueAgregable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -24,7 +25,7 @@ public class ContenedorBloqueCompuesto extends HBox {
         vBox2.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
 
         vBox1.setPrefWidth(bounds.getWidth() * 0.5);
-        vBox1.setPrefHeight(bounds.getHeight() * 3);
+        vBox1.setPrefHeight(bounds.getHeight() * 2);
         vBox1.setAlignment(Pos.TOP_RIGHT);
 
         vBox2.setPrefWidth(bounds.getWidth() * 0.5);
@@ -34,7 +35,10 @@ public class ContenedorBloqueCompuesto extends HBox {
         ScrollPane red = new ScrollPane(vBox1);
         ScrollPane black = new ScrollPane(vBox2);
 
-        AgregadorBloques.agregarBloques(vBox1, bounds, scene, bloque.getRecorrido());
+        vBox1.setAlignment(Pos.TOP_CENTER);
+        vBox1.setPadding(new Insets(bounds.getHeight() * 0.1, 0, 0, bounds.getWidth()*0.17));
+        AgregadorBloques.agregarBloques(vBox1, new Rectangle2D(0, 0, 1500, 1000), scene, bloque.getRecorrido());
+
 
         super.getChildren().add(red);
         super.getChildren().add(black);
