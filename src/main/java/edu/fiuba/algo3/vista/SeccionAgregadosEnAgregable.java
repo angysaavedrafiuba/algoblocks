@@ -6,10 +6,13 @@ import edu.fiuba.algo3.modelo.BloqueAgregable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 
 //TODO agregar boton de reset
@@ -21,6 +24,7 @@ public class SeccionAgregadosEnAgregable extends Pane {
     public SeccionAgregadosEnAgregable(Scene scene, Rectangle2D bounds) {
 
         this.vBox = new VBox();
+        VBox contenedorPrincipal = new VBox();
         this.scene = scene;
 
         super.setPrefWidth(bounds.getWidth() * 0.5);
@@ -34,7 +38,14 @@ public class SeccionAgregadosEnAgregable extends Pane {
         this.vBox.setPrefWidth(bounds.getWidth() * 0.5);
         this.vBox.setPrefHeight(bounds.getHeight() * 3);
 
-        super.getChildren().add(this.vBox);
+        Label descripcion = new Label();
+        descripcion.setText("Bloques agregados");
+        descripcion.setFont(new Font(30));
+        descripcion.setPadding(new Insets(bounds.getHeight() * 0.1, 0, 0, bounds.getWidth()*0.09));
+
+        contenedorPrincipal.getChildren().addAll(descripcion, this.vBox);
+
+        super.getChildren().add(contenedorPrincipal);
     }
 
     public void update(Bloque bloque) {
