@@ -10,9 +10,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-
-//TODO agregar los label que indiquen para que es cada panel
-
 public class ContenedorBloqueCompuesto extends HBox {
     SeccionBloquesEnAgregable bloquesDisponibles;
     SeccionAgregadosEnAgregable bloquesAgregados;
