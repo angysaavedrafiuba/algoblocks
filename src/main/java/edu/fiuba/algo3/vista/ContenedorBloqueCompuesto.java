@@ -19,14 +19,17 @@ public class ContenedorBloqueCompuesto extends HBox {
     Rectangle2D bounds;
     Scene scene;
 
-    public ContenedorBloqueCompuesto(Scene scene, Rectangle2D bounds, BloqueAgregable bloque){
+    public ContenedorBloqueCompuesto(){
         super();
+    }
+
+    public void inicializar(Rectangle2D bounds, Scene escena, BloqueAgregable bloque){
         super.setPrefWidth(bounds.getWidth());
         super.setPrefHeight(bounds.getHeight());
         super.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
 
         this.bounds = bounds;
-        this.scene = scene;
+        this.scene = escena;
 
         this.bloquesDisponibles = new SeccionBloquesEnAgregable(scene, bounds, bloque);
         this.bloquesAgregados = new SeccionAgregadosEnAgregable(scene, bounds);
@@ -41,4 +44,5 @@ public class ContenedorBloqueCompuesto extends HBox {
     public void update(Bloque bloque) {
         bloquesAgregados.update(bloque);
     }
+
 }

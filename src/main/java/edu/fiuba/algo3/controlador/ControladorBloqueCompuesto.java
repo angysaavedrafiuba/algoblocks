@@ -24,9 +24,12 @@ public class ControladorBloqueCompuesto extends SonidoClickBloque implements Eve
     public ControladorBloqueCompuesto(BloqueAgregable bloque) {
         bloque.addPropertyChangeListener(this);
         this.bounds = new Rectangle2D(0, 0, 900, 600);
-        this.vistaBloque = new ContenedorBloqueCompuesto(escena, bounds, bloque);
+
+        this.vistaBloque = new ContenedorBloqueCompuesto();
         Pane paneGeneral = new Pane(this.vistaBloque);
-        this.escena = new Scene(paneGeneral, 900, 600);
+
+        this.escena = new Scene(paneGeneral, 900,600);
+        this.vistaBloque.inicializar(this.bounds, this.escena, bloque);
     }
 
     @Override

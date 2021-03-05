@@ -22,8 +22,8 @@ public class ImagenConComportamiento extends Pane {
         Image img = new Image(URLImagen);
         this.imgView.setImage(img);
 
-        // this.setOnMouseEntered(new HoverHandlerCursorAPuntero(scene));
-        // this.setOnMouseExited(new HoverHandlerCursorADefault(scene));
+        this.imgView.setOnMouseEntered(new HoverHandlerCursorAPuntero(scene));
+        this.imgView.setOnMouseExited(new HoverHandlerCursorADefault(scene));
 
         super.getChildren().add(this.imgView);
     }
@@ -33,9 +33,8 @@ public class ImagenConComportamiento extends Pane {
         double alto = this.imgView.getImage().getHeight();
         double ancho = this.imgView.getImage().getWidth();
         double relacion = ancho/alto;
-        System.out.println();
-        this.imgView.setFitWidth(screenBounds.getHeight() * proporcion * relacion);
-        this.imgView.setFitHeight(screenBounds.getWidth() * proporcion);
+        this.imgView.setFitWidth(screenBounds.getHeight() * proporcion * relacion * 1.3);
+        this.imgView.setFitHeight(screenBounds.getHeight() * proporcion * 1.4);
     }
 
     public void setOnAction(EventHandler eventHandler) {
