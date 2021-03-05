@@ -37,7 +37,7 @@ public class RecorridoNormal {
         this.bloques.forEach(bloque -> bloque.ejecutar(personaje, dibujo));
     }
 
-    void reiniciar(){
+    public void reiniciar(){
         this.bloques = new ArrayList<>();
         support.firePropertyChange("bloques", bloques, null);
     }

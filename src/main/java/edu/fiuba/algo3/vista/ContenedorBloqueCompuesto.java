@@ -29,7 +29,7 @@ public class ContenedorBloqueCompuesto extends HBox {
         this.scene = escena;
 
         this.bloquesDisponibles = new SeccionBloquesEnAgregable(scene, bounds, bloque);
-        this.bloquesAgregados = new SeccionAgregadosEnAgregable(scene, bounds);
+        this.bloquesAgregados = new SeccionAgregadosEnAgregable(scene, bounds, bloque);
 
         ScrollPane scrollPaneAgregables = new ScrollPane(bloquesDisponibles);
         ScrollPane scrollPaneAgregados= new ScrollPane(bloquesAgregados);

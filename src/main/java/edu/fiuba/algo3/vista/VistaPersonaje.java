@@ -20,8 +20,6 @@ public class VistaPersonaje implements PropertyChangeListener {
         xMax = screenBounds.getWidth() * 0.8;
         yMax = screenBounds.getHeight() * 0.8;
 
-        //TODO eliminar el hardcodeo de 0.8
-
         this.vista = vista;
     }
 
