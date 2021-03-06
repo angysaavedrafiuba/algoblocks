@@ -455,4 +455,43 @@ public class RecorridoNormalTest {
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
+
+    @Test
+    public void test19PuedeAgregarseUnBloqueDeInversionDentroDeOtroYELMovimientoEsElEsperado() {
+        BloqueAgregable invertir = new BloqueAgregable(new InvertirComportamiento());
+        BloqueAgregable otroInvertir = new BloqueAgregable(new InvertirComportamiento());
+        personaje.apoyarLapiz();
+
+        invertir.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        otroInvertir.agregarBloque(invertir);
+        algoritmo.agregarBloque(otroInvertir);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+    }
+
+    @Test
+    public void test20PuedeAgregarseUnBloqueDeInversionDentroDeOtroYELMovimientoEsElEsperadoAunEjecutandoDosVeces() {
+        BloqueAgregable invertir = new BloqueAgregable(new InvertirComportamiento());
+        BloqueAgregable otroInvertir = new BloqueAgregable(new InvertirComportamiento());
+        personaje.apoyarLapiz();
+
+        invertir.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        otroInvertir.agregarBloque(invertir);
+        algoritmo.agregarBloque(otroInvertir);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+    }
 }
