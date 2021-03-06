@@ -271,4 +271,125 @@ public class DibujoTest {
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
+
+    @Test
+    public void test11AlAgregarBloqueAlgoritmoPersonalizadoEsteDibujaCorrectamente(){
+        algoritmo.agregarBloque(new BloqueDeAccion(new BajarLapiz()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaIzquierda()));
+
+        EstadoDeBloque bloquePersonalizado = algoritmo.guardarSecuenciaConNombre("pepito");
+        algoritmo.reiniciar();
+
+        algoritmo.agregarBloque(new BloqueDeAccion(bloquePersonalizado));
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(),dibujo.posicionesDibujadas().toArray());
+
+    }
+
+    @Test
+    public void test12SeInvierteBloquePersonalizadoYEsteDibujaDeFormaCorrecta(){
+        BloqueAgregable bloqueInvertir = new BloqueAgregable(new InvertirComportamiento());
+
+        algoritmo.agregarBloque(new BloqueDeAccion(new SubirLapiz()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaIzquierda()));
+
+        EstadoDeBloque bloquePersonalizado = algoritmo.guardarSecuenciaConNombre("fulanito");
+        algoritmo.reiniciar();
+
+        bloqueInvertir.agregarBloque(new BloqueDeAccion(bloquePersonalizado));
+        algoritmo.agregarBloque(bloqueInvertir);
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+        assertArrayEquals(dibujoEsperado.toArray(),dibujo.posicionesDibujadas().toArray());
+
+    }
+
+    @Test
+    public void test13ABloquePersonalizadoSeLoInvierteLuegoSeVulveAAgregarYEsteConservaLaSecuenciaYDibujaCorrectamente(){
+        BloqueAgregable bloqueInvertir = new BloqueAgregable(new InvertirComportamiento());
+
+        algoritmo.agregarBloque(new BloqueDeAccion(new BajarLapiz()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaIzquierda()));
+
+        EstadoDeBloque bloquePersonalizado = algoritmo.guardarSecuenciaConNombre("fulanito");
+        algoritmo.reiniciar();
+
+        bloqueInvertir.agregarBloque(new BloqueDeAccion(bloquePersonalizado));
+        algoritmo.agregarBloque(bloqueInvertir);
+
+        algoritmo.reiniciar();
+
+        algoritmo.agregarBloque(new BloqueDeAccion(bloquePersonalizado));
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+        assertArrayEquals(dibujoEsperado.toArray(),dibujo.posicionesDibujadas().toArray());
+
+
+    }
+
+    @Test
+    public void test14SeAgreganDosBloquesPersonalizadosYEstosDibujanAcordemente(){
+        algoritmo.agregarBloque(new BloqueDeAccion(new BajarLapiz()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaIzquierda()));
+        EstadoDeBloque bloquePersonalizado1 = algoritmo.guardarSecuenciaConNombre("pepito");
+
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverHaciaAbajo()));
+        EstadoDeBloque bloquePersonalizado2 = algoritmo.guardarSecuenciaConNombre("juancito");
+
+        algoritmo.agregarBloque(new BloqueDeAccion(bloquePersonalizado1));
+        algoritmo.agregarBloque(new BloqueDeAccion(bloquePersonalizado2));
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
+
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
+
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(),dibujo.posicionesDibujadas().toArray());
+
+    }
 }
