@@ -6,10 +6,8 @@ import edu.fiuba.algo3.modelo.BloqueAgregable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -17,14 +15,18 @@ import javafx.scene.text.Font;
 
 public class SeccionAgregadosEnAgregable extends Pane {
 
-    VBox vBox;
+    VBox contenedorBloques;
     Scene scene;
 
     public SeccionAgregadosEnAgregable(Scene scene, Rectangle2D bounds, BloqueAgregable bloque) {
 
-        this.vBox = new VBox();
+        this.contenedorBloques = inicializarContenedorBloques(bounds);
         VBox contenedorPrincipal = new VBox();
+        VBox contenedorBoton = new VBox();
+        contenedorBoton.setPadding(new Insets(bounds.getHeight() *0.1, 0,0, bounds.getWidth() * 0.2));
+
         BotonTacho botonTacho = new BotonTacho(bounds, scene, bloque);
+
 
         this.scene = scene;
 
@@ -32,26 +34,39 @@ public class SeccionAgregadosEnAgregable extends Pane {
         super.setPrefHeight(bounds.getHeight() * 3);
         super.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
 
-        this.vBox.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
-        this.vBox.setPrefHeight(bounds.getHeight());
-        this.vBox.setAlignment(Pos.TOP_CENTER);
-        this.vBox.setPadding(new Insets(bounds.getHeight() * 0.1, 0, 0, bounds.getWidth()*0.17));
-        this.vBox.setPrefWidth(bounds.getWidth() * 0.5);
-        this.vBox.setPrefHeight(bounds.getHeight() * 3);
+        Label descripcion = inicializarLabel(bounds);
 
+        contenedorBoton.getChildren().add(botonTacho);
+        contenedorPrincipal.getChildren().addAll(descripcion, contenedorBoton, this.contenedorBloques);
+
+        super.getChildren().add(contenedorPrincipal);
+    }
+
+    private Label inicializarLabel(Rectangle2D bounds) {
         Label descripcion = new Label();
         descripcion.setText("Bloques agregados");
         descripcion.setFont(new Font(30));
         descripcion.setPadding(new Insets(bounds.getHeight() * 0.1, 0, 0, bounds.getWidth()*0.09));
 
-        contenedorPrincipal.getChildren().addAll(descripcion, botonTacho, this.vBox);
+        return descripcion;
+    }
 
-        super.getChildren().add(contenedorPrincipal);
+    private VBox inicializarContenedorBloques(Rectangle2D bounds) {
+        VBox contenedor = new VBox();
+
+        contenedor.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
+        contenedor.setPrefHeight(bounds.getHeight());
+        contenedor.setAlignment(Pos.TOP_CENTER);
+        contenedor.setPadding(new Insets(bounds.getHeight() * 0.03, 0, 0, bounds.getWidth() * 0.12));
+        contenedor.setPrefWidth(bounds.getWidth() * 0.5);
+        contenedor.setPrefHeight(bounds.getHeight() * 3);
+
+        return contenedor;
     }
 
     public void update(Bloque bloque) {
         if(bloque == null){
-            this.vBox.getChildren().clear();
+            this.contenedorBloques.getChildren().clear();
             return;
         }
         String imgBloqueAAgregar = MapeoDeBloques.getInstance().imagenCorrespondienteA(bloque);
@@ -59,6 +74,6 @@ public class SeccionAgregadosEnAgregable extends Pane {
         if(bloque instanceof BloqueAgregable) {
             img.setOnAction(new ControladorBloqueCompuesto((BloqueAgregable) bloque));
         }
-        this.vBox.getChildren().add(img);
+        this.contenedorBloques.getChildren().add(img);
     }
 }
