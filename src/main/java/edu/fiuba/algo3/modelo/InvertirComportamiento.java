@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class InvertirComportamiento implements EstadoDeBloque {
     private RecorridoNormal bloques;
+    boolean fueInvertido = false;
 
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
@@ -10,12 +11,18 @@ public class InvertirComportamiento implements EstadoDeBloque {
 
     @Override
     public EstadoDeBloque invertir() {
+        this.bloques.invertir();
+        fueInvertido = true;
         return this;
     }
 
     @Override
     public void setBloques(RecorridoNormal bloques) {
-        this.bloques = bloques.clonar().invertir();
+        if(!fueInvertido) {
+            this.bloques = bloques.clonar().invertir();
+        } else {
+            this.bloques = bloques.clonar();
+        }
     }
 
     @Override
