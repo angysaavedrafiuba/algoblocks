@@ -1,21 +1,19 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Posicion2D;
-import edu.fiuba.algo3.vista.Tablero;
 import edu.fiuba.algo3.vista.VistaDibujo;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 
 public class ControladorDibujo implements PropertyChangeListener {
     private final VistaDibujo vista;
     Posicion2D ultimaPosicionPersonaje;
     Posicion2D ultimaPosicionDibujada;
-    double xMax;
-    double yMax;
+    final double xMax;
+    final double yMax;
 
     public ControladorDibujo(Rectangle2D screenBounds, VistaDibujo vista) {
         this.vista = vista;

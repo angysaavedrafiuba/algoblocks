@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 
 public class HoverHandlerCursorADefault implements EventHandler {
 
-    Scene scene;
+    final Scene scene;
 
     public HoverHandlerCursorADefault(Scene scene){
         this.scene = scene;

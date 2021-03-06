@@ -2,8 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class Bloque {
     protected EstadoDeBloque estado;
-    private static int idClase = 0;
-    int idParticular;
 
     public void invertir(){
         this.estado = this.estado.invertir();

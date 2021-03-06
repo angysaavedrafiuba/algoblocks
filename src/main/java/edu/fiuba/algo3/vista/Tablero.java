@@ -2,7 +2,6 @@ package edu.fiuba.algo3.vista;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 public class Tablero extends Pane {
 

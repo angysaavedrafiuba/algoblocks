@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.*;
 import edu.fiuba.algo3.modelo.RecorridoNormal;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,7 +11,7 @@ import javafx.scene.layout.VBox;
 
 public class PanelDeBloques extends HBox {
 
-    Scene scene;
+    final Scene scene;
 
     PanelDeBloques(Rectangle2D screenBounds, Scene scene, RecorridoNormal recorrido){
         super();

@@ -3,7 +3,7 @@ import javafx.scene.media.AudioClip;
 import java.io.File;
 
 public class SonidoClickBloque {
-    private AudioClip sonido;
+    private final AudioClip sonido;
 
     public SonidoClickBloque() {
         this.sonido = new AudioClip(new File("src/main/resources/select.wav").toURI().toString());

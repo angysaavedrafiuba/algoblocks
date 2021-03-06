@@ -9,21 +9,18 @@ import javafx.scene.layout.Pane;
 
 
 public class VistaBloquesAgregados extends Pane {
-    Scene scene;
     private final Rectangle2D bounds;
-    private ScrollPane scrollPane;
-    private HBox hBox;
+    private final HBox hBox;
 
     public VistaBloquesAgregados(Rectangle2D screenBounds, Scene scene) {
         super();
-        this.scene = scene;
         this.bounds = screenBounds;
         this.hBox = initHbox();
-        this.scrollPane = new ScrollPane(this.hBox);
+        ScrollPane scrollPane = new ScrollPane(this.hBox);
         scrollPane.setPrefWidth(bounds.getWidth() * 0.8);
 
         super.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
-        super.getChildren().add(this.scrollPane);
+        super.getChildren().add(scrollPane);
         super.setPrefWidth(bounds.getWidth() * 0.8);
         super.setHeight(bounds.getHeight() * 0.2);
     }
@@ -46,8 +43,8 @@ public class VistaBloquesAgregados extends Pane {
         this.hBox.getChildren().clear();
     }
 
-    public void update(int size) {
-        int extraSize = size - 7;
+    public void update(double size) {
+        double extraSize = size - 7;
 
         if(extraSize < 1) {
             this.hBox.setPrefWidth(bounds.getWidth() * 0.8);

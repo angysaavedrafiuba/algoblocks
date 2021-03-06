@@ -10,9 +10,9 @@ import java.beans.PropertyChangeListener;
 public class VistaPersonaje implements PropertyChangeListener {
     private final ImagenPersonaje vista;
     Posicion2D posicion;
-    double xMax;
-    double yMax;
-    ControladorDibujo controladorDibujo;
+    final double xMax;
+    final double yMax;
+    final ControladorDibujo controladorDibujo;
 
     public VistaPersonaje(Rectangle2D screenBounds, ImagenPersonaje vista, ControladorDibujo controladorDibujo) {
         this.posicion = Posicion2D.posicionInicial();

@@ -11,10 +11,10 @@ import javafx.scene.layout.HBox;
 
 public class PanelAlgoritmo extends HBox {
 
-    Scene scene;
-    VistaAlgoritmo controladorAlgoritmo = new VistaAlgoritmo(this);
+    final Scene scene;
+    final VistaAlgoritmo controladorAlgoritmo = new VistaAlgoritmo(this);
     private final Rectangle2D bounds;
-    public VistaBloquesAgregados vistaBloquesAgregados;
+    public final VistaBloquesAgregados vistaBloquesAgregados;
     private int cantidadDeBloquesAgregados;
 
     PanelAlgoritmo(Rectangle2D screenBounds, Scene scene){

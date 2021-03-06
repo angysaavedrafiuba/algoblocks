@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 
 public class ImagenConComportamiento extends Pane {
 
-    ImageView imgView = new ImageView();
+    final ImageView imgView = new ImageView();
 
     public ImagenConComportamiento(String nombreImagen, Rectangle2D screenBounds, Scene scene) {
         super();

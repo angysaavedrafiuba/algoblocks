@@ -7,7 +7,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class ControladorBloqueRepeticionTriple extends SonidoClickBloque implements EventHandler {
-    RecorridoNormal recorrido;
+    final RecorridoNormal recorrido;
 
     public ControladorBloqueRepeticionTriple(RecorridoNormal recorrido) {
         this.recorrido = recorrido;

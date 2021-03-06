@@ -6,12 +6,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.scene.control.ScrollPane;
-
-import java.awt.*;
-import java.io.File;
 
 public class BotonAyudaHandler implements EventHandler<MouseEvent> {
 

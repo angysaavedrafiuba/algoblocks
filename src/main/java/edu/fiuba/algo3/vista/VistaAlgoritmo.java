@@ -5,11 +5,10 @@ import edu.fiuba.algo3.vista.PanelAlgoritmo;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 
 public class VistaAlgoritmo implements PropertyChangeListener {
     Bloque ultimoBloque;
-    PanelAlgoritmo vista;
+    final PanelAlgoritmo vista;
 
     public VistaAlgoritmo(PanelAlgoritmo vista){
         this.vista = vista;

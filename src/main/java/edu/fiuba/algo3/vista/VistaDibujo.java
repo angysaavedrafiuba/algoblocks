@@ -9,9 +9,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 public class VistaDibujo extends Pane {
-    ControladorDibujo controladorDibujo;
-    Canvas canvas;
-    GraphicsContext gc;
+    final ControladorDibujo controladorDibujo;
+    final Canvas canvas;
+    final GraphicsContext gc;
 
     public VistaDibujo(Rectangle2D screenBounds) {
         super();

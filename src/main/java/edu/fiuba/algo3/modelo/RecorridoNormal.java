@@ -4,11 +4,10 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class RecorridoNormal {
     ArrayList<Bloque> bloques = new ArrayList<>();
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void agregarBloque(Bloque bloque){
         Bloque bloqueAntiguo = bloques.isEmpty() ? null : bloques.get(bloques.size() - 1);

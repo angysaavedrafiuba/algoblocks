@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class ImagenPersonaje extends ImageView {
-    VistaPersonaje vistaPersonaje;
+    final VistaPersonaje vistaPersonaje;
 
     ImagenPersonaje(Rectangle2D screenBounds, ControladorDibujo controladorDibujo){
         super();

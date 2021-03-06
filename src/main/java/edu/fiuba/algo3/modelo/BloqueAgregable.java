@@ -6,7 +6,6 @@ import java.beans.PropertyChangeSupport;
 //TODO Implementar AlgoritmoPersonalizado que implementa BloqueAgregable
 public class BloqueAgregable extends Bloque{
     private RecorridoNormal bloques = new RecorridoNormal();
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public BloqueAgregable(EstadoDeBloque estado){
         super();

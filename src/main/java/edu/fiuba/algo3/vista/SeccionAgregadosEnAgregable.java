@@ -15,8 +15,8 @@ import javafx.scene.text.Font;
 
 public class SeccionAgregadosEnAgregable extends Pane {
 
-    VBox contenedorBloques;
-    Scene scene;
+    final VBox contenedorBloques;
+    final Scene scene;
 
     public SeccionAgregadosEnAgregable(Scene scene, Rectangle2D bounds, BloqueAgregable bloque) {
 

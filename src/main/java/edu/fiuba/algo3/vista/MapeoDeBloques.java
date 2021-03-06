@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class MapeoDeBloques {
 
-    private HashMap<String, String> mapeoDeImagenes = new HashMap<>();
+    private final HashMap<String, String> mapeoDeImagenes = new HashMap<>();
 
     private MapeoDeBloques(){
         mapeoDeImagenes.put(new BloqueDeAccion(new MoverHaciaArriba()).toString()  , "draw-north.png");
@@ -20,7 +20,7 @@ public class MapeoDeBloques {
         mapeoDeImagenes.put(new BloqueAgregable(new InvertirComportamiento()).toString(), "invertir.png");
     }
 
-    private static MapeoDeBloques instance = new MapeoDeBloques();
+    private static final MapeoDeBloques instance = new MapeoDeBloques();
 
     public static MapeoDeBloques getInstance() {
         return instance;

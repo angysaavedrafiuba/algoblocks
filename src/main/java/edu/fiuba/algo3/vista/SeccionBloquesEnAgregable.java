@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 public class SeccionBloquesEnAgregable extends Pane {
-    VBox vBox;
+    final VBox vBox;
     public SeccionBloquesEnAgregable(Scene scene, Rectangle2D bounds, BloqueAgregable bloque) {
         this.vBox = new VBox();
 
