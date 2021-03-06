@@ -21,7 +21,13 @@ public class Algoblocks {
         bloques.agregarBloque(bloque);
     }
 
-    public void agregarBloqueAgregable(BloqueAgregable bloque){ bloques.agregarBloque(bloque); }
+    public void agregarBloqueAgregable(BloqueAgregable bloque){
+        bloques.agregarBloque(bloque);
+    }
+
+    public EstadoDeBloque guardarAlgoritmo(String nombreAlgoritmo){
+        return bloques.guardarSecuenciaConNombre(nombreAlgoritmo);
+    }
 
     public void ejecutar() {
         bloques.ejecutar(this.personaje, this.dibujo);
@@ -39,11 +45,17 @@ public class Algoblocks {
         dibujo.reiniciar();
     }
 
-    public Dibujo getDibujo(){ return dibujo; }
+    public Dibujo getDibujo(){
+        return dibujo;
+    }
 
-    public Personaje getPersonaje(){ return personaje; }
+    public Personaje getPersonaje(){
+        return personaje;
+    }
 
-    public RecorridoNormal getRecorridoNormal(){ return bloques; }
+    public RecorridoNormal getRecorridoNormal(){
+        return bloques;
+    }
 
     public void reset() {
         dibujo.reset();

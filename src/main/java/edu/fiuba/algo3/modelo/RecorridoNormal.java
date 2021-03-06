@@ -41,6 +41,11 @@ public class RecorridoNormal {
         support.firePropertyChange("bloques", bloques, null);
     }
 
+    public EstadoDeBloque guardarSecuenciaConNombre(String nombre) {
+        EstadoDeBloque bloque = new BloquePersonalizado(nombre, bloques);
+        return bloque;
+    }
+
     void removerUltimo(){
         //ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) this.bloques.clone();
         if(!bloques.isEmpty()) {
