@@ -17,6 +17,7 @@ public class AgregadorBloques {
         pane.getChildren().add(new ImagenBloque("bajar.png",        screenBounds, scene, new ControladorBloqueBajar(recorrido)));
         pane.getChildren().add(new ImagenBloque("subir.png",        screenBounds, scene, new ControladorBloqueSubir(recorrido)));
         pane.getChildren().add(new ImagenBloque("invertir.png",     screenBounds, scene, new ControladorBloqueInvertir(recorrido)));
-        pane.getChildren().add(new ImagenBloque("repeticion.png",   screenBounds, scene, new ControladorBloqueRepeticion(recorrido)));
+        pane.getChildren().add(new ImagenBloque("repeticion-doble.png",   screenBounds, scene, new ControladorBloqueRepeticionDoble(recorrido)));
+        pane.getChildren().add(new ImagenBloque("repeticion-triple.png",   screenBounds, scene, new ControladorBloqueRepeticionTriple(recorrido)));
     }
 }
