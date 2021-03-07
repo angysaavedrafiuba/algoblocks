@@ -15,8 +15,8 @@ public class MapeoDeBloques {
         mapeoDeImagenes.put(new BloqueDeAccion(new MoverALaIzquierda()).toString() , "draw-west.png");
         mapeoDeImagenes.put(new BloqueDeAccion(new SubirLapiz()).toString()        , "subir.png");
         mapeoDeImagenes.put(new BloqueDeAccion(new BajarLapiz()).toString()        , "bajar.png");
-
-        mapeoDeImagenes.put(new BloqueAgregable(new BloqueDeRepeticion(0)).toString(), "repeticion.png");
+        mapeoDeImagenes.put(new BloqueAgregable(new BloqueDeRepeticion(2)).toString(), "repeticion-doble.png");
+        mapeoDeImagenes.put(new BloqueAgregable(new BloqueDeRepeticion(3)).toString(), "repeticion-triple.png");
         mapeoDeImagenes.put(new BloqueAgregable(new InvertirComportamiento()).toString(), "invertir.png");
     }
 
