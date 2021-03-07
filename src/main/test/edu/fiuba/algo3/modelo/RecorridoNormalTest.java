@@ -494,4 +494,28 @@ public class RecorridoNormalTest {
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
+
+    @Test
+    public void test21PuedeAgregarseUnBloqueDeInversionDentroDeOtroDentroDeOtroYELMovimientoEsElEsperadoAunEjecutandoDosVeces() {
+        BloqueAgregable invertir = new BloqueAgregable(new InvertirComportamiento());
+        BloqueAgregable otroInvertir = new BloqueAgregable(new InvertirComportamiento());
+        BloqueAgregable tercerInvertir = new BloqueAgregable(new InvertirComportamiento());
+        personaje.apoyarLapiz();
+
+        invertir.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        otroInvertir.agregarBloque(invertir);
+        tercerInvertir.agregarBloque(otroInvertir);
+        algoritmo.agregarBloque(tercerInvertir);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+    }
 }

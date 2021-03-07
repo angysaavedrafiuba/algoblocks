@@ -2,37 +2,43 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
-public class BloquePersonalizado implements EstadoDeBloque{
+public class BloquePersonalizado implements EstadoDeBloque, EstadoDeBloqueCompuesto {
     private String nombre;
-    private ArrayList<Bloque> secuencia;
+    private RecorridoNormal bloques;
 
-   public BloquePersonalizado(String nombre, ArrayList<Bloque> secuenciaDeBloques){
-       this.secuencia = new ArrayList<>();
+   public BloquePersonalizado(String nombre, RecorridoNormal secuenciaDeBloques){
+       this.bloques = secuenciaDeBloques;
        this.nombre = nombre;
-       this.guardarSecuencia(secuenciaDeBloques);
-   }
-    public void guardarSecuencia(ArrayList<Bloque> algoritmo){
-        this.secuencia.addAll(algoritmo);
-    }
-
-    private ArrayList<Bloque> copiar(ArrayList<Bloque> arrayACopiar){
-        ArrayList<Bloque> nuevoArray = new ArrayList<>();
-        nuevoArray.addAll(arrayACopiar);
-        return nuevoArray;
    }
 
    public String obtenerNombre(){
        return this.nombre;
    }
+
+    @Override
+    public Bloque agregarBloque(Bloque bloque) {
+       return bloque;
+    }
+
     @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
-        this.secuencia.forEach(bloque -> bloque.ejecutar(personaje,dibujo));
+        this.bloques.ejecutar(personaje, dibujo);
+    }
+
+    @Override
+    public EstadoDeBloqueCompuesto clonar() {
+        RecorridoNormal nuevosBloques = this.bloques.clonar();
+        return new BloquePersonalizado(nombre, nuevosBloques);
+    }
+
+    @Override
+    public void setBloques(RecorridoNormal bloques) {
+        this.bloques = bloques;
     }
 
     @Override
     public EstadoDeBloque invertir() {
-        ArrayList<Bloque> copia = this.copiar(secuencia);
-        copia.forEach(Bloque::invertir);
+        this.bloques = this.bloques.clonar().invertir();
         return this;
     }
 }

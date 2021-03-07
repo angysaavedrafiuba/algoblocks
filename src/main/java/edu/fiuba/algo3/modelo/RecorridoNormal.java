@@ -41,8 +41,8 @@ public class RecorridoNormal {
         support.firePropertyChange("bloques", bloques, null);
     }
 
-    public EstadoDeBloque guardarSecuenciaConNombre(String nombre) {
-        EstadoDeBloque bloque = new BloquePersonalizado(nombre, bloques);
+    public BloqueAgregable guardarSecuenciaConNombre(String nombre) {
+        BloqueAgregable bloque = new BloqueAgregable(new BloquePersonalizado(nombre, this.clonar()), this.clonar());
         return bloque;
     }
 

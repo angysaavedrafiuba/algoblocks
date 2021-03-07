@@ -6,34 +6,36 @@ import java.beans.PropertyChangeSupport;
 //TODO Implementar AlgoritmoPersonalizado que implementa BloqueAgregable
 public class BloqueAgregable extends Bloque{
     private RecorridoNormal bloques = new RecorridoNormal();
+    EstadoDeBloqueCompuesto estadoCompuesto;
 
-    public BloqueAgregable(EstadoDeBloque estado){
+    public BloqueAgregable(EstadoDeBloqueCompuesto estado){
         super();
-        this.estado = estado;
+        this.estado = (EstadoDeBloque) estado;
+        this.estadoCompuesto = estado;
     }
 
-    private BloqueAgregable(EstadoDeBloque estado, RecorridoNormal bloques){
-        this.estado = estado;
+    public BloqueAgregable(EstadoDeBloqueCompuesto estado, RecorridoNormal bloques){
+        this.estadoCompuesto = estado;
         this.bloques = bloques;
     }
 
     public void invertir(){
-        estado.setBloques(bloques);
-        this.estado.invertir();
+        this.bloques.invertir();
+        this.estadoCompuesto.setBloques(this.bloques);
     }
 
     public void ejecutar(Personaje personaje, Dibujo dibujo){
-        this.estado.setBloques(bloques);
-        this.estado.ejecutar(personaje, dibujo);
+        this.estadoCompuesto.setBloques(bloques);
+        this.estadoCompuesto.ejecutar(personaje, dibujo);
     }
 
     @Override
     public Bloque clonar() {
-        return new BloqueAgregable(this.estado, this.bloques);
+        return new BloqueAgregable(this.estadoCompuesto.clonar(), this.bloques.clonar());
     }
 
     public void agregarBloque(Bloque bloque){
-        bloques.agregarBloque(bloque);
+        bloques.agregarBloque(this.estadoCompuesto.agregarBloque(bloque));
     }
 
     public void removerUltimo(){

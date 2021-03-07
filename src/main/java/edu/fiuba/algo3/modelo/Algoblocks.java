@@ -25,7 +25,7 @@ public class Algoblocks {
         bloques.agregarBloque(bloque);
     }
 
-    public EstadoDeBloque guardarAlgoritmo(String nombreAlgoritmo){
+    public BloqueAgregable guardarAlgoritmo(String nombreAlgoritmo){
         return bloques.guardarSecuenciaConNombre(nombreAlgoritmo);
     }
 
