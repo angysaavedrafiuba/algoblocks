@@ -35,7 +35,7 @@ public class BloqueAgregable extends Bloque{
     }
 
     public void agregarBloque(Bloque bloque){
-        bloques.agregarBloque(this.estadoCompuesto.agregarBloque(bloque));
+        bloques.agregarBloque(bloque);
     }
 
     public void removerUltimo(){
