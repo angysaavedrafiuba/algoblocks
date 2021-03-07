@@ -14,7 +14,8 @@ public class Botonera extends HBox {
         BotonTacho botonReiniciar = new BotonTacho(screenBounds, scene);
         BotonReset botonReset = new BotonReset(screenBounds, scene);
         BotonAyuda botonAyuda = new BotonAyuda(screenBounds, scene);
-        super.getChildren().addAll(botonPlay, botonReiniciar, botonReset, botonAyuda);
+        BotonGuardarAlgoritmo botonGuardar = new BotonGuardarAlgoritmo(screenBounds, scene);
+        super.getChildren().addAll(botonPlay, botonReiniciar, botonReset, botonAyuda, botonGuardar);
         super.setPadding(new Insets(screenBounds.getHeight() * 0.04, 0, 0, screenBounds.getWidth() * 0.02));
     }
 }
