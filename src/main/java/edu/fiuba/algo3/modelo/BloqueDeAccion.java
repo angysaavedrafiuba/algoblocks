@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 public class BloqueDeAccion extends Bloque{
-    public BloqueDeAccion(EstadoDeBloque estadoDeBloque){
+
+    public BloqueDeAccion(Estado estadoDeBloque) {
         super();
         this.estado = estadoDeBloque;
     }

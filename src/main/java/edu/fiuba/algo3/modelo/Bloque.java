@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public abstract class Bloque {
-    protected EstadoDeBloque estado;
+    protected Estado estado;
 
     public void invertir(){
         this.estado = this.estado.invertir();
@@ -19,4 +19,7 @@ public abstract class Bloque {
         return estado.toString();
     }
 
+    public Estado getEstado() {
+        return this.estado;
+    }
 }

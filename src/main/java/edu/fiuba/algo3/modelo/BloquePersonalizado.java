@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 public class BloquePersonalizado implements EstadoDeBloque, EstadoDeBloqueCompuesto {
     private final String nombre;
     private RecorridoNormal bloques;
@@ -41,5 +39,9 @@ public class BloquePersonalizado implements EstadoDeBloque, EstadoDeBloqueCompue
     @Override
     public String toString() {
         return nombre;
+    }
+
+    public String getNombre() {
+       return this.nombre;
     }
 }

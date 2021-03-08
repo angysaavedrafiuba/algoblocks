@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-public interface EstadoDeBloque {
-    void ejecutar(Personaje personaje, Dibujo dibujo);
+public interface EstadoDeBloque extends Estado {
 
-    EstadoDeBloque invertir();
 }

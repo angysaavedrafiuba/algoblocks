@@ -5,32 +5,32 @@ import java.beans.PropertyChangeSupport;
 
 public class BloqueAgregable extends Bloque{
     private RecorridoNormal bloques = new RecorridoNormal();
-    EstadoDeBloqueCompuesto estadoCompuesto;
+    EstadoDeBloqueCompuesto estado;
 
     public BloqueAgregable(EstadoDeBloqueCompuesto estado){
         super();
-        this.estado = (EstadoDeBloque) estado;
-        this.estadoCompuesto = estado;
+        super.estado = estado;
+        this.estado = estado;
     }
 
     public BloqueAgregable(EstadoDeBloqueCompuesto estado, RecorridoNormal bloques){
-        this.estadoCompuesto = estado;
+        this.estado = estado;
         this.bloques = bloques;
     }
 
     public void invertir(){
         this.bloques.invertir();
-        this.estadoCompuesto.setBloques(this.bloques);
+        this.estado.setBloques(this.bloques);
     }
 
     public void ejecutar(Personaje personaje, Dibujo dibujo){
-        this.estadoCompuesto.setBloques(bloques);
-        this.estadoCompuesto.ejecutar(personaje, dibujo);
+        this.estado.setBloques(bloques);
+        this.estado.ejecutar(personaje, dibujo);
     }
 
     @Override
     public Bloque clonar() {
-        return new BloqueAgregable(this.estadoCompuesto.clonar(), this.bloques.clonar());
+        return new BloqueAgregable(this.estado.clonar(), this.bloques.clonar());
     }
 
     public void agregarBloque(Bloque bloque){
@@ -51,6 +51,11 @@ public class BloqueAgregable extends Bloque{
 
     @Override
     public String toString() {
-        return estadoCompuesto.toString();
+        return this.estado.toString();
+    }
+
+    @Override
+    public Estado getEstado() {
+        return this.estado;
     }
 }
