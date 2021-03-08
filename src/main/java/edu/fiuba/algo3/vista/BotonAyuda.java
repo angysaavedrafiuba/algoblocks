@@ -6,9 +6,9 @@ import javafx.scene.Scene;
 
 public class BotonAyuda extends ImagenConComportamiento {
 
-    public BotonAyuda(Rectangle2D screenBounds, Scene scene) {
+    public BotonAyuda(Rectangle2D screenBounds, Scene scene, double proporcion) {
         super("ayuda-icono.png", screenBounds, scene);
         super.setOnAction(new BotonAyudaHandler());
-        super.ajustarTamanio(screenBounds, 0.06);
+        super.ajustarTamanio(screenBounds, proporcion);
     }
 }

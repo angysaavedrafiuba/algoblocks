@@ -7,9 +7,9 @@ import javafx.scene.Scene;
 
 public class BotonGuardarAlgoritmo extends ImagenConComportamiento {
 
-    public BotonGuardarAlgoritmo(Rectangle2D screenBounds, Scene scene) {
+    public BotonGuardarAlgoritmo(Rectangle2D screenBounds, Scene scene, double proporcion) {
         super("guardar.png", screenBounds, scene);
         super.setOnAction(new BotonGuardarHandler());
-        super.ajustarTamanio(screenBounds, 0.06);
+        super.ajustarTamanio(screenBounds, proporcion);
     }
 }

@@ -6,9 +6,9 @@ import javafx.scene.Scene;
 
 public class BotonPlay extends ImagenConComportamiento {
 
-    public BotonPlay(Rectangle2D screenBounds, Scene scene) {
+    public BotonPlay(Rectangle2D screenBounds, Scene scene, double proporcion) {
         super("play-button.png", screenBounds, scene);
         super.setOnAction(new BotonPlayHandler());
-        super.ajustarTamanio(screenBounds, 0.06);
+        super.ajustarTamanio(screenBounds, proporcion);
     }
 }

@@ -5,11 +5,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 
 public class BotonReset extends ImagenConComportamiento {
-    public BotonReset(Rectangle2D screenBounds, Scene scene) {
+    public BotonReset(Rectangle2D screenBounds, Scene scene, double proporcion) {
         super("loopArrow.png", screenBounds, scene);
 
         setOnAction(new BotonResetHandler());
-        super.ajustarTamanio(screenBounds, 0.06);
+        super.ajustarTamanio(screenBounds, proporcion);
 
     }
 }

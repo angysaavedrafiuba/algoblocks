@@ -26,7 +26,7 @@ public class SeccionAgregadosEnAgregable extends Pane {
         VBox contenedorBoton = new VBox();
         contenedorBoton.setPadding(new Insets(bounds.getHeight() *0.1, 0,0, bounds.getWidth() * 0.2));
 
-        BotonTacho botonTacho = new BotonTacho(bounds, scene, bloque);
+        BotonTacho botonTacho = new BotonTacho(bounds, scene, bloque, 0.04);
 
 
         this.scene = scene;
