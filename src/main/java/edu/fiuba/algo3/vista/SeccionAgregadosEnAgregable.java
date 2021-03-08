@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.ControladorBloqueCompuesto;
 import edu.fiuba.algo3.modelo.Bloque;
 import edu.fiuba.algo3.modelo.BloqueAgregable;
+import edu.fiuba.algo3.modelo.BloquePersonalizado;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -72,9 +73,15 @@ public class SeccionAgregadosEnAgregable extends Pane {
         String imgBloqueAAgregar = MapeoDeBloques.getInstance().imagenCorrespondienteA(bloque);
         ImagenBloqueEnAlgoritmo img = new ImagenBloqueEnAlgoritmo(imgBloqueAAgregar, new Rectangle2D(0, 0, 1500, 1000), this.scene);
 
-        // TODO tratar de usar otro controlador para el bloque personalizado
         if(bloque instanceof BloqueAgregable) {
-            img.setOnAction(new ControladorBloqueCompuesto((BloqueAgregable) bloque));
+            if(bloque.getEstado() instanceof BloquePersonalizado) {
+                ImagenBloqueGuardado imagenBloqueGuardado = new ImagenBloqueGuardado(((BloquePersonalizado) bloque.getEstado()).getNombre(),
+                        new Rectangle2D(0, 0, 1500, 1000), this.scene);
+                this.contenedorBloques.getChildren().add(imagenBloqueGuardado);
+                return;
+            } else {
+                img.setOnAction(new ControladorBloqueCompuesto((BloqueAgregable) bloque));
+            }
         }
         this.contenedorBloques.getChildren().add(img);
     }

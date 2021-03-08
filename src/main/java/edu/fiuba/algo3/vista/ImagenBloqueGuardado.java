@@ -14,13 +14,14 @@ import javafx.scene.text.Font;
 
 import java.awt.datatransfer.FlavorEvent;
 
-public class ImagenBloqueGuardado extends VBox {
-    ImagenBloque imagen;
+public class ImagenBloqueGuardado extends ImagenBloque {
+    ImagenBloque imagenBloque;
+    ImagenBloqueEnAlgoritmo imagenBloqueEnAlgoritmo;
     String nombreAlgoritmo;
 
     ImagenBloqueGuardado(String nombre, Rectangle2D screenBounds, Scene scene, RecorridoNormal recorrido, BloqueAgregable bloque) {
+        super("guardado.png", screenBounds, scene, new ControladorBloquePersonalizado(recorrido, bloque));
         this.nombreAlgoritmo = nombre;
-        this.imagen = new ImagenBloque("guardado.png", screenBounds, scene, new ControladorBloquePersonalizado(recorrido, bloque));
 
         Label labelAlgoritmo = new Label();
         labelAlgoritmo.setText(this.nombreAlgoritmo);
@@ -28,6 +29,19 @@ public class ImagenBloqueGuardado extends VBox {
         labelAlgoritmo.setPadding(new Insets(screenBounds.getHeight() * 0.1, 0, 0, screenBounds.getWidth()*0.09));
 
         this.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
-        this.getChildren().addAll(new Label(this.nombreAlgoritmo), this.imagen);
+        super.getChildren().add(new Label(this.nombreAlgoritmo));
+    }
+
+    ImagenBloqueGuardado(String nombre, Rectangle2D screenBounds, Scene scene) {
+        super("guardado.png", screenBounds, scene, null);
+        this.nombreAlgoritmo = nombre;
+
+        Label labelAlgoritmo = new Label();
+        labelAlgoritmo.setText(this.nombreAlgoritmo);
+        labelAlgoritmo.setFont(new Font(20));
+        labelAlgoritmo.setPadding(new Insets(screenBounds.getHeight() * 0.1, 0, 0, screenBounds.getWidth()*0.09));
+
+        this.setStyle("-fx-background-color: " + Colores.NARANJA + ";");
+        super.getChildren().add(new Label(this.nombreAlgoritmo));
     }
 }

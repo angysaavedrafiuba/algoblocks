@@ -34,7 +34,7 @@ public class SeccionBloquesEnAgregable extends Pane implements PropertyChangeLis
         this.vBox.setAlignment(Pos.TOP_CENTER);
         this.vBox.setPadding(new Insets(bounds.getHeight() * 0.1, 0, 0, bounds.getWidth()*0.16));
         this.vBox.setPrefWidth(bounds.getWidth() * 0.5);
-        this.vBox.setPrefHeight(bounds.getHeight() * 1.8);
+        this.vBox.setPrefHeight(bounds.getHeight() * 3);
 
 
         Label descripcion = new Label();

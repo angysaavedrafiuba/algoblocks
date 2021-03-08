@@ -13,11 +13,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class PanelDeBloques extends HBox implements PropertyChangeListener {
-
     final Scene scene;
     VBox vBox;
     Rectangle2D screenBounds;
     RecorridoNormal recorrido;
+    int cantidadBloques = 0;
 
     PanelDeBloques(Rectangle2D screenBounds, Scene scene, RecorridoNormal recorrido){
         super();
@@ -50,6 +50,7 @@ public class PanelDeBloques extends HBox implements PropertyChangeListener {
 
         AgregadorBloques.getInstance().agregarBloques(this.vBox, screenBounds, scene, recorrido);
         AgregadorBloques.getInstance().agregarListener(this);
+        cantidadBloques = AgregadorBloques.getInstance().getCantidadDeBloques();
 
         return this.vBox;
     }
@@ -58,5 +59,7 @@ public class PanelDeBloques extends HBox implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         this.vBox.getChildren().clear();
         AgregadorBloques.getInstance().agregarBloques(this.vBox, screenBounds, scene, recorrido);
+        cantidadBloques ++;
+        this.vBox.setPrefHeight(screenBounds.getHeight() * (1.3 + cantidadBloques/10));
     }
 }
