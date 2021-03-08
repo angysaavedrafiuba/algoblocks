@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 public class BloqueAgregable extends Bloque{
     private RecorridoNormal bloques = new RecorridoNormal();
-    EstadoDeBloqueCompuesto estado;
+    final EstadoDeBloqueCompuesto estado;
 
     public BloqueAgregable(EstadoDeBloqueCompuesto estado){
         super();

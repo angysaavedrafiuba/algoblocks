@@ -31,7 +31,7 @@ public class MapeoDeBloques {
     }
 
     public void limpiar() {
-        this.instance = new MapeoDeBloques();
+        instance = new MapeoDeBloques();
     }
 
     public String imagenCorrespondienteA(Bloque bloque) {

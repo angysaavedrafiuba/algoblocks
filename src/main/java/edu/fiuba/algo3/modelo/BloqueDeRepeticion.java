@@ -37,9 +37,4 @@ public class BloqueDeRepeticion implements EstadoDeBloque, EstadoDeBloqueCompues
     public String toString() {
         return "BloqueDeRepeticion{" + repeticiones + "}";
     }
-
-    @Override
-    public Bloque agregarBloque(Bloque bloque) {
-        return bloque;
-    }
 }

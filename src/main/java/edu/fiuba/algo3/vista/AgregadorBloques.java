@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.*;
-import edu.fiuba.algo3.modelo.Bloque;
 import edu.fiuba.algo3.modelo.BloqueAgregable;
 import edu.fiuba.algo3.modelo.RecorridoNormal;
 import javafx.event.EventHandler;
@@ -11,18 +10,14 @@ import javafx.scene.layout.Pane;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class AgregadorBloques {
     private static ArrayList<BloqueAgregable> bloquesPersonalizados = new ArrayList<>();
     private final ArrayList<String> nombreBloques = new ArrayList<>();
     private ArrayList<EventHandler> controladores = new ArrayList<>();
 
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     private AgregadorBloques(){
         nombreBloques.add("draw-north.png");
@@ -47,7 +42,7 @@ public class AgregadorBloques {
     }
 
     private void inicializarControladores(RecorridoNormal recorrido) {
-        controladores = new ArrayList<EventHandler>();
+        controladores = new ArrayList<>();
 
         controladores.add(new ControladorBloqueMoverHaciaArriba(recorrido));
         controladores.add(new ControladorBloqueMoverHaciaAbajo(recorrido));
@@ -60,7 +55,7 @@ public class AgregadorBloques {
         controladores.add(new ControladorBloqueRepeticionTriple(recorrido));
     }
 
-    private static AgregadorBloques instance = new AgregadorBloques();
+    private static final AgregadorBloques instance = new AgregadorBloques();
 
     public static AgregadorBloques getInstance() {
         return instance;
@@ -80,7 +75,7 @@ public class AgregadorBloques {
         support.firePropertyChange("bloquesPersonalizados", null, bloquesPersonalizados);
     }
 
-    public int getCantidadDeBloques() {
+    public double getCantidadDeBloques() {
         return bloquesPersonalizados.size() + nombreBloques.size();
     }
 }

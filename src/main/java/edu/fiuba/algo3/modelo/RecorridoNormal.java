@@ -42,8 +42,7 @@ public class RecorridoNormal {
     }
 
     public BloqueAgregable guardarSecuenciaConNombre(String nombre) {
-        BloqueAgregable bloque = new BloqueAgregable(new BloquePersonalizado(nombre, this.clonar()), this.clonar());
-        return bloque;
+        return new BloqueAgregable(new BloquePersonalizado(nombre, this.clonar()), this.clonar());
     }
 
     void removerUltimo(){

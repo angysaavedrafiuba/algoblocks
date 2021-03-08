@@ -13,7 +13,6 @@ public abstract class Bloque {
 
     public abstract Bloque clonar();
 
-    // TODO Verificar si se puede generalizar el metodo toString y tener uno específico para BloquesPersonalizados
     @Override
     public String toString() {
         return estado.toString();

@@ -31,11 +31,4 @@ public class InvertirComportamiento implements EstadoDeBloque, EstadoDeBloqueCom
     public String toString() {
         return "InvertirComportamiento{}";
     }
-
-    @Override
-    public Bloque agregarBloque(Bloque bloque) {
-        Bloque bloqueInvertido = bloque.clonar();
-        bloqueInvertido.invertir();
-        return bloqueInvertido;
-    }
 }

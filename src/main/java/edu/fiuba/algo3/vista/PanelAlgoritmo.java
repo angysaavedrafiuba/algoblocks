@@ -25,7 +25,7 @@ public class PanelAlgoritmo extends HBox {
         this.scene = scene;
         this.bounds = screenBounds;
 
-        Botonera botonera = new Botonera(screenBounds, scene);
+        Botonera botonera = new Botonera(screenBounds, scene, this);
 
         this.vistaBloquesAgregados = new VistaBloquesAgregados(screenBounds, scene);
 
@@ -73,5 +73,9 @@ public class PanelAlgoritmo extends HBox {
             ImagenBloqueEnAlgoritmo imagenBloque = new ImagenBloqueEnAlgoritmo(imgBloqueAAgregar, this.bounds, this.scene);
             this.vistaBloquesAgregados.agregarBloque(imagenBloque);
         }
+    }
+
+    public int getCantidadBloques() {
+        return cantidadDeBloquesAgregados;
     }
 }

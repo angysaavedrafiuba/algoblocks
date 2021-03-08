@@ -15,9 +15,9 @@ import java.beans.PropertyChangeListener;
 public class PanelDeBloques extends HBox implements PropertyChangeListener {
     final Scene scene;
     VBox vBox;
-    Rectangle2D screenBounds;
-    RecorridoNormal recorrido;
-    int cantidadBloques = 0;
+    final Rectangle2D screenBounds;
+    final RecorridoNormal recorrido;
+    double cantidadBloques = 0;
 
     PanelDeBloques(Rectangle2D screenBounds, Scene scene, RecorridoNormal recorrido){
         super();

@@ -15,8 +15,8 @@ import java.beans.PropertyChangeListener;
 
 public class SeccionBloquesEnAgregable extends Pane implements PropertyChangeListener {
     final VBox vBox;
-    Scene scene;
-    BloqueAgregable bloque;
+    final Scene scene;
+    final BloqueAgregable bloque;
     public SeccionBloquesEnAgregable(Scene scene, Rectangle2D bounds, BloqueAgregable bloque) {
         this.scene = scene;
         this.bloque = bloque;

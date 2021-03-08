@@ -10,11 +10,6 @@ public class BloquePersonalizado implements EstadoDeBloque, EstadoDeBloqueCompue
    }
 
     @Override
-    public Bloque agregarBloque(Bloque bloque) {
-       return bloque;
-    }
-
-    @Override
     public void ejecutar(Personaje personaje, Dibujo dibujo) {
         this.bloques.ejecutar(personaje, dibujo);
     }
