@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-//TODO Implementar AlgoritmoPersonalizado que implementa BloqueAgregable
 public class BloqueAgregable extends Bloque{
     private RecorridoNormal bloques = new RecorridoNormal();
     EstadoDeBloqueCompuesto estadoCompuesto;
@@ -48,5 +47,10 @@ public class BloqueAgregable extends Bloque{
 
     public void addPropertyChangeListener(PropertyChangeListener controladorBloque) {
         this.bloques.addPropertyChangeListener(controladorBloque);
+    }
+
+    @Override
+    public String toString() {
+        return estadoCompuesto.toString();
     }
 }
