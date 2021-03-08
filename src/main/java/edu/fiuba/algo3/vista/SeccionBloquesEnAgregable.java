@@ -10,9 +10,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class SeccionBloquesEnAgregable extends Pane {
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class SeccionBloquesEnAgregable extends Pane implements PropertyChangeListener {
     final VBox vBox;
+    Scene scene;
+    BloqueAgregable bloque;
     public SeccionBloquesEnAgregable(Scene scene, Rectangle2D bounds, BloqueAgregable bloque) {
+        this.scene = scene;
+        this.bloque = bloque;
         this.vBox = new VBox();
 
         VBox contenedorPrincipal = new VBox();
@@ -35,10 +42,17 @@ public class SeccionBloquesEnAgregable extends Pane {
         descripcion.setFont(new Font(30));
         descripcion.setPadding(new Insets(bounds.getHeight() * 0.1, 0, 0, bounds.getWidth()*0.09));
 
-        AgregadorBloques.agregarBloques(this.vBox, new Rectangle2D(0, 0, 1500, 1000), scene, bloque.getRecorrido());
+        AgregadorBloques.getInstance().agregarBloques(this.vBox, new Rectangle2D(0, 0, 1500, 1000), scene, bloque.getRecorrido());
+        AgregadorBloques.getInstance().agregarListener(this);
 
         contenedorPrincipal.getChildren().addAll(descripcion, this.vBox);
 
         super.getChildren().add(contenedorPrincipal);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        vBox.getChildren().clear();
+        AgregadorBloques.getInstance().agregarBloques(this.vBox, new Rectangle2D(0, 0, 1500, 1000), scene, bloque.getRecorrido());
     }
 }

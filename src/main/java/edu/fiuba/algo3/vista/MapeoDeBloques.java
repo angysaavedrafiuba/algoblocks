@@ -20,12 +20,19 @@ public class MapeoDeBloques {
         mapeoDeImagenes.put(new BloqueAgregable(new InvertirComportamiento()).toString(), "invertir.png");
     }
 
-    private static final MapeoDeBloques instance = new MapeoDeBloques();
+    private static MapeoDeBloques instance = new MapeoDeBloques();
 
     public static MapeoDeBloques getInstance() {
         return instance;
     }
 
+    public void agregarBloquePersonalizado(BloqueAgregable nuevoPersonalizado) {
+        mapeoDeImagenes.put(nuevoPersonalizado.toString(), "guardado.png");
+    }
+
+    public void limpiar() {
+        this.instance = new MapeoDeBloques();
+    }
 
     public String imagenCorrespondienteA(Bloque bloque) {
         return mapeoDeImagenes.get(bloque.toString());

@@ -71,6 +71,8 @@ public class SeccionAgregadosEnAgregable extends Pane {
         }
         String imgBloqueAAgregar = MapeoDeBloques.getInstance().imagenCorrespondienteA(bloque);
         ImagenBloqueEnAlgoritmo img = new ImagenBloqueEnAlgoritmo(imgBloqueAAgregar, new Rectangle2D(0, 0, 1500, 1000), this.scene);
+
+        // TODO tratar de usar otro controlador para el bloque personalizado
         if(bloque instanceof BloqueAgregable) {
             img.setOnAction(new ControladorBloqueCompuesto((BloqueAgregable) bloque));
         }

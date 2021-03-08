@@ -55,9 +55,12 @@ public class PanelAlgoritmo extends HBox {
 
         String imgBloqueAAgregar = MapeoDeBloques.getInstance().imagenCorrespondienteA(bloque);
         this.vistaBloquesAgregados.update(this.cantidadDeBloquesAgregados);
+
+        // TODO tratar de usar una ImagenBloqueGuardado en vez de ImagenBloque para que se vea el nombre del algoritmo al agregarlo
         ImagenBloqueEnAlgoritmo imagenBloque = new ImagenBloqueEnAlgoritmo(imgBloqueAAgregar, this.bounds, this.scene);
         this.vistaBloquesAgregados.agregarBloque(imagenBloque);
 
+        // TODO tratar de usar otro controlador para el bloque personalizado
         if(bloque instanceof BloqueAgregable) {
             imagenBloque.setOnAction(new ControladorBloqueCompuesto((BloqueAgregable) bloque));
         }
