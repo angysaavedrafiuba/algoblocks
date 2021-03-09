@@ -236,5 +236,70 @@ public class AlgoblocksTest {
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
     }
+
+    @Test
+    public void test07AgregaBloquesDeAccionParaLuegoSerGuardadosEnUnBloquePersonalizadoYDibujaAcordemente(){
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new BajarLapiz()));
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new MoverALaDerecha()));
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new MoverALaDerecha()));
+
+        BloqueAgregable bloquePersonalizado = algoblocks.guardarAlgoritmo("unNombre");
+        algoblocks.reiniciarAlgoritmo();
+        algoblocks.agregarBloqueAgregable(bloquePersonalizado);
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoblocks.ejecutar();
+
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+
+    }
+
+    @Test
+    public void test08EnUnBloqueDeInversionSeAgregaUnBloquePersonalizableYActuanConsistentemente(){
+        BloqueAgregable bloqueInvertir = new BloqueAgregable(new InvertirComportamiento());
+
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new BajarLapiz()));
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new MoverALaDerecha()));
+        BloqueAgregable bloquePersonalizado = algoblocks.guardarAlgoritmo("unNombre");
+        algoblocks.reiniciarAlgoritmo();
+
+        bloqueInvertir.agregarBloque(bloquePersonalizado);
+
+        algoblocks.ejecutar();
+
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertEquals(dibujoLogrado.size(), 0);
+    }
+
+    @Test
+    public void test09EnBloqueDeInversionSeAgregaSecuenciaConLapizHaciaArribaPeroEsteLoBajaYTrazaUnDibujo(){
+        BloqueAgregable bloqueInvertir = new BloqueAgregable(new InvertirComportamiento());
+
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new SubirLapiz()));
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new MoverALaDerecha()));
+        BloqueAgregable bloquePersonalizado = algoblocks.guardarAlgoritmo("unNombre");
+        algoblocks.reiniciarAlgoritmo();
+
+        bloqueInvertir.agregarBloque(bloquePersonalizado);
+        
+        algoblocks.agregarBloqueAgregable(bloqueInvertir);
+        
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+        algoblocks.ejecutar();
+
+        dibujoLogrado = algoblocks.obtenerDibujo();
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
+    }
 }
 
