@@ -301,5 +301,25 @@ public class AlgoblocksTest {
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujoLogrado.toArray());
     }
+
+    @Test
+    public void test10LuegoDeMoverVariasVecesElPersonajeSeVuelveAEsteASuPosicionInicial(){
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new BajarLapiz()));
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new MoverALaDerecha()));
+        algoblocks.agregarBloqueDeAccion(new BloqueDeAccion(new MoverALaDerecha()));
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+        algoblocks.ejecutar();
+
+        algoblocks.reset();
+        Personaje unPersonaje = algoblocks.getPersonaje();
+
+        assertTrue(unPersonaje.estaEn(new Posicion2D(0,0)));
+    }
+
 }
 
