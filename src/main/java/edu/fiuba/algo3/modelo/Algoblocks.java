@@ -7,14 +7,10 @@ public class Algoblocks {
     private final Dibujo dibujo = new Dibujo();
     private final RecorridoNormal bloques = new RecorridoNormal();
 
-    private static Algoblocks instance;
+    private final static Algoblocks instance = new Algoblocks();
 
     public static Algoblocks getInstance() {
         return instance;
-    }
-
-    public static void Create() {
-        instance = new Algoblocks();
     }
 
     public void agregarBloqueDeAccion(BloqueDeAccion bloque){

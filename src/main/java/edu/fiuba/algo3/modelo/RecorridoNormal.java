@@ -17,7 +17,6 @@ public class RecorridoNormal {
 
     public RecorridoNormal invertir() {
         bloques.forEach(Bloque::invertir);
-        //support.firePropertyChange("bloques", bloques, bloques);
         return this;
     }
 
@@ -46,10 +45,8 @@ public class RecorridoNormal {
     }
 
     void removerUltimo(){
-        //ArrayList<Bloque> bloquesAntiguo = (ArrayList<Bloque>) this.bloques.clone();
         if(!bloques.isEmpty()) {
             bloques.remove(bloques.size() - 1);
-            //support.firePropertyChange("bloques", bloquesAntiguo, bloques);
         }
     }
 

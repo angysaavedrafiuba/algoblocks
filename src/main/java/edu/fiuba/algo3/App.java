@@ -2,7 +2,6 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.controlador.BotonEntrar;
 
-import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.vista.ContenedorPrincipalJuego;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -23,8 +22,6 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader loaderInicio = new FXMLLoader(getClass().getClassLoader().getResource("inicio.fxml"));
-
-        Algoblocks.Create();
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
