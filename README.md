@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/angysaavedrafiuba/algoblocks.svg?branch=vista)](https://travis-ci.org/angysaavedrafiuba/algoblocks) [![codecov](https://codecov.io/gh/angysaavedrafiuba/algoblocks/branch/vista/graph/badge.svg)](https://codecov.io/gh/angysaavedrafiuba/algoblocks)
+[![Build Status](https://travis-ci.org/angysaavedrafiuba/algoblocks.svg?branch=master)](https://travis-ci.org/angysaavedrafiuba/algoblocks) [![codecov](https://codecov.io/gh/angysaavedrafiuba/algoblocks/branch/master/graph/badge.svg)](https://codecov.io/gh/angysaavedrafiuba/algoblocks)
 
 
 
