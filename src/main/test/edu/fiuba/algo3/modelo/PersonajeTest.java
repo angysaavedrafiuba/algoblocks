@@ -308,4 +308,32 @@ public class PersonajeTest {
 
         assertFalse(personaje.lapizEstaArriba());
     }
+
+    @Test
+    public void test26elPersonajeSeMueveHaciaAbajoAlUsarElBloqueMoverAbajoLuegoSeLoDevulveASuPosicionInicial(){
+        Personaje personaje = new Personaje(new Posicion2D(0, 0));
+        MoverHaciaAbajo bloque = new MoverHaciaAbajo();
+        //Posicion2D posicionEsperada = new Posicion2D(0, -1);
+
+        bloque.ejecutar(personaje, new Dibujo());
+
+        personaje.volverAPosicionInicial();
+        Posicion2D posicionFinal = new Posicion2D(0,0);
+
+        assertTrue(personaje.estaEn(posicionFinal));
+    }
+
+    @Test
+    public void test27elPersonajeSeMueveHaciaLaDerechaDosVecesAlUsarElBloqueDeRepeticionLuegoSeLoDevulveASuPosicionInicial(){
+        Personaje personaje = new Personaje(new Posicion2D(0, 0));
+        BloqueAgregable bloqueRepetir = new BloqueAgregable(new BloqueDeRepeticion(2));
+
+        bloqueRepetir.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        bloqueRepetir.ejecutar(personaje, new Dibujo());
+
+        personaje.volverAPosicionInicial();
+
+        Posicion2D posicionEsperada = new Posicion2D(0,0);
+        assertTrue(personaje.estaEn(posicionEsperada));
+    }
 }
