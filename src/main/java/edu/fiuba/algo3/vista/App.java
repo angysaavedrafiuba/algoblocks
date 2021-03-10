@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.vista;
-import edu.fiuba.algo3.vista.ContenedorInicial;
-import edu.fiuba.algo3.vista.ContenedorPrincipalJuego;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -27,6 +26,8 @@ public class App extends Application {
         stage.setTitle("AlgoBlocks");
 
         Scene pantallaInicio = new Scene(inicioJuego,900,500);
+
+        stage.getIcons().add(new Image("pencil.png"));
         stage.setScene(pantallaInicio);
         stage.setFullScreen(false);
         stage.setResizable(true);
