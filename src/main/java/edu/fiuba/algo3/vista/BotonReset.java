@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 
 public class BotonReset extends ImagenConComportamiento {
     public BotonReset(Rectangle2D screenBounds, Scene scene, double proporcion) {
-        super("loopArrow.png", screenBounds, scene);
+        super("reset.png", screenBounds, scene);
 
         setOnAction(new BotonResetHandler());
         super.ajustarTamanio(screenBounds, proporcion);

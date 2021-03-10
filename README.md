@@ -39,7 +39,9 @@ Este comando crea el reporte de cobertura para CI y el reporte HTML que pueden a
 
 ## Ejecutando la aplicación
 
-Explicación de como ejecutar la aplicación
+```bash
+    mvn javafx:run
+```
 
 ## Licencia
 
