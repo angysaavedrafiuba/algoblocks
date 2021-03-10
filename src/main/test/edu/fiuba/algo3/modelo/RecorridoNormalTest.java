@@ -518,4 +518,92 @@ public class RecorridoNormalTest {
 
         assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
     }
+
+    @Test
+    public void test22SeApoyaLapizSeAgregaBloqueAbajoParaLuegoInvertirLosBloquesYSeDibujaCorrectamente(){
+        personaje.apoyarLapiz();
+
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverHaciaAbajo()));
+        algoritmo.invertir();
+
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.arriba());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+
+    }
+
+    @Test
+    public void test23SeApoyaLapizSeAgregaBloqueArribaParaLuegoInvertirLosBloquesYSeDibujaCorrectamente(){
+        personaje.apoyarLapiz();
+
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverHaciaArriba()));
+        algoritmo.invertir();
+
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.abajo());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+
+    }
+
+    @Test
+    public void test24SeApoyaLapizSeAgregaBloqueMoverDerechaParaLuegoInvertirLosBloquesYSeDibujaCorrectamente(){
+        personaje.apoyarLapiz();
+
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        algoritmo.invertir();
+
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+
+    }
+
+    @Test
+    public void test25SeApoyaLapizSeAgregaBloqueMoverIzquierdaParaLuegoInvertirLosBloquesYSeDibujaCorrectamente(){
+        personaje.apoyarLapiz();
+
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaIzquierda()));
+        algoritmo.invertir();
+
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+
+    }
+
+    @Test
+    public void test26SeAgregaUnBloquePersonalizadoParaLuegoInvertirlo(){
+        algoritmo.agregarBloque(new BloqueDeAccion(new SubirLapiz()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaDerecha()));
+        algoritmo.agregarBloque(new BloqueDeAccion(new MoverALaIzquierda()));
+        BloqueAgregable bloquePersonalizado = algoritmo.guardarSecuenciaConNombre("pepito");
+
+        algoritmo.reiniciar();
+
+        algoritmo.agregarBloque(bloquePersonalizado);
+        algoritmo.invertir();
+
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.izquierda());
+        dibujoEsperado.add(posicionActual);
+        posicionActual = posicionActual.calcularNuevaPosicion(Posicion2D.derecha());
+        dibujoEsperado.add(posicionActual);
+
+        algoritmo.ejecutar(personaje, dibujo);
+        assertArrayEquals(dibujoEsperado.toArray(), dibujo.posicionesDibujadas().toArray());
+
+
+    }
 }
