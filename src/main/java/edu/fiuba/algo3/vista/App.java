@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.vista.ContenedorInicial;
 import edu.fiuba.algo3.vista.ContenedorPrincipalJuego;
 import javafx.application.Application;
@@ -7,7 +7,6 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import java.io.IOException;
 
 /**
  * JavaFX App
@@ -15,7 +14,7 @@ import java.io.IOException;
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
 
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         ContenedorPrincipalJuego juego = new ContenedorPrincipalJuego();
@@ -29,7 +28,7 @@ public class App extends Application {
 
         Scene pantallaInicio = new Scene(inicioJuego,900,500);
         stage.setScene(pantallaInicio);
-        stage.setFullScreen(true);
+        stage.setFullScreen(false);
         stage.setResizable(true);
         stage.show();
     }

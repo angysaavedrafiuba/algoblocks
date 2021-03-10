@@ -5,7 +5,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -17,7 +16,7 @@ import java.io.File;
 
 public class ContenedorInicial extends VBox {
 
-    Stage stage;
+    final Stage stage;
 
     public ContenedorInicial(Stage stage, Scene escena){
         this.stage = stage;
